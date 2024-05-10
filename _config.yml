@@ -20,7 +20,7 @@ latex:
 repository:
   url: https://jpocon.github.io/
   repository_provider: github
-  path_to_book: 2024-esa-seeds-gis
+  path_to_book: 2024-ESA-SEEDS-GIS
   branch: main
 
 sphinx:
