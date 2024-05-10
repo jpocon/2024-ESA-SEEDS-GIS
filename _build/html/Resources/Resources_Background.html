@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GIS and remote sensing introduction &#8212; 2024 ESA SEEDS GIS Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Resources/Resources_Background';</script>
+    <link rel="author" title="About these documents" href="../about.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../about.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../about.html">
+                    Welcome to the 2024 ESA SEEDS GIS Workshop!
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Resources/Resources_Background.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GIS and remote sensing introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">GIS and remote sensing introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airborne-and-spaceborne-imagery-introduction">Airborne and spaceborne imagery introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-reflectance">Radiance and reflectance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections-and-crs">Projections and CRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data">Vector data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-file-formats">Common file formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-python-packages-for-vector-data">Common Python packages for vector data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-data">Raster data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-raster-data">Examples of raster data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Common file formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-python-packages-for-raster-data">Common Python packages for raster data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-national-ecological-observatory-network-neon">The National Ecological Observatory Network (NEON)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-airborne-observation-platform-neon-aop">The Airborne Observation Platform (NEON AOP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-measurements">Field measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-exchange-network-for-socio-economic-systems-lens">Landscape Exchange Network for Socio-economic systems (LENS)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Sources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jones-center-flint-river">The Jones Center &amp; Flint River</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jones-center">The Jones Center</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flint-river">Flint River</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Sources</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="gis-and-remote-sensing-introduction">
+<h1>GIS and remote sensing introduction<a class="headerlink" href="#gis-and-remote-sensing-introduction" title="Permalink to this heading">#</a></h1>
+<div class="section" id="airborne-and-spaceborne-imagery-introduction">
+<h2>Airborne and spaceborne imagery introduction<a class="headerlink" href="#airborne-and-spaceborne-imagery-introduction" title="Permalink to this heading">#</a></h2>
+<p><strong>Click on the image below</strong> to watch a video by NEON where you’ll learn:</p>
+<ul class="simple">
+<li><p>What is the difference between “spectral resolution” and “spatial resolution”?</p></li>
+<li><p>What do scientists do with “spectral signatures”?</p></li>
+<li><p>What does the spectral signature of healthy vegetation look like?</p></li>
+<li><p>What is an “imaging spectrometer”?</p></li>
+<li><p>What is the difference between multi- and hyper-spectral imagery?</p></li>
+</ul>
+<p><a class="reference external" href="https://youtu.be/3iaFzafWJQE"><img alt="NEON Youtube Channel" src="https://drive.google.com/uc?export=view&amp;id=15l3G-8lKg8GUOgZG8EBz5VHqmusrI8Qa" /></a></p>
+<p><strong>Click on the image below</strong> to watch a video by the USGS showing how Landsat8 collects data globally over a 16 day period:</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=yPF2jpjB3Qw"><img alt="USGS Youtube video" src="https://drive.google.com/uc?export=view&amp;id=17QwwrZIfhWhnYpz2_UI1RwrcDRWLml7p" /></a></p>
+</div>
+<div class="section" id="radiance-and-reflectance">
+<h2>Radiance and reflectance<a class="headerlink" href="#radiance-and-reflectance" title="Permalink to this heading">#</a></h2>
+<p>Different light sources emit light at different wavelengths. In this image, we can see the brightness of light emitted by the sun, versus by a flourescent light bulb for visibles wavelengths.</p>
+<p><img src='https://drive.google.com/uc?export=view&id=1MKiI2sqiFoaiAx4-HR9Hn556onsp44Xq' width=400> Image credit: <a class="reference external" href="https://webbtelescope.org/images">Webb Space Telescope</a></p>
+<p>After light is emitted from a source, objects interact with that light in different ways. As shown in the image below, light can be absorbed, pass through, or bounce off materials. When we’re looking at objects, we see the light that gets reflected off their surfaces.  The light that is reflected back from objects is related to the brightness of light that reaches those objects. So, if you were in a room where the only source of light is the flourescent light bulb depicted in the figure above, you wouldn’t expect to have light reflected off of surface with a wavelength of 400nm, because no light is being emitted in the room at 400nm.
+<br>
+<img src='https://drive.google.com/uc?export=view&id=1miUBgpT6otacOJNOFGR4Fdp-vIyY9bkM' width=400> Image credit: <a class="reference external" href="https://webbtelescope.org/images">Webb Space Telescope</a></p>
+<p>Light from the sun is reflected off of cloud’s and Earth’s surface. Some light is also absorbed by Earth’s atmosphere.
+<br>
+<img src='https://drive.google.com/uc?export=view&id=1LvGxVdkBSTmspFfiBcV8YLr4GB8xwLGU' width=400> Image credit: <a class="reference external" href="https://science.nasa.gov/ems/01_intro">NASA</a></p>
+<p>Earth’s atmosphere is opaque to certain wavelengths, while letting others pass through. When the sensor on the NEON AOP flight or on a satellite measures the light bouncing off of Earth’s surface, it is capturing the light scattered by Earth’s atmosphere, clouds, and neighboring pixels, along with light reflected off our our target pixel. This measurement is called “radiance”.</p>
+<br>
+<img src='https://drive.google.com/uc?export=view&id=1mRzcH-JuAeRWs4ELbI2sX664b9lCIFok' width=600> Image credit: [NASA](https://science.nasa.gov/ems/01_intro)
+<p>Because the brighness of light hitting the Earth’s surface at different wavelengths is so different and because of these scattering effects from the atmosphere and neighboring pixels, as ecologists, we tend to apply atmospheric and topographic corrections to the at-sensor radiance. In this process we convert from radiance (raw energy reaching our imaging spectrometer at different wavelengths) to reflectance (fraction of light that is reflected).</p>
+<img src='https://drive.google.com/uc?export=view&id=1nDfgqO5plO5ywkcA2gY6G3I0fRJ40uuz' width=600>
+Image credit: [Thompson et al. 2019](https://www.researchgate.net/publication/326581977_Retrieval_of_Atmospheric_Parameters_and_Surface_Reflectance_from_Visible_and_Shortwave_Infrared_Imaging_Spectroscopy_Data)
+<p>These reflectance data can give us really interesting ecological information. As shown in the image below, soil, different vegetation types, and water have completely different spectral signatures. <br>
+<img src='https://drive.google.com/uc?export=view&id=1gqHy1ySyAKfUeeyykP5rE9PvRhOBmH0f' width=400> Image credit: <a class="reference external" href="https://science.nasa.gov/ems/01_intro">NASA</a></p>
+<p>And, when we look at the spectral signatures of different vegetation types, we notices some interesting features, including chlorophyll and water absorption bands.<br>
+<img src='https://drive.google.com/uc?export=view&id=1vCj_UtLDbiveY_Oyxw_sO7NUACug3DOX' width=400> Image credit: <a class="reference external" href="https://science.nasa.gov/ems/01_intro">NASA</a></p>
+</div>
+<div class="section" id="projections-and-crs">
+<h2>Projections and CRS<a class="headerlink" href="#projections-and-crs" title="Permalink to this heading">#</a></h2>
+<p>QGIS (a free, open-source mapping software) has an introduction to map projections and coordinate reference systems (CRS). In their introduction, they define:</p>
+<blockquote>
+<div><p><strong>Map projections</strong> try to portray the surface of the earth, or a portion of the earth, on a flat piece of paper or computer screen. In layman’s term, map projections try to transform the earth from its spherical shape (3D) to a planar shape (2D).<br>
+<strong>A coordinate reference system (CRS)</strong> then defines how the two-dimensional, projected map in your GIS relates to real places on the earth. The decision of which map projection and CRS to use depends on the regional extent of the area you want to work in, on the analysis you want to do, and often on the availability of data.</p>
+</div></blockquote>
+<p>You can read more on their website <a class="reference external" href="https://docs.qgis.org/3.34/en/docs/gentle_gis_introduction/coordinate_reference_systems.html">here</a>.</p>
+</div>
+<div class="section" id="vector-data">
+<h2>Vector data<a class="headerlink" href="#vector-data" title="Permalink to this heading">#</a></h2>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h3>
+<p>Types of vector data:</p>
+<ul class="simple">
+<li><p>Points: single coordinate pair (ex: location of trapped small mammals)</p></li>
+<li><p>Lines: Usually ordered set of coordinate pairs (ex: roads)</p></li>
+<li><p>Polygons: Usually ordered set of coordinate pairs forming a closed polygon (ex: boundary of a study region)</p></li>
+</ul>
+<p>In the figure below, we can see a diagram of these 3 types of vector data. This figure also shows the extent of each dataset.</p>
+<br>
+<img src='https://drive.google.com/uc?export=view&id=1eAVt4qEQSv9mhU-3DIMh1SuI8TY6JJc0' width=400> Image credit: [NEON](https://www.neonscience.org/resources/learning-hub/tutorials/dc-raster-data-r)
+<p>In addition to having a geometry (ususally represented as coordinate(s)), vector data have extents, a projection, and attributes. Attributes can be seen in an attribute table, like in the figure shown below.
+<br>
+<img src='https://drive.google.com/uc?export=view&id=1L6qZIN_YxC7NJgHgSiSrX6uF2CVM-hbc' width=400> Image credit: <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/dc-raster-data-r">NEON</a></p>
+<p>In Google Earth Engine, each individual point, line, or polygon is called a Feature, and a grouping of Features is called a FeatureCollection. This is what the FeatureCollection data structure looks like on Google Earth Engine in Colab. This FeatureCollection has 243 Features, each of which has 8 attributes (called properties) and 1 geometry. This FeatureCollection also has a projection that isn’t being shown in the printout here. But, its projection can be accessed using the .projection() method.
+<br>
+<img src='https://drive.google.com/uc?export=view&id=1OK6o6AQkd9ZIC-RbgWAxgfrt3VLd5C1l' width=400></p>
+</div>
+<div class="section" id="common-file-formats">
+<h3>Common file formats<a class="headerlink" href="#common-file-formats" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Shapefiles</p></li>
+<li><p>KML</p></li>
+<li><p>GeoJSON</p></li>
+</ul>
+</div>
+<div class="section" id="common-python-packages-for-vector-data">
+<h3>Common Python packages for vector data<a class="headerlink" href="#common-python-packages-for-vector-data" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Geopandas</p></li>
+<li><p>osgeo.ogr</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="raster-data">
+<h2>Raster data<a class="headerlink" href="#raster-data" title="Permalink to this heading">#</a></h2>
+<div class="section" id="id1">
+<h3>Overview<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>Raster data are gridded data. They have an extent and spatial resolution. The NEON AOP data have a spatial resolution of 1 meter, because each pixel is a 1m by 1m square. <br>
+<img src='https://drive.google.com/uc?export=view&id=1eASwE9UHDpKJziGK6SKdOiuE0anYo_rE' width=400></p>
+<p>Raster data contain:</p>
+<ul class="simple">
+<li><p>A data array with 3 dimensions: number of pixels wide, number of pixels tall, number of bands (although the dimensions are not always in that order). For example, if you are looking at the data array for a fire severity band, each value in the data array will represent the fire severity at that pixel.</p></li>
+<li><p>The geotransform, which is a list of 6 values that allows us to know the size of each pixel and where the raster should be placed on the Earth (descriptions from the <a class="reference external" href="https://gdal.org/tutorials/geotransforms_tut.html">GDAL documentation</a>).</p>
+<ul>
+<li><p>GT(0) x-coordinate of the upper-left corner of the upper-left pixel.</p></li>
+<li><p>GT(1) West-East pixel resolution / pixel width.</p></li>
+<li><p>GT(2) row rotation (typically zero).</p></li>
+<li><p>GT(3) y-coordinate of the upper-left corner of the upper-left pixel.</p></li>
+<li><p>GT(4) column rotation (typically zero).</p></li>
+<li><p>GT(5) North-South pixel resolution / pixel height (negative value for a north-up image).</p></li>
+</ul>
+</li>
+<li><p>A projection</p></li>
+</ul>
+<p>In Google Earth Engine, each raster layer is called an Image. A group of Images is called an ImageCollection. Each Image has bands, attributes (called properties), a projection, and (hidden from us in this printout) geographic information for the extent and spatial resolution of the raster. This ImageCollection has 93 Images, each of which has 1 band (Severity) and 7 attributes. These Images also have text describing the CRS and projection used for this Image’s coordinates.</p>
+<img src='https://drive.google.com/uc?export=view&id=1MwHYtVv3dZsSXnylXisP16RFfHB6qUMt' width=800>
+</div>
+<div class="section" id="examples-of-raster-data">
+<h3>Examples of raster data<a class="headerlink" href="#examples-of-raster-data" title="Permalink to this heading">#</a></h3>
+<p>In this workshop, we’ll be working with raster reflectance data from NEON AOP. We’ll also be using gridded lidar data products. These include the <strong>canopy height model (CHM), digital surface model (DSM), and digital terrain model (DTM)</strong>
+<img src='https://drive.google.com/uc?export=view&id=1CgrBXd6otHGfMgYZS41d3h0Qja0FW0xl' width=400></p>
+</div>
+<div class="section" id="id2">
+<h3>Common file formats<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>HDF5</p></li>
+<li><p>GeoTIFF</p></li>
+<li><p>ENVI</p></li>
+<li><p>NetCDF</p></li>
+</ul>
+</div>
+<div class="section" id="common-python-packages-for-raster-data">
+<h3>Common Python packages for raster data<a class="headerlink" href="#common-python-packages-for-raster-data" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Rasterio</p></li>
+<li><p>Rioxarray</p></li>
+<li><p>osgeo.gdal</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.earthdatascience.org/">CU Boulder Earth Lab Tutorials</a> <br>
+<a class="reference external" href="https://pygis.io/docs/a_intro.html">PyGIS - Open Source Spatial Programming and Remote Sensing</a> <br>
+<a class="reference external" href="https://courses.spatialthoughts.com/">Spatial Thoughts tutorials and free online textbooks</a></p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-national-ecological-observatory-network-neon">
+<h1>The National Ecological Observatory Network (NEON)<a class="headerlink" href="#the-national-ecological-observatory-network-neon" title="Permalink to this heading">#</a></h1>
+<p>NEON collects field data and airborne data across 81 sites freshwater and terrestrial sits in 20 ecoclimatic domains in the United States. <br>
+<img src='https://drive.google.com/uc?export=view&id=1rSfBId1EF-4Rb54Ex_KPRoZalmYb-Tbo' width=700> <br>
+Image from the National Ecological Observatory Network <a class="reference external" href="https://www.neonscience.org/about/overview/design">(source)</a>.</p>
+<div class="section" id="the-airborne-observation-platform-neon-aop">
+<h2>The Airborne Observation Platform (NEON AOP)<a class="headerlink" href="#the-airborne-observation-platform-neon-aop" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="field-measurements">
+<h2>Field measurements<a class="headerlink" href="#field-measurements" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.neonscience.org/data">The NEON Data Portal</a></p>
+<p><a class="reference external" href="https://youtu.be/39YrzpxVRF8"><img alt="NEON Youtube Channel" src="https://drive.google.com/uc?export=view&amp;id=1Ok1voc99J6132SBapIQT38FUb7sktLTh" /></a></p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="landscape-exchange-network-for-socio-economic-systems-lens">
+<h1>Landscape Exchange Network for Socio-economic systems (LENS)<a class="headerlink" href="#landscape-exchange-network-for-socio-economic-systems-lens" title="Permalink to this heading">#</a></h1>
+<p>LENS is a research coordination network created in July 2021 that includes researchers in the social and natural sciences who are working to broaden the participation of members of the community in research through collaborative projects that are supported by network meetings, three interdisciplinary working groups, and in-person and virtual workshops. The project is being funded by the National Science Foundation (NSF) Division of Environmental Biology in the BIO directorate under <a class="reference external" href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=2054939&amp;HistoricalAwards=false">grant #2054939</a>.</p>
+<p>LENS has three objectives:</p>
+<ol class="arabic simple">
+<li><p>Characterize socio-environmental systems (SES) represented in the landscapes surveyed by the National Ecological Observation Network Airborne Observation Platform (NEON AOP) – (<em>Working Group 1</em>)</p></li>
+<li><p>Develop strategies that support an effective translational ecology approach in the AOP landscapes – (<em>Working Group 2</em>)</p></li>
+<li><p>Develop and communicate methods for using AOP data in SES research using the translational ecology approach – (<em>Working Group 3</em>)</p></li>
+</ol>
+<p><img src='https://drive.google.com/uc?export=view&id=1yBmQcM8VqIYFWBERvi72juC7-ANFjAfU' width=500> <br>
+Figure from <a class="reference external" href="https://doi.org/10.1002/ecs2.3640">Ordway et al. 2021</a>: Diagram highlighting aspects of the NEON AOP that can contribute to understanding SES interactions and feedback processes in space and time using drought as an example. The difference between a pre-drought (A) and drought-impacted landscape (B) was chosen to highlight processes that may occur at various scales and in different locations across the landscape (a–g) over the 30-yr planned AOP lifespan. Aspects of socio-environmental change that can be better understood within an AOP landscape are highlighted in comparisons of (d–f) in panels A and B. For example, fine-scale resolution AOP data will allow researchers to understand drought and related human behavioral impacts on plant species composition and vegetation structure (d), canopy water content (e), and crop yields (f). In addition, AOP data combined with ancillary datasets enables analysis at larger spatial scales (C). The higher temporal resolution of other sensors can also be used to understand change within years at a NEON AOP site (C) and how pressures like reduced snowpack reverberate throughout social, governance, and ecological systems (A a–g → B a–g). Symbols used with permission from UMCES IAN Symbol library (<a class="reference external" href="http://ian.umces.edu">ian.umces.edu</a>).</p>
+<div class="section" id="id3">
+<h2>Sources<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.lensrcn.org/home">LENS Website</a> <br>
+<a class="reference external" href="https://doi.org/10.1002/ecs2.3640">Ordway et al. 2021</a></p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="the-jones-center-flint-river">
+<h1>The Jones Center &amp; Flint River<a class="headerlink" href="#the-jones-center-flint-river" title="Permalink to this heading">#</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="the-jones-center">
+<h2>The Jones Center<a class="headerlink" href="#the-jones-center" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="flint-river">
+<h2>Flint River<a class="headerlink" href="#flint-river" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>Sources<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.jonesctr.org/about-us/">The Jones Center homepage</a> <br>
+<a class="reference external" href="https://www.neonscience.org/field-sites/jerc">NEON Description of JERC</a>
+<a class="reference external" href="https://www.neonscience.org/field-sites/flnt">NEON Description of FLNT</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Resources"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">GIS and remote sensing introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airborne-and-spaceborne-imagery-introduction">Airborne and spaceborne imagery introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-reflectance">Radiance and reflectance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections-and-crs">Projections and CRS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data">Vector data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-file-formats">Common file formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-python-packages-for-vector-data">Common Python packages for vector data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#raster-data">Raster data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-raster-data">Examples of raster data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Common file formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-python-packages-for-raster-data">Common Python packages for raster data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-national-ecological-observatory-network-neon">The National Ecological Observatory Network (NEON)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-airborne-observation-platform-neon-aop">The Airborne Observation Platform (NEON AOP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-measurements">Field measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sources">Sources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#landscape-exchange-network-for-socio-economic-systems-lens">Landscape Exchange Network for Socio-economic systems (LENS)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Sources</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jones-center-flint-river">The Jones Center &amp; Flint River</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-jones-center">The Jones Center</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flint-river">Flint River</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Sources</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carissa DeRanek & Jonathan Pando Ocón, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

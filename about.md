@@ -1,13 +1,10 @@
-# 2024 ESA SEEDS GIS Workshop Materials
-This repository contains every resource and collection of scripts needed for the 2024 [Ecological Society of America's SEEDS](https://www.esa.org/seeds/) GIS Workshop held at Florida A&M University from May 20-25, 2024. This workshop is developed with support from the NSF-funded [National Ecological Observation Network (NEON)](https://www.neonscience.org/) and [Landscape Exchange Network for Socio-environmental Systems Research (LENS)](https://www.lensrcn.org/home), as well as in collaboration with [The Jones Center at Ichauway](https://www.jonesctr.org/).
+# Welcome to the 2024 ESA SEEDS GIS Workshop!
+This workshop will provide every resource and collection of scripts needed for the 2024 [Ecological Society of America's SEEDS](https://www.esa.org/seeds/) GIS Workshop held at Florida A&M University from May 20-25, 2024. This workshop is developed with support from the NSF-funded [National Ecological Observation Network (NEON)](https://www.neonscience.org/) and [Landscape Exchange Network for Socio-environmental Systems Research (LENS)](https://www.lensrcn.org/home), as well as in collaboration with [The Jones Center at Ichauway](https://www.jonesctr.org/).
 
-This repository is hosted at [studyingplace.space/2024-esa-seeds-gis](https://studyingplace.space/2024-esa-seeds-gis).
+```{tableofcontents}
+```
 
-## Workshop Overview
-
-TBD
-
-### Learning Objectives
+## Learning Objectives
 
 By the end of the four-day workshop...
 
@@ -17,18 +14,4 @@ By the end of the four-day workshop...
 - **Spectral Indices:** I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.
 - **GIS Skillset:** I can use GEE/Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.
 
-## Course Structure
-
-TBD
-
-## Prerequisites
-
-TBD
-
-## Tools and Technology
-
-TBD
-
-## Group Deliverable
-
-TBD
+## Participant Responsibilities
