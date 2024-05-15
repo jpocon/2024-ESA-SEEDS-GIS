@@ -1,4 +1,4 @@
-logo <img src="Figures/logo.png" align="right"/>
+<img src="Figures/logo.png" width="150" height="182" align="right"/>
 ======================================================================================================
 
 # 2024 ESA SEEDS GIS Workshop Materials
