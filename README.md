@@ -26,25 +26,25 @@ By the end of the four-day workshop...
 
 <br>
 
-## Course Structure
+### Course Structure
 
 TBD
 
 <br>
 
-## Prerequisites
+#### Prerequisites
 
 TBD
 
 <br>
 
-## Tools and Technology
+#### Tools and Technology
 
 TBD
 
 <br>
 
-## Group Deliverable
+### Group Deliverable
 
 TBD
 
