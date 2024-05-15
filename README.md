@@ -24,18 +24,28 @@ By the end of the four-day workshop...
 - **Spectral Indices:** I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.
 - **GIS Skillset:** I can use GEE/Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.
 
+<br>
+
 ## Course Structure
 
 TBD
+
+<br>
 
 ## Prerequisites
 
 TBD
 
+<br>
+
 ## Tools and Technology
 
 TBD
 
+<br>
+
 ## Group Deliverable
 
 TBD
+
+<br>
