@@ -6,9 +6,13 @@ This repository contains every resource and collection of scripts needed for the
 
 This repository is hosted at [studyingplace.space/2024-ESA-SEEDS-GIS](https://studyingplace.space/2024-ESA-SEEDS-GIS).
 
+<br>
+
 ## Workshop Overview
 
 TBD
+
+<br>
 
 ### Learning Objectives
 
