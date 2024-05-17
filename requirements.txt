@@ -3,3 +3,4 @@ matplotlib
 numpy
 python>=3.11
 sphinx>=3.0
+sphinx-book-theme>=1.0

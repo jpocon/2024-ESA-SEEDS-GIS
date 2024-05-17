@@ -22,11 +22,18 @@ repository:
   repository_provider: github
   path_to_book: 2024-ESA-SEEDS-GIS
   branch: main
-  use_repository_button: true
 
 sphinx:
   recursive_update: true
   config:
     html_theme_options:
-      repository_provider: custom
+      repository_provider: github
+    html_context:
+      url: https://github.com/jpocon/
+      path_to_book: 2024-ESA-SEEDS-GIS
+      branch: main
 
+repository:
+  url: https://github.com/jpocon/2024-ESA-SEEDS-GIS/
+html:
+  use_repository_button: true
