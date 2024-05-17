@@ -37,3 +37,6 @@ repository:
   url: https://github.com/jpocon/2024-ESA-SEEDS-GIS/
 html:
   use_repository_button: true
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
