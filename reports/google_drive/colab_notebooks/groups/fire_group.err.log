@@ -25,8 +25,8 @@ ee.Initialize(project='511923968009')
 geemap.ee_initialize(project='511923968009')
 ------------------
 
-[0;31m------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m  Traceback (most recent call last)
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
 [0;32m<ipython-input-1-3beff9a267fa>[0m in [0;36m<module>[0;34m[0m
 [1;32m      1[0m [0;32mimport[0m [0mee[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0;32mimport[0m [0mgeemap[0m[0;34m[0m[0;34m[0m[0m
