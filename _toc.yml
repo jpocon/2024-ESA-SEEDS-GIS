@@ -4,3 +4,8 @@
 format: jb-book
 root: about.md
 
+parts:
+  - caption: Day 1 Materials
+    chapters:
+    - file: google_drive/colab_notebooks/neon_aop.ipynb
+      title: Introduction to NEON AOP
