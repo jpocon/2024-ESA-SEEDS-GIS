@@ -25,6 +25,7 @@ By the end of the four-day workshop...
 
 ## Course Structure
 
+```{toggle}
 ### Day 1: Setup and Introduction
 Participants will be introduced to the essential tools and platforms used throughout the workshop. The day will start with setting up necessary accounts and an introduction to Google Colaboratory. A representative from the NEON AOP will provide a technical overview via Zoom, and participants will begin working with pre-made Colab scripts to handle and conceptualize vector and raster data, which will become handy during Days 3 and 4 of the workshop when participants transition to group work.
 
@@ -36,6 +37,7 @@ Participants will be divided into groups and given datasets related to their int
 
 ### Day 4: Group Projects Completion and Presentation
 Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!
+```
 
 <br>
 
