@@ -1,6 +1,6 @@
 ```{figure} img/overhead-neon.jpeg
 ---
-scale: 100%
+width: 100%
 align: center
 ---
 ```
@@ -10,27 +10,28 @@ This workshop will provide every resource and collection of scripts needed for t
 
 ```{tableofcontents}
 ```
-<br>
+---
 
 ## Workshop Overview
 
 Welcome to the Four-Day GIS Workshop at Florida A&M University! This workshop is designed for graduate students with a basic understanding of GIS and remote sensing. Our goal is to enhance your ability to conceptualize, process, and analyze spatial data for ecological applications. Throughout the workshop, you will gain hands-on experience with Google Earth Engine, Google Colaboratory, and NEON Airborne Observation Platform (AOP) data.
 
-<br>
-
 ### Learning Objectives
 <details>
 <summary><b>By the end of the four-day workshop...</b></summary>
+<br>
 <ul>
 <li><b>NEON Airborne Observation Platform (AOP):</b> I know what NEON AOP data are, and how to access and visualize them using the Google Earth Engine (GEE) Python API (geemap) via browser-based Interactive Development Environment (IDE) Google Colaboratory (Colab).</li>
+<br>
 <li><b>Spatial Data Handling: Vector & Raster:</b> I can explain the differences between vector and raster data, describe when they are used, describe their metadata, and collect them in the field.</li>
+<br>
 <li><b>Remote Sensing Basics:</b> I can describe common examples of active and passive remote sensing, and describe when they are used.</li>
+<br>
 <li><b>Spectral Indices:</b> I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.</li>
+<br>
 <li><b>GIS Skillset:</b> I can use geemap in Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.</li>
 </ul>
 </details>
-
-<br>
 
 ### Course Structure
 
@@ -54,7 +55,7 @@ Participants will be divided into groups and given datasets related to their int
 Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!
 </details>
 
-<br>
+---
 
 ## Workshop Prerequisites
 
