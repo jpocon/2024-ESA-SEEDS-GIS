@@ -316,24 +316,22 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-overview">Workshop Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-structure">Course Structure</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-structure">Course Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-prerequisites">Workshop Prerequisites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-technology">Tools and Technology</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-deliverables">Group Deliverables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#participant-responsibilities">Participant Responsibilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-agenda">Workshop Agenda</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-1-setup-and-introduction">Day 1: Setup and Introduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-2-neon-site-visit">Day 2: NEON Site Visit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-3-group-projects-initiation">Day 3: Group Projects Initiation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-4-group-projects-completion-and-presentation">Day 4: Group Projects Completion and Presentation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-technology">Tools and Technology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-deliverables">Group Deliverables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#participant-responsibilities">Participant Responsibilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-agenda">Workshop Agenda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Day 1: Setup and Introduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Day 2: NEON Site Visit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Day 3: Group Projects Initiation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Day 4: Group Projects Completion and Presentation</a></li>
 </ul>
 </li>
 </ul>
@@ -357,65 +355,80 @@ document.write(`
 <br>
 <div class="section" id="learning-objectives">
 <h3>Learning Objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h3>
-<p>By the end of the four-day workshop…</p>
-<ul class="simple">
-<li><p><strong>NEON Airborne Observation Platform (AOP):</strong> I know what NEON AOP data are, and how to access and visualize them using the Google Earth Engine (GEE) Python API (geemap) via browser-based Interactive Development Environment (IDE) Google Colaboratory (Colab).</p></li>
-<li><p><strong>Spatial Data Handling: Vector &amp; Raster:</strong> I can explain the differences between vector and raster data, describe when they are used, describe their metadata, and collect them in the field.</p></li>
-<li><p><strong>Remote Sensing Basics:</strong> I can describe common examples of active and passive remote sensing, and describe when they are used.</p></li>
-<li><p><strong>Spectral Indices:</strong> I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.</p></li>
-<li><p><strong>GIS Skillset:</strong> I can use geemap in Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.</p></li>
-</ul>
+<details>
+<summary> By the end of the four-day workshop... </summary>
+- **NEON Airborne Observation Platform (AOP):** I know what NEON AOP data are, and how to access and visualize them using the Google Earth Engine (GEE) Python API (geemap) via browser-based Interactive Development Environment (IDE) Google Colaboratory (Colab).
+- **Spatial Data Handling: Vector & Raster:** I can explain the differences between vector and raster data, describe when they are used, describe their metadata, and collect them in the field.
+- **Remote Sensing Basics:** I can describe common examples of active and passive remote sensing, and describe when they are used.
+- **Spectral Indices:** I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.
+- **GIS Skillset:** I can use geemap in Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.
+</details>
 <br>
-</div>
 </div>
 <div class="section" id="course-structure">
-<h2>Course Structure<a class="headerlink" href="#course-structure" title="Permalink to this heading">#</a></h2>
-<div class="section" id="day-1-setup-and-introduction">
-<h3>Day 1: Setup and Introduction<a class="headerlink" href="#day-1-setup-and-introduction" title="Permalink to this heading">#</a></h3>
-<div class="toggle docutils container">
-<p>Participants will be introduced to the essential tools and platforms used throughout the workshop. The day will start with setting up necessary accounts and an introduction to Google Colaboratory. A representative from the NEON AOP will provide a technical overview via Zoom, and participants will begin working with pre-made Colab scripts to handle and conceptualize vector and raster data, which will become handy during Days 3 and 4 of the workshop when participants transition to group work.</p>
-</div>
-</div>
-<div class="section" id="day-2-neon-site-visit">
-<h3>Day 2: NEON Site Visit<a class="headerlink" href="#day-2-neon-site-visit" title="Permalink to this heading">#</a></h3>
-<div class="toggle docutils container">
-<p>Participants will visit The Jones Center at Ichauway in southern Georgia. This visit will provide hands-on experience with <em>in situ</em> data collection methods and a deeper understanding of how NEON data is gathered in the field.</p>
-</div>
-</div>
-<div class="section" id="day-3-group-projects-initiation">
-<h3>Day 3: Group Projects Initiation<a class="headerlink" href="#day-3-group-projects-initiation" title="Permalink to this heading">#</a></h3>
-<div class="toggle docutils container">
-<p>Participants will be divided into groups and given datasets related to their interests. They will adapt pre-made Colab scripts to these new datasets, thinking through processing steps and data handling needs. Groups will start their analysis and documentation of their workflow in Google Colab.</p>
-</div>
-</div>
-<div class="section" id="day-4-group-projects-completion-and-presentation">
-<h3>Day 4: Group Projects Completion and Presentation<a class="headerlink" href="#day-4-group-projects-completion-and-presentation" title="Permalink to this heading">#</a></h3>
-<div class="toggle docutils container">
-<p>Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!</p>
-</div>
+<h3>Course Structure<a class="headerlink" href="#course-structure" title="Permalink to this heading">#</a></h3>
+<details>
+<summary>**Day 1: Setup and Introduction**</summary>
+Participants will be introduced to the essential tools and platforms used throughout the workshop. The day will start with setting up necessary accounts and an introduction to Google Colaboratory. A representative from the NEON AOP will provide a technical overview via Zoom, and participants will begin working with pre-made Colab scripts to handle and conceptualize vector and raster data, which will become handy during Days 3 and 4 of the workshop when participants transition to group work.
+</details>
+<summary>**Day 2: NEON Site Visit**</summary>
+<details>
+Participants will visit The Jones Center at Ichauway in southern Georgia. This visit will provide hands-on experience with *in situ* data collection methods and a deeper understanding of how NEON data is gathered in the field. 
+</details>
+<summary>**Day 3: Group Projects Initiation**</summary>
+<details>
+Participants will be divided into groups and given datasets related to their interests. They will adapt pre-made Colab scripts to these new datasets, thinking through processing steps and data handling needs. Groups will start their analysis and documentation of their workflow in Google Colab.
+</details>
+<summary>**Day 4: Group Projects Completion and Presentation**</summary>
+<details>
+Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!
+</details>
 <br>
 </div>
 </div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
+<div class="section" id="workshop-prerequisites">
+<h2>Workshop Prerequisites<a class="headerlink" href="#workshop-prerequisites" title="Permalink to this heading">#</a></h2>
 <p>To ensure you get the most out of this workshop, please review the following prerequisites:</p>
 <ul class="simple">
-<li><p><strong>Basic Understanding of GIS and Remote Sensing Concepts</strong>: You should have a foundational knowledge of Geographic Information Systems (GIS) and remote sensing. This includes understanding what GIS is, the types of spatial data (vector and raster), and basic concepts of remote sensing.</p></li>
+<li><p><strong>Basic Understanding of GIS and Remote Sensing Concepts</strong></p></li>
+</ul>
+<details>
+You should have a foundational knowledge of Geographic Information Systems (GIS) and remote sensing. This includes understanding what GIS is, the types of spatial data (vector and raster), and basic concepts of remote sensing.
+<ul class="simple">
 <li><p><strong>Familiarity with Vector and Raster Data</strong>: You should know the differences between vector and raster data, including common formats (e.g., shapefiles for vector data and GeoTIFFs for raster data). Understanding how to read metadata associated with these files will also be beneficial.</p></li>
 <li><p><strong>No Previous Programming Experience Required</strong>: While previous experience with programming is not necessary, being comfortable with basic computer operations and having a willingness to learn will be helpful. All scripts provided during the workshop will be pre-made, and you will receive guidance on how to use them.</p></li>
 </ul>
+</details>
 <br>
-</div>
 <div class="section" id="tools-and-technology">
-<h2>Tools and Technology<a class="headerlink" href="#tools-and-technology" title="Permalink to this heading">#</a></h2>
+<h3>Tools and Technology<a class="headerlink" href="#tools-and-technology" title="Permalink to this heading">#</a></h3>
 <p>During the workshop, we will use the following tools and technologies. Familiarize yourself with them beforehand to ensure a smooth learning experience:</p>
 <ul class="simple">
-<li><p><strong>Google Earth Engine (GEE)</strong>: A cloud-based platform for planetary-scale environmental data analysis. You will use the GEE Python API (geemap) to access and visualize NEON AOP data. <strong>Ensure you have a Google account and have requested access to GEE.</strong></p></li>
-<li><p><strong>Google Colaboratory (Colab)</strong>: An interactive development environment that runs in your web browser. Colab allows you to write and execute Python code in Jupyter notebooks without any setup. It is essential for handling, processing, and visualizing spatial data during the workshop. Ensure your web browser is up to date – Firefox and Chrome work best.</p></li>
-<li><p><strong>Jupyter Book</strong>: All workshop materials, including lecture notes, scripts, and datasets, will be organized in a Jupyter Book hosted on GitHub Pages. You will use this resource throughout the workshop to follow along with instructions and access necessary materials.</p></li>
-<li><p><strong>NEON Airborne Observation Platform (AOP) Data</strong>: Remote sensing data collected by NEON’s airborne observation platform. Understanding how to access and work with this data will be a key part of the workshop.</p></li>
+<li><p><strong>Google Earth Engine (GEE)</strong></p></li>
 </ul>
+<details>
+A cloud-based platform for planetary-scale environmental data analysis. You will use the GEE Python API (geemap) to access and visualize NEON AOP data. **Ensure you have a Google account and have requested access to GEE.**
+</details>
+<ul class="simple">
+<li><p><strong>Google Colaboratory (Colab)</strong></p></li>
+</ul>
+<details>
+An interactive development environment that runs in your web browser. Colab allows you to write and execute Python code in Jupyter notebooks without any setup. It is essential for handling, processing, and visualizing spatial data during the workshop. Ensure your web browser is up to date -- Firefox and Chrome work best.
+</details>
+<ul class="simple">
+<li><p><strong>Jupyter Book</strong></p></li>
+</ul>
+<details>
+All workshop materials, including lecture notes, scripts, and datasets, will be organized in a Jupyter Book hosted on GitHub Pages. You will use this resource throughout the workshop to follow along with instructions and access necessary materials.
+</details>
+<ul class="simple">
+<li><p><strong>NEON Airborne Observation Platform (AOP) Data</strong></p></li>
+</ul>
+<details>
+Remote sensing data collected by NEON's airborne observation platform. Understanding how to access and work with this data will be a key part of the workshop.
+</details>
 <br>
+</div>
 </div>
 <div class="section" id="group-deliverables">
 <h2>Group Deliverables<a class="headerlink" href="#group-deliverables" title="Permalink to this heading">#</a></h2>
@@ -428,9 +441,8 @@ document.write(`
 <li><p><strong>Share Jupyter Notebook Scripts</strong>: Your group’s Jupyter Notebook scripts should be well-documented and shared via Colab. This allows other groups to view and interact with your work during your presentation.</p></li>
 </ul>
 <br>
-</div>
 <div class="section" id="participant-responsibilities">
-<h2>Participant Responsibilities<a class="headerlink" href="#participant-responsibilities" title="Permalink to this heading">#</a></h2>
+<h3>Participant Responsibilities<a class="headerlink" href="#participant-responsibilities" title="Permalink to this heading">#</a></h3>
 <p>To ensure a successful and productive workshop, you are expected to:</p>
 <ul class="simple">
 <li><p><strong>Actively Participate in All Sessions</strong>: Attend all workshop sessions, both in-person and virtual. Engage with the material, ask questions, and participate in discussions and activities.</p></li>
@@ -441,10 +453,11 @@ document.write(`
 </ul>
 <br>
 </div>
+</div>
 <div class="section" id="workshop-agenda">
 <h2>Workshop Agenda<a class="headerlink" href="#workshop-agenda" title="Permalink to this heading">#</a></h2>
-<div class="section" id="id1">
-<h3>Day 1: Setup and Introduction<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="section" id="day-1-setup-and-introduction">
+<h3>Day 1: Setup and Introduction<a class="headerlink" href="#day-1-setup-and-introduction" title="Permalink to this heading">#</a></h3>
 <p><strong>Morning:</strong></p>
 <ul class="simple">
 <li><p><strong>Welcome and Workshop Kick-Off</strong></p></li>
@@ -472,8 +485,8 @@ document.write(`
 </li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>Day 2: NEON Site Visit<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="section" id="day-2-neon-site-visit">
+<h3>Day 2: NEON Site Visit<a class="headerlink" href="#day-2-neon-site-visit" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Visit to The Jones Center at Ichauway:</strong></p>
 <ul>
@@ -485,8 +498,8 @@ document.write(`
 </li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h3>Day 3: Group Projects Initiation<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<div class="section" id="day-3-group-projects-initiation">
+<h3>Day 3: Group Projects Initiation<a class="headerlink" href="#day-3-group-projects-initiation" title="Permalink to this heading">#</a></h3>
 <p><strong>Morning:</strong></p>
 <ul class="simple">
 <li><p><strong>Group Formation and Dataset Assignment:</strong></p>
@@ -513,8 +526,8 @@ document.write(`
 </li>
 </ul>
 </div>
-<div class="section" id="id4">
-<h3>Day 4: Group Projects Completion and Presentation<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<div class="section" id="day-4-group-projects-completion-and-presentation">
+<h3>Day 4: Group Projects Completion and Presentation<a class="headerlink" href="#day-4-group-projects-completion-and-presentation" title="Permalink to this heading">#</a></h3>
 <p><strong>Morning:</strong></p>
 <ul class="simple">
 <li><p><strong>Finalize Data Analysis:</strong></p>
@@ -596,24 +609,22 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-overview">Workshop Overview</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning Objectives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#course-structure">Course Structure</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#course-structure">Course Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-prerequisites">Workshop Prerequisites</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-technology">Tools and Technology</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-deliverables">Group Deliverables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#participant-responsibilities">Participant Responsibilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-agenda">Workshop Agenda</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-1-setup-and-introduction">Day 1: Setup and Introduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-2-neon-site-visit">Day 2: NEON Site Visit</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-3-group-projects-initiation">Day 3: Group Projects Initiation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#day-4-group-projects-completion-and-presentation">Day 4: Group Projects Completion and Presentation</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tools-and-technology">Tools and Technology</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group-deliverables">Group Deliverables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#participant-responsibilities">Participant Responsibilities</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workshop-agenda">Workshop Agenda</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Day 1: Setup and Introduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Day 2: NEON Site Visit</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Day 3: Group Projects Initiation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Day 4: Group Projects Completion and Presentation</a></li>
 </ul>
 </li>
 </ul>
