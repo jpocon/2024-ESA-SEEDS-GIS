@@ -1,3 +1,10 @@
+```{figure} img/overhead-neon.jpeg
+---
+scale: 100%
+align: center
+---
+```
+
 # Welcome to the 2024 ESA SEEDS GIS Workshop!
 This workshop will provide every resource and collection of scripts needed for the 2024 [Ecological Society of America's SEEDS](https://www.esa.org/seeds/) GIS Workshop held at Florida A&M University from May 20-25, 2024. This workshop is developed with support from the NSF-funded [National Ecological Observation Network (NEON)](https://www.neonscience.org/) and [Landscape Exchange Network for Socio-environmental Systems Research (LENS)](https://www.lensrcn.org/home), as well as in collaboration with [The Jones Center at Ichauway](https://www.jonesctr.org/).
 
@@ -13,12 +20,14 @@ Welcome to the Four-Day GIS Workshop at Florida A&M University! This workshop is
 
 ### Learning Objectives
 <details>
-<summary> By the end of the four-day workshop... </summary>
-- **NEON Airborne Observation Platform (AOP):** I know what NEON AOP data are, and how to access and visualize them using the Google Earth Engine (GEE) Python API (geemap) via browser-based Interactive Development Environment (IDE) Google Colaboratory (Colab).
-- **Spatial Data Handling: Vector & Raster:** I can explain the differences between vector and raster data, describe when they are used, describe their metadata, and collect them in the field.
-- **Remote Sensing Basics:** I can describe common examples of active and passive remote sensing, and describe when they are used.
-- **Spectral Indices:** I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.
-- **GIS Skillset:** I can use geemap in Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.
+<summary><b>By the end of the four-day workshop...</b></summary>
+<ul>
+<li><b>NEON Airborne Observation Platform (AOP):</b> I know what NEON AOP data are, and how to access and visualize them using the Google Earth Engine (GEE) Python API (geemap) via browser-based Interactive Development Environment (IDE) Google Colaboratory (Colab).</li>
+<li><b>Spatial Data Handling: Vector & Raster:</b> I can explain the differences between vector and raster data, describe when they are used, describe their metadata, and collect them in the field.</li>
+<li><b>Remote Sensing Basics:</b> I can describe common examples of active and passive remote sensing, and describe when they are used.</li>
+<li><b>Spectral Indices:</b> I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.</li>
+<li><b>GIS Skillset:</b> I can use geemap in Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.</li>
+</ul>
 </details>
 
 <br>
@@ -26,22 +35,22 @@ Welcome to the Four-Day GIS Workshop at Florida A&M University! This workshop is
 ### Course Structure
 
 <details>
-<summary>**Day 1: Setup and Introduction**</summary>
+<summary><b>Day 1: Setup and Introduction</b></summary>
 Participants will be introduced to the essential tools and platforms used throughout the workshop. The day will start with setting up necessary accounts and an introduction to Google Colaboratory. A representative from the NEON AOP will provide a technical overview via Zoom, and participants will begin working with pre-made Colab scripts to handle and conceptualize vector and raster data, which will become handy during Days 3 and 4 of the workshop when participants transition to group work.
 </details>
 
-<summary>**Day 2: NEON Site Visit**</summary>
 <details>
+<summary><b>Day 2: NEON Site Visit</b></summary>
 Participants will visit The Jones Center at Ichauway in southern Georgia. This visit will provide hands-on experience with *in situ* data collection methods and a deeper understanding of how NEON data is gathered in the field. 
 </details>
 
-<summary>**Day 3: Group Projects Initiation**</summary>
 <details>
+<summary><b>Day 3: Group Projects</b></summary>
 Participants will be divided into groups and given datasets related to their interests. They will adapt pre-made Colab scripts to these new datasets, thinking through processing steps and data handling needs. Groups will start their analysis and documentation of their workflow in Google Colab.
 </details>
 
-<summary>**Day 4: Group Projects Completion and Presentation**</summary>
 <details>
+<summary><b>Day 4: Group Projects Completion & Presentation</b></summary>
 Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!
 </details>
 
