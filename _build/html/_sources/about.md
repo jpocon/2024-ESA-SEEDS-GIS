@@ -25,17 +25,23 @@ By the end of the four-day workshop...
 
 ## Course Structure
 
-```{toggle}
 ### Day 1: Setup and Introduction
+```{toggle}
 Participants will be introduced to the essential tools and platforms used throughout the workshop. The day will start with setting up necessary accounts and an introduction to Google Colaboratory. A representative from the NEON AOP will provide a technical overview via Zoom, and participants will begin working with pre-made Colab scripts to handle and conceptualize vector and raster data, which will become handy during Days 3 and 4 of the workshop when participants transition to group work.
+```
 
 ### Day 2: NEON Site Visit
+```{toggle}
 Participants will visit The Jones Center at Ichauway in southern Georgia. This visit will provide hands-on experience with *in situ* data collection methods and a deeper understanding of how NEON data is gathered in the field. 
+```
 
 ### Day 3: Group Projects Initiation
+```{toggle}
 Participants will be divided into groups and given datasets related to their interests. They will adapt pre-made Colab scripts to these new datasets, thinking through processing steps and data handling needs. Groups will start their analysis and documentation of their workflow in Google Colab.
+```
 
 ### Day 4: Group Projects Completion and Presentation
+```{toggle}
 Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!
 ```
 
