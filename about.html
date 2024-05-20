@@ -360,7 +360,7 @@ document.write(`
 <details>
 <summary><b>By the end of the four-day workshop...</b></summary>
 <br>
-<ul>
+<ol>
 <li><b>NEON Airborne Observation Platform (AOP):</b> I know what NEON AOP data are, and how to access and visualize them using the Google Earth Engine (GEE) Python API (geemap) via browser-based Interactive Development Environment (IDE) Google Colaboratory (Colab).</li>
 <br>
 <li><b>Spatial Data Handling: Vector & Raster:</b> I can explain the differences between vector and raster data, describe when they are used, describe their metadata, and collect them in the field.</li>
@@ -370,7 +370,7 @@ document.write(`
 <li><b>Spectral Indices:</b> I can derive soil or vegetation indices from NEON AOP and satellite data, and describe why they are ecologically relevant.</li>
 <br>
 <li><b>GIS Skillset:</b> I can use geemap in Colab for basic operations on NEON AOP data, including visualizing data, clipping rasters to regions of interest, calculating summary statistics, zonal statistics, engage with different file formats and file handling.</li>
-</ul>
+</ol>
 </details>
 </div>
 <div class="section" id="course-structure">
@@ -379,14 +379,17 @@ document.write(`
 <summary><b>Day 1: Setup and Introduction</b></summary>
 Participants will be introduced to the essential tools and platforms used throughout the workshop. The day will start with setting up necessary accounts and an introduction to Google Colaboratory. A representative from the NEON AOP will provide a technical overview via Zoom, and participants will begin working with pre-made Colab scripts to handle and conceptualize vector and raster data, which will become handy during Days 3 and 4 of the workshop when participants transition to group work.
 </details>
+<br>
 <details>
 <summary><b>Day 2: NEON Site Visit</b></summary>
 Participants will visit The Jones Center at Ichauway in southern Georgia. This visit will provide hands-on experience with *in situ* data collection methods and a deeper understanding of how NEON data is gathered in the field. 
 </details>
+<br>
 <details>
 <summary><b>Day 3: Group Projects</b></summary>
 Participants will be divided into groups and given datasets related to their interests. They will adapt pre-made Colab scripts to these new datasets, thinking through processing steps and data handling needs. Groups will start their analysis and documentation of their workflow in Google Colab.
 </details>
+<br>
 <details>
 <summary><b>Day 4: Group Projects Completion & Presentation</b></summary>
 Groups will finalize their data processing and analysis. They will prepare a 10-minute presentation to share their process, findings, and Jupyter Notebooks with the other groups. This collaborative session will facilitate knowledge sharing and peer feedback!
@@ -397,47 +400,50 @@ Groups will finalize their data processing and analysis. They will prepare a 10-
 <div class="section" id="workshop-prerequisites">
 <h2>Workshop Prerequisites<a class="headerlink" href="#workshop-prerequisites" title="Permalink to this heading">#</a></h2>
 <p>To ensure you get the most out of this workshop, please review the following prerequisites:</p>
-<ul class="simple">
-<li><p><strong>Basic Understanding of GIS and Remote Sensing Concepts</strong></p></li>
-</ul>
 <details>
+<summary><b>Basic Understanding of GIS and Remote Sensing Concepts</b>
 You should have a foundational knowledge of Geographic Information Systems (GIS) and remote sensing. This includes understanding what GIS is, the types of spatial data (vector and raster), and basic concepts of remote sensing.
-<ul class="simple">
-<li><p><strong>Familiarity with Vector and Raster Data</strong>: You should know the differences between vector and raster data, including common formats (e.g., shapefiles for vector data and GeoTIFFs for raster data). Understanding how to read metadata associated with these files will also be beneficial.</p></li>
-<li><p><strong>No Previous Programming Experience Required</strong>: While previous experience with programming is not necessary, being comfortable with basic computer operations and having a willingness to learn will be helpful. All scripts provided during the workshop will be pre-made, and you will receive guidance on how to use them.</p></li>
-</ul>
 </details>
+<br>
+<details>
+<summary><b>Familiarity with Vector and Raster Data</b>
+You should know the differences between vector and raster data, including common formats (e.g., shapefiles for vector data and GeoTIFFs for raster data). Understanding how to read metadata associated with these files will also be beneficial.
+</details>
+<br>
+<details>
+<summary><b>No Previous Programming Experience Required</b>
+While previous experience with programming is not necessary, being comfortable with basic computer operations and having a willingness to learn will be helpful. All scripts provided during the workshop will be pre-made, and you will receive guidance on how to use them.
+</details>
+<br>
 <br>
 <div class="section" id="tools-and-technology">
 <h3>Tools and Technology<a class="headerlink" href="#tools-and-technology" title="Permalink to this heading">#</a></h3>
 <p>During the workshop, we will use the following tools and technologies. Familiarize yourself with them beforehand to ensure a smooth learning experience:</p>
-<ul class="simple">
-<li><p><strong>Google Earth Engine (GEE)</strong></p></li>
-</ul>
 <details>
-A cloud-based platform for planetary-scale environmental data analysis. You will use the GEE Python API (geemap) to access and visualize NEON AOP data. **Ensure you have a Google account and have requested access to GEE.**
+<summary><b>Google Earth Engine (GEE)</b>
+A cloud-based platform for planetary-scale environmental data analysis. You will use the GEE Python API (geemap) to access and visualize NEON AOP data. 
+<br>
+<b>Ensure you have a Google account and have requested access to GEE.</b>
 </details>
-<ul class="simple">
-<li><p><strong>Google Colaboratory (Colab)</strong></p></li>
-</ul>
+<br>
 <details>
+<summary><b>Google Colaboratory (Colab)</b>
 An interactive development environment that runs in your web browser. Colab allows you to write and execute Python code in Jupyter notebooks without any setup. It is essential for handling, processing, and visualizing spatial data during the workshop. Ensure your web browser is up to date -- Firefox and Chrome work best.
 </details>
-<ul class="simple">
-<li><p><strong>Jupyter Book</strong></p></li>
-</ul>
+<br>
 <details>
+<summary><b>Jupyter Book</b>
 All workshop materials, including lecture notes, scripts, and datasets, will be organized in a Jupyter Book hosted on GitHub Pages. You will use this resource throughout the workshop to follow along with instructions and access necessary materials.
 </details>
-<ul class="simple">
-<li><p><strong>NEON Airborne Observation Platform (AOP) Data</strong></p></li>
-</ul>
+<br>
 <details>
+<summary><b>NEON Airborne Observation Platform (AOP) Data</b>
 Remote sensing data collected by NEON's airborne observation platform. Understanding how to access and work with this data will be a key part of the workshop.
 </details>
 <br>
 </div>
 </div>
+<hr class="docutils" />
 <div class="section" id="group-deliverables">
 <h2>Group Deliverables<a class="headerlink" href="#group-deliverables" title="Permalink to this heading">#</a></h2>
 <p>Over the course of the workshop, you will work in groups to complete the following deliverables:</p>
