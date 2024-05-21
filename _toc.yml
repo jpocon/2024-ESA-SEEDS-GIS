@@ -6,7 +6,7 @@ root: about.md
 
 parts:
   - caption: Getting Set Up
-    chapters:
+    chapters: 
     - file: google_drive/colab_notebooks/google_tools.ipynb
       sections: 
       - file: google_drive/colab_notebooks/mount_drive.ipynb
