@@ -26,14 +26,49 @@ geemap.ee_initialize(project='511923968009')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
 [0;32m<ipython-input-1-3beff9a267fa>[0m in [0;36m<module>[0;34m[0m
-[1;32m      1[0m [0;32mimport[0m [0mee[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0;32mimport[0m [0mgeemap[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0;32mimport[0m [0mgeemap[0m[0;34m.[0m[0mcolormaps[0m [0;32mas[0m [0mcm[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      4[0m [0mee[0m[0;34m.[0m[0mAuthenticate[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0mee[0m[0;34m.[0m[0mInitialize[0m[0;34m([0m[0mproject[0m[0;34m=[0m[0;34m'511923968009'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;32mimport[0m [0mgeemap[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      3[0m [0;32mimport[0m [0mgeemap[0m[0;34m.[0m[0mcolormaps[0m [0;32mas[0m [0mcm[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 4[0;31m [0mee[0m[0;34m.[0m[0mAuthenticate[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      5[0m [0mee[0m[0;34m.[0m[0mInitialize[0m[0;34m([0m[0mproject[0m[0;34m=[0m[0;34m'511923968009'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      6[0m [0mgeemap[0m[0;34m.[0m[0mee_initialize[0m[0;34m([0m[0mproject[0m[0;34m=[0m[0;34m'511923968009'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mModuleNotFoundError[0m: No module named 'geemap'
-ModuleNotFoundError: No module named 'geemap'
+[0;32m~/anaconda3/lib/python3.7/site-packages/ee/__init__.py[0m in [0;36mAuthenticate[0;34m(authorization_code, quiet, code_verifier, auth_mode, scopes, force)[0m
+[1;32m    123[0m   """
+[1;32m    124[0m   return oauth.authenticate(authorization_code, quiet, code_verifier, auth_mode,
+[0;32m--> 125[0;31m                             scopes, force)
+[0m[1;32m    126[0m [0;34m[0m[0m
+[1;32m    127[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.7/site-packages/ee/oauth.py[0m in [0;36mauthenticate[0;34m(cli_authorization_code, quiet, cli_code_verifier, auth_mode, scopes, force)[0m
+[1;32m    510[0m     [0m_open_new_browser[0m[0;34m([0m[0mflow[0m[0;34m.[0m[0mauth_url[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    511[0m [0;34m[0m[0m
+[0;32m--> 512[0;31m   [0mflow[0m[0;34m.[0m[0msave_code[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    513[0m [0;34m[0m[0m
+[1;32m    514[0m [0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.7/site-packages/ee/oauth.py[0m in [0;36msave_code[0;34m(self, code)[0m
+[1;32m    560[0m       [0mredirect_uri[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mserver[0m[0;34m.[0m[0murl[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    561[0m       [0mcode[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mserver[0m[0;34m.[0m[0mfetch_code[0m[0;34m([0m[0;34m)[0m  [0;31m# Waits for oauth callback[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 562[0;31m     [0m_obtain_and_write_token[0m[0;34m([0m[0mcode[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mcode_verifier[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mscopes[0m[0;34m,[0m [0mredirect_uri[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    563[0m [0;34m[0m[0m
+[1;32m    564[0m   [0;32mdef[0m [0mdisplay_instructions[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mquiet[0m[0;34m:[0m [0mOptional[0m[0;34m[[0m[0mbool[0m[0;34m][0m [0;34m=[0m [0;32mNone[0m[0;34m)[0m [0;34m->[0m [0mbool[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.7/site-packages/ee/oauth.py[0m in [0;36m_obtain_and_write_token[0;34m(auth_code, code_verifier, scopes, redirect_uri)[0m
+[1;32m    227[0m     [0mclient_info[0m[0;34m[[0m[0;34m'redirect_uri'[0m[0;34m][0m [0;34m=[0m [0mredirect_uri[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    228[0m   [0;32mif[0m [0;32mnot[0m [0mauth_code[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 229[0;31m     [0mauth_code[0m [0;34m=[0m [0minput[0m[0;34m([0m[0;34m'Enter verification code: '[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    230[0m   [0;32massert[0m [0misinstance[0m[0;34m([0m[0mauth_code[0m[0;34m,[0m [0mstr[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    231[0m   [0mscopes[0m [0;34m=[0m [0mscopes[0m [0;32mor[0m [0mSCOPES[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/anaconda3/lib/python3.7/site-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m    852[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    853[0m             raise StdinNotImplementedError(
+[0;32m--> 854[0;31m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    855[0m             )
+[1;32m    856[0m         return self._input_request(str(prompt),
+
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
+StdinNotImplementedError: raw_input was called, but this frontend does not support input requests.
 

@@ -8,10 +8,12 @@ parts:
   - caption: Getting Set Up
     chapters: 
     - file: google_drive/colab_notebooks/google_tools.ipynb
-      title:
+      title: 
     - file: google_drive/colab_notebooks/mount_drive.ipynb
-      title:
+      title: 
     - file: google_drive/colab_notebooks/url_download.ipynb
-      title:
+      title: 
     - file: google_drive/colab_notebooks/geemap_python_api.ipynb
-      title:
+      title: 
+    - file: google_drive/colab_notebooks/neon_aop.ipynb
+      title: 
