@@ -11,3 +11,7 @@ parts:
       title:
     - file: google_drive/colab_notebooks/mount_drive.ipynb
       title:
+    - file: google_drive/colab_notebooks/url_download.ipynb
+      title:
+    - file: google_drive/colab_notebooks/geemap_python_api.ipynb
+      title:
