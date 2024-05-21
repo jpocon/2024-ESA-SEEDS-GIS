@@ -8,4 +8,6 @@ parts:
   - caption: Getting Set Up
     chapters: 
     - file: google_drive/colab_notebooks/google_tools.ipynb
+      title:
     - file: google_drive/colab_notebooks/mount_drive.ipynb
+      title:
