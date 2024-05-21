@@ -85,19 +85,14 @@ While previous experience with programming is not necessary, being comfortable w
 
 ### Tools and Technology
 
-During the workshop, we will use the following tools and technologies. Familiarize yourself with them beforehand to ensure a smooth learning experience:
-
 <details>
-<summary><b>Google Earth Engine (GEE)</b></summary>
-A cloud-based platform for planetary-scale environmental data analysis. You will use the GEE Python API (geemap) to access and visualize NEON AOP data. 
+<summary>During the workshop, we will use the following tools and technologies. Familiarize yourself with them beforehand to ensure a smooth learning experience:</summary>
 <br>
-<b>Ensure you have a Google account and have requested access to GEE.</b>
-</details>
+<ol>
+<li<b>Google Earth Engine (GEE):</b> A cloud-based platform for planetary-scale environmental data analysis. You will use the GEE Python API (geemap) to access and visualize NEON AOP data. 
+<br><b>Ensure you have a Google account and have requested access to GEE.</b></br></li>
 <br>
-
-<details>
-<summary><b>Google Colaboratory (Colab)</b></summary>
-An interactive development environment that runs in your web browser. Colab allows you to write and execute Python code in Jupyter notebooks without any setup. It is essential for handling, processing, and visualizing spatial data during the workshop. Ensure your web browser is up to date -- Firefox and Chrome work best.
+<li><b>Google Colaboratory (Colab):</b> An interactive development environment that runs in your web browser. Colab allows you to write and execute Python code in Jupyter notebooks without any setup. It is essential for handling, processing, and visualizing spatial data during the workshop. Ensure your web browser is up to date -- Firefox and Chrome work best.<
 </details>
 <br>
 
