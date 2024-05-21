@@ -1,0 +1,765 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Public Data from URL to Colab &#8212; 2024 ESA SEEDS GIS Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'google_drive/colab_notebooks/url_download';</script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Mounting Google Drive" href="mount_drive.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    Welcome to the 2024 ESA SEEDS GIS Workshop!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Set Up</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="google_tools.html">Getting Started with Google Tools for GIS and Ecological Applications</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="mount_drive.html"><strong>Mounting Google Drive</strong></a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Download Public Data from URL to Colab</strong></a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jpocon/2024-ESA-SEEDS-GIS/blob/master/google_drive/colab_notebooks/url_download.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jpocon/2024-ESA-SEEDS-GIS" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/google_drive/colab_notebooks/url_download.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Download Public Data from URL to Colab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-your-environment">Set Up Your Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-public-spatial-data">Download Public Spatial Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-can-play-with-other-download-examples-by-using-the-usgs-national-map-downloader"><strong>You can play with other download examples by using the USGS National Map Downloader</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-your-downloads">Inspect Your Downloads</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="download-public-data-from-url-to-colab">
+<h1><strong>Download Public Data from URL to Colab</strong><a class="headerlink" href="#download-public-data-from-url-to-colab" title="Permalink to this heading">#</a></h1>
+<p>Downloading or uploading files from a cloud server often provides a higher transfer speed compared to a regular server. Google Drive, for instance, is a popular choice for storing files due to its impressive download speed. However, a common challenge is uploading files directly to Google Drive from the Internet.</p>
+<p>In this guide, we’ll explore a solution that enables direct uploads to Google Drive from the Internet. The only prerequisites are a Google account and a few lines of code, which we will discuss in the following sections.</p>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong><a class="reference external" href="https://www.geeksforgeeks.org/download-anything-to-google-drive-using-google-colab/">Original Code Source</a></strong></p></li>
+</ul>
+<p>Feel free to explore further and utilize the powerful features of downloading data to Google Colab in your projects. Happy coding!</p>
+</div>
+<div class="section" id="set-up-your-environment">
+<h2>Set Up Your Environment<a class="headerlink" href="#set-up-your-environment" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In a Python 3.x Kernel</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+
+<span class="c1"># This will prompt for authorization.</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">8</span><span class="n">a622f5b46e3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># In a Python 3.x Kernel</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># This will prompt for authorization.</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;google.colab&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import requests to download from URL</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1"># Import geopandas to process and visualize vector data</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="c1"># rasterio is not preinstalled in Colab</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>rasterio
+
+<span class="c1"># Import rasterio, numpy, &amp; matplotlib to process and visualize raster data</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting rasterio
+  Downloading rasterio-1.3.10-cp310-cp310-manylinux2014_x86_64.whl (21.5 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">21.5/21.5 MB</span> <span class=" -Color -Color-Red">12.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hCollecting affine (from rasterio)
+  Downloading affine-2.4.0-py3-none-any.whl (15 kB)
+Requirement already satisfied: attrs in /usr/local/lib/python3.10/dist-packages (from rasterio) (23.2.0)
+Requirement already satisfied: certifi in /usr/local/lib/python3.10/dist-packages (from rasterio) (2024.2.2)
+Requirement already satisfied: click&gt;=4.0 in /usr/local/lib/python3.10/dist-packages (from rasterio) (8.1.7)
+Requirement already satisfied: cligj&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from rasterio) (0.7.2)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/dist-packages (from rasterio) (1.25.2)
+Collecting snuggs&gt;=1.4.1 (from rasterio)
+  Downloading snuggs-1.4.7-py3-none-any.whl (5.4 kB)
+Requirement already satisfied: click-plugins in /usr/local/lib/python3.10/dist-packages (from rasterio) (1.1.1)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.10/dist-packages (from rasterio) (67.7.2)
+Requirement already satisfied: pyparsing&gt;=2.1.6 in /usr/local/lib/python3.10/dist-packages (from snuggs&gt;=1.4.1-&gt;rasterio) (3.1.2)
+Installing collected packages: snuggs, affine, rasterio
+Successfully installed affine-2.4.0 rasterio-1.3.10 snuggs-1.4.7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="download-public-spatial-data">
+<h2>Download Public Spatial Data<a class="headerlink" href="#download-public-spatial-data" title="Permalink to this heading">#</a></h2>
+<div class="section" id="you-can-play-with-other-download-examples-by-using-the-usgs-national-map-downloader">
+<h3><strong>You can play with other download examples by using the <a class="reference external" href="https://apps.nationalmap.gov/downloader/">USGS National Map Downloader</a></strong><a class="headerlink" href="#you-can-play-with-other-download-examples-by-using-the-usgs-national-map-downloader" title="Permalink to this heading">#</a></h3>
+<p>Additional collections of websites offering geospatial data:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/iamtekson/awesome-geospatial-data-download-sites">Awesome Geospatial Data Downloads</a></p></li>
+<li><p><a class="reference external" href="https://freegisdata.rtwilson.com/">Free GIS Data</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Downloading Vector Data</span>
+
+<span class="n">file_url</span> <span class="o">=</span> <span class="s2">&quot;https://data.gov.au/data/dataset/f91c2ffd-a0a0-4042-a8ac-71757a6ef727/resource/d3f3b6d3-927c-49fe-a905-9166a501c852/download/201920-fy-bushfire-boundaries.zip&quot;</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">stream</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/content/FY_Bushfire_Boundary_AUS.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+			<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+
+<span class="o">!</span>unzip<span class="w"> </span><span class="s2">&quot;/content/FY_Bushfire_Boundary_AUS.zip&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Archive:  /content/FY_Bushfire_Boundary_AUS.zip
+ extracting: FY2019_2020_Bushfire_Boundaries.cpg  
+  inflating: FY2019_2020_Bushfire_Boundaries.dbf  
+  inflating: FY2019_2020_Bushfire_Boundaries.prj  
+  inflating: FY2019_2020_Bushfire_Boundaries.qpj  
+  inflating: FY2019_2020_Bushfire_Boundaries.shp  
+  inflating: FY2019_2020_Bushfire_Boundaries.shx  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Downloading Raster Data</span>
+
+<span class="n">file_url</span> <span class="o">=</span> <span class="s2">&quot;https://prd-tnm.s3.amazonaws.com/StagedProducts/NAIP/ma_2016/42071/m_4207142_se_19_h_20160803_20160928.jp2&quot;</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">stream</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/content/NAIP_Worcester.jp2&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+	<span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1024</span><span class="p">):</span>
+		<span class="k">if</span> <span class="n">block</span><span class="p">:</span>
+			<span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">block</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="inspect-your-downloads">
+<h2>Inspect Your Downloads<a class="headerlink" href="#inspect-your-downloads" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspecting and Visualizing Vector Download</span>
+
+<span class="c1"># Read in some sample vector data (polygons) from Los Angeles, CA</span>
+<span class="c1"># You may have a different file path</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;/content/FY2019_2020_Bushfire_Boundaries.shp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print a preview of the data, attributes, and data types</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Print out the coordinate reference system</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="c1"># Plot the data as simply as possible to visualize it</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-4-86e249090943&gt;</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># Read in some sample vector data (polygons) from Los Angeles, CA</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># You may have a different file path</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;/content/FY2019_2020_Bushfire_Boundaries.shp&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># Print a preview of the data, attributes, and data types</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/geopandas/io/file.py</span> in <span class="ni">_read_file</span><span class="nt">(filename, bbox, mask, rows, engine, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>             <span class="n">path_or_bytes</span> <span class="o">=</span> <span class="n">filename</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span> 
+<span class="ne">--&gt; </span><span class="mi">281</span>         <span class="k">return</span> <span class="n">_read_file_fiona</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>             <span class="n">path_or_bytes</span><span class="p">,</span> <span class="n">from_bytes</span><span class="p">,</span> <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">mask</span><span class="p">,</span> <span class="n">rows</span><span class="o">=</span><span class="n">rows</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/geopandas/io/file.py</span> in <span class="ni">_read_file_fiona</span><span class="nt">(path_or_bytes, from_bytes, bbox, mask, rows, where, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">377</span>                 <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">378</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">379</span>                 <span class="n">df</span> <span class="o">=</span> <span class="n">GeoDataFrame</span><span class="o">.</span><span class="n">from_features</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">380</span>                     <span class="n">f_filt</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">crs</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">381</span>                 <span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/geopandas/geodataframe.py</span> in <span class="ni">from_features</span><span class="nt">(cls, features, crs, columns)</span>
+<span class="g g-Whitespace">    </span><span class="mi">638</span>                 <span class="n">feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">__geo_interface__</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span>             <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
+<span class="ne">--&gt; </span><span class="mi">640</span>                 <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="n">shape</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">])</span> <span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="s2">&quot;geometry&quot;</span><span class="p">]</span> <span class="k">else</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">641</span>             <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span>             <span class="c1"># load properties</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/geo.py</span> in <span class="ni">shape</span><span class="nt">(context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>         <span class="k">return</span> <span class="n">MultiLineString</span><span class="p">(</span><span class="n">ob</span><span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span>     <span class="k">elif</span> <span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;multipolygon&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">107</span>         <span class="k">return</span> <span class="n">MultiPolygon</span><span class="p">([[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ob</span><span class="p">[</span><span class="s2">&quot;coordinates&quot;</span><span class="p">]])</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>     <span class="k">elif</span> <span class="n">geom_type</span> <span class="o">==</span> <span class="s2">&quot;geometrycollection&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>         <span class="n">geoms</span> <span class="o">=</span> <span class="p">[</span><span class="n">shape</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">ob</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;geometries&quot;</span><span class="p">,</span> <span class="p">[])]</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/multipolygon.py</span> in <span class="ni">__new__</span><span class="nt">(self, polygons)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>                     <span class="n">holes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">---&gt; </span><span class="mi">84</span>                 <span class="n">p</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">shell</span><span class="p">,</span> <span class="n">holes</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>             <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>                 <span class="n">p</span> <span class="o">=</span> <span class="n">polygon</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span><span class="n">ob</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/polygon.py</span> in <span class="ni">__new__</span><span class="nt">(self, shell, holes)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>                 <span class="n">holes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">237</span>                 <span class="n">holes</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRing</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">holes</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span> 
+<span class="g g-Whitespace">    </span><span class="mi">239</span>         <span class="n">geom</span> <span class="o">=</span> <span class="n">shapely</span><span class="o">.</span><span class="n">polygons</span><span class="p">(</span><span class="n">shell</span><span class="p">,</span> <span class="n">holes</span><span class="o">=</span><span class="n">holes</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/polygon.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span>                 <span class="n">holes</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">237</span>                 <span class="n">holes</span> <span class="o">=</span> <span class="p">[</span><span class="n">LinearRing</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span> <span class="k">for</span> <span class="n">ring</span> <span class="ow">in</span> <span class="n">holes</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">238</span> 
+<span class="g g-Whitespace">    </span><span class="mi">239</span>         <span class="n">geom</span> <span class="o">=</span> <span class="n">shapely</span><span class="o">.</span><span class="n">polygons</span><span class="p">(</span><span class="n">shell</span><span class="p">,</span> <span class="n">holes</span><span class="o">=</span><span class="n">holes</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/polygon.py</span> in <span class="ni">__new__</span><span class="nt">(self, coordinates)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>                         <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">o</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> 
+<span class="ne">---&gt; </span><span class="mi">93</span>                 <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_coords</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>                     <span class="c1"># conversion of coords to 2D array failed, this might be due</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/polygon.py</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span>                         <span class="k">return</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">o</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> 
+<span class="ne">---&gt; </span><span class="mi">93</span>                 <span class="n">coordinates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">_coords</span><span class="p">(</span><span class="n">o</span><span class="p">)</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">coordinates</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">94</span>                 <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">issubdtype</span><span class="p">(</span><span class="n">coordinates</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">95</span>                     <span class="c1"># conversion of coords to 2D array failed, this might be due</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/shapely/geometry/polygon.py</span> in <span class="ni">_coords</span><span class="nt">(o)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>                 <span class="c1"># check coordinates on points</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>                 <span class="k">def</span> <span class="nf">_coords</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">88</span>                     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">Point</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>                         <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>                     <span class="k">else</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualizing Raster Download</span>
+
+<span class="c1"># Visualize RGB (or NRG) stack</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/NAIP_Worcester.jp2&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="c1"># Read the RGB bands</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+    <span class="c1"># Stack bands together as a single numpy array</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Show the RGB image</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rgb</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d33383a37fa926995ea01de3afb1773a765248876100b42360ce007270dd4ff7.png" src="../../_images/d33383a37fa926995ea01de3afb1773a765248876100b42360ce007270dd4ff7.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./google_drive/colab_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="mount_drive.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Mounting Google Drive</strong></p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-your-environment">Set Up Your Environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-public-spatial-data">Download Public Spatial Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#you-can-play-with-other-download-examples-by-using-the-usgs-national-map-downloader"><strong>You can play with other download examples by using the USGS National Map Downloader</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-your-downloads">Inspect Your Downloads</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carissa DeRanek & Jonathan Pando Ocón, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
