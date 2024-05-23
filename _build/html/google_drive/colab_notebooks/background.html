@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GIS and remote sensing introduction &#8212; 2024 ESA SEEDS GIS Workshop</title>
+    <title>Getting Started with GIS &amp; Remote Sensing &#8212; 2024 ESA SEEDS GIS Workshop</title>
   
   
   
@@ -64,6 +64,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to NEON AOP" href="update_neon_aop.html" />
+    <link rel="prev" title="geemap Setup in Colab" href="geemap_python_api.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -164,13 +166,18 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="url_download.html"><strong>Download Public Data from URL to Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_url_download.html">Download data directly from URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="geemap_python_api.html"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS &amp; Remote Sensing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started with GIS &amp; Remote Sensing</a></li>
 
+
+<li class="toctree-l1"><a class="reference internal" href="update_neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
 
 
 
@@ -358,7 +365,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GIS and remote sensing introduction</h1>
+    <h1>Getting Started with GIS & Remote Sensing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -368,9 +375,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">GIS and remote sensing introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Getting Started with GIS &amp; Remote Sensing</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airborne-and-spaceborne-imagery-introduction">Airborne and spaceborne imagery introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-reflectance">Radiance and reflectance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-reflectance">Radiance and reflectance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-remote-sensing-data">Properties of Remote Sensing Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-raster">Anatomy of a raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emittance">Emittance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections-and-crs">Projections and CRS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data">Vector data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
@@ -383,6 +395,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-raster-data">Examples of raster data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Common file formats</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-python-packages-for-raster-data">Common Python packages for raster data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speaking-of-structure">Speaking of structure…</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-detection-and-ranging-lidar"><strong>Light Detection and Ranging (LiDAR)</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
@@ -405,8 +421,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="gis-and-remote-sensing-introduction">
-<h1>GIS and remote sensing introduction<a class="headerlink" href="#gis-and-remote-sensing-introduction" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="getting-started-with-gis-remote-sensing">
+<h1>Getting Started with GIS &amp; Remote Sensing<a class="headerlink" href="#getting-started-with-gis-remote-sensing" title="Permalink to this heading">#</a></h1>
 <div class="section" id="airborne-and-spaceborne-imagery-introduction">
 <h2>Airborne and spaceborne imagery introduction<a class="headerlink" href="#airborne-and-spaceborne-imagery-introduction" title="Permalink to this heading">#</a></h2>
 <p><strong>Click on the image below</strong> to watch a video by NEON where you’ll learn:</p>
@@ -441,6 +457,53 @@ Image credit: [Thompson et al. 2019](https://www.researchgate.net/publication/32
 <img src='https://drive.google.com/uc?export=view&id=1gqHy1ySyAKfUeeyykP5rE9PvRhOBmH0f' width=400> Image credit: <a class="reference external" href="https://science.nasa.gov/ems/01_intro">NASA</a></p>
 <p>And, when we look at the spectral signatures of different vegetation types, we notices some interesting features, including chlorophyll and water absorption bands.<br>
 <img src='https://drive.google.com/uc?export=view&id=1vCj_UtLDbiveY_Oyxw_sO7NUACug3DOX' width=400> Image credit: <a class="reference external" href="https://science.nasa.gov/ems/01_intro">NASA</a></p>
+<div class="section" id="properties-of-remote-sensing-data">
+<h3>Properties of Remote Sensing Data<a class="headerlink" href="#properties-of-remote-sensing-data" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><em>Spatial Resolution</em>
+Spatial resolution is a measure of the area or size of one satellite images pixel covering the Earth’s surface. The higher the resolution and the finer the grid is, the larger is the degree of recognizable details on the earth’s surface.</p></li>
+</ol>
+<p><img src='https://www.mdpi.com/remotesensing/remotesensing-12-00117/article_deploy/html/images/remotesensing-12-00117-g004.png' width=400> Image credit: Tian et al. 2020</p>
+<ol class="arabic simple" start="2">
+<li><p><em>Spectral Resolution</em></p></li>
+</ol>
+<p><img src='' width=400> Image credit:</p>
+<ol class="arabic simple" start="3">
+<li><p><em>Temporal Resolution</em>
+Temporal resolution describes how often data are obtained for the same area or object. It depends on the revisit period, which refers to the length of time it takes for a satellite to complete one entire orbit cycle.</p></li>
+</ol>
+<p><img alt="Image credit: USGS" src="https://drive.google.com/uc?export=view&amp;id=19iXwpz2GJt9yXRb7Ji5_N9AZCRh9H03B" /></p>
+<ol class="arabic simple" start="4">
+<li><p><em>Radiometric Resolution</em>
+A measure of an imaging system’s ability to detect small differences in energy. It’s usually expressed as a bit number, typically between 8 and 16 bits.</p></li>
+</ol>
+<p><img alt="Image credit: Raja Narendra Lal Khan Women's College" src="https://drive.google.com/uc?export=view&amp;id=15JnaoDGq1tiJjUiZCYnrJdmr3124jqRa" /></p>
+<ul class="simple">
+<li><p><em>What is a byte?</em></p>
+<ul>
+<li><p>A group of binary digits or bits (usually eight) operated on as a unit.</p></li>
+<li><p>A byte considered as a unit of memory size.</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1LRhqv8DUOGIHPlpptWn8kQMTE3S6F-_B" /></p>
+<ul class="simple">
+<li><p><em>So, how do we encode other human-readable symbols?</em></p></li>
+</ul>
+<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1H2QTtogLXD51fESs6XUSCmcRnnq-ZitF" /></p>
+<hr class="docutils" />
+<p>####<strong>The more specific (reflectance vs. radiance) your pixel values, the higher number of pixels, and an increase in the number of bands will increase your file size very rapidly!</strong></p>
+<p>These are important considerations when processing your data, or downloading your data.</p>
+</div>
+</div>
+<div class="section" id="anatomy-of-a-raster">
+<h2>Anatomy of a raster<a class="headerlink" href="#anatomy-of-a-raster" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1MwGGYV5HYXfMJdTCKAPaFopdhPsFZ1bs" /></p>
+</div>
+<div class="section" id="emittance">
+<h2>Emittance<a class="headerlink" href="#emittance" title="Permalink to this heading">#</a></h2>
+<p>Thermal remote sensing is a technique that measures the radiation <strong>emitted</strong> from a ground object using a thermal band in satellite sensors.</p>
+<p><img alt="" src="https://drive.google.com/uc?export=view&amp;id=1AExsb7fzG96f6Z3PyKVUzf4aMwa4XsDG" /></p>
 </div>
 <div class="section" id="projections-and-crs">
 <h2>Projections and CRS<a class="headerlink" href="#projections-and-crs" title="Permalink to this heading">#</a></h2>
@@ -450,6 +513,8 @@ Image credit: [Thompson et al. 2019](https://www.researchgate.net/publication/32
 <strong>A coordinate reference system (CRS)</strong> then defines how the two-dimensional, projected map in your GIS relates to real places on the earth. The decision of which map projection and CRS to use depends on the regional extent of the area you want to work in, on the analysis you want to do, and often on the availability of data.</p>
 </div></blockquote>
 <p>You can read more on their website <a class="reference external" href="https://docs.qgis.org/3.34/en/docs/gentle_gis_introduction/coordinate_reference_systems.html">here</a>.</p>
+<p>Examples of projections:
+<img alt="" src="https://drive.google.com/uc?export=view&amp;id=1gQjP5b1nYhthq1GqPNM6kGWy0NwOnxIH" /></p>
 </div>
 <div class="section" id="vector-data">
 <h2>Vector data<a class="headerlink" href="#vector-data" title="Permalink to this heading">#</a></h2>
@@ -534,6 +599,26 @@ Image credit: [Thompson et al. 2019](https://www.researchgate.net/publication/32
 </ul>
 </div>
 </div>
+<div class="section" id="speaking-of-structure">
+<h2>Speaking of structure…<a class="headerlink" href="#speaking-of-structure" title="Permalink to this heading">#</a></h2>
+<p><img alt="Image credit: NEON" src="https://drive.google.com/uc?export=view&amp;id=1D3z5MQyZ3Df_5q4ocIaQLL0ajBUWqfR8" /></p>
+<br>
+<div class="section" id="light-detection-and-ranging-lidar">
+<h3><strong>Light Detection and Ranging (LiDAR)</strong><a class="headerlink" href="#light-detection-and-ranging-lidar" title="Permalink to this heading">#</a></h3>
+<p>Scientists often need to characterize vegetation over large regions to answer research questions at the ecosystem or regional scale. To measure vegetation or other surface features at these larger scales, we need remote sensing methods that can take many measurements quickly, using airborne sensors. Lidar, or Light Detection And Ranging (sometimes also referred to as active laser scanning), is one remote sensing method that can be used to map ecosystem parameters, including vegetation height, density, and other characteristics across a region. Lidar directly measures the height and density of vegetation on the ground, making it an ideal tool for scientists studying vegetation over large areas.</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=EYbhNSUnIdU"><strong>How does LiDAR remote sensing work?</strong> - NEON Educational Video</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=m7SXoFv6Sdc"><strong>Introduction to LiDAR</strong> - NEON Educational Video</a></p>
+<br>
+<p><strong>How is LiDAR collected?</strong>
+<img alt="Image credit: NEON" src="https://drive.google.com/uc?export=view&amp;id=1n4Ptk3tSadDxyj5TMx-IwVl5-xAeJci8" /></p>
+<br>
+<p><strong>Classifying LiDAR images</strong>
+<img alt="Image credit: NEON" src="https://drive.google.com/uc?export=view&amp;id=1XV5rHwwwKEliIi0NQCXf0hubm6lg0sfd" /></p>
+<br>
+<p><strong>Other LiDAR products</strong>
+<img alt="Image credit: NEON" src="https://drive.google.com/uc?export=view&amp;id=1fRIONvlXd0QTox_R0Dm-PABJEkK-kdAF" /></p>
+</div>
+</div>
 <div class="section" id="additional-resources">
 <h2>Additional resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.earthdatascience.org/">CU Boulder Earth Lab Tutorials</a> <br>
@@ -598,6 +683,24 @@ Figure from <a class="reference external" href="https://doi.org/10.1002/ecs2.364
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="geemap_python_api.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="update_neon_aop.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Introduction to NEON AOP</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -616,9 +719,14 @@ Figure from <a class="reference external" href="https://doi.org/10.1002/ecs2.364
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">GIS and remote sensing introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Getting Started with GIS &amp; Remote Sensing</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#airborne-and-spaceborne-imagery-introduction">Airborne and spaceborne imagery introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-reflectance">Radiance and reflectance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#radiance-and-reflectance">Radiance and reflectance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-remote-sensing-data">Properties of Remote Sensing Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-raster">Anatomy of a raster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#emittance">Emittance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projections-and-crs">Projections and CRS</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-data">Vector data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
@@ -631,6 +739,10 @@ Figure from <a class="reference external" href="https://doi.org/10.1002/ecs2.364
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-raster-data">Examples of raster data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Common file formats</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-python-packages-for-raster-data">Common Python packages for raster data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speaking-of-structure">Speaking of structure…</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#light-detection-and-ranging-lidar"><strong>Light Detection and Ranging (LiDAR)</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional resources</a></li>
