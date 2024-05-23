@@ -165,13 +165,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/url_download.html"><strong>Download Public Data from URL to Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/update_url_download.html">Download data directly from URL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/geemap_python_api.html"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
-
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS &amp; Remote Sensing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/update_neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
 
 
 
@@ -375,31 +377,6 @@ document.write(`
 <div class="tex2jax_ignore mathjax_ignore section" id="welcome-to-the-2024-esa-seeds-gis-workshop">
 <h1>Welcome to the 2024 ESA SEEDS GIS Workshop!<a class="headerlink" href="#welcome-to-the-2024-esa-seeds-gis-workshop" title="Permalink to this heading">#</a></h1>
 <p>This workshop will provide every resource and collection of scripts needed for the 2024 <a class="reference external" href="https://www.esa.org/seeds/">Ecological Society of America’s SEEDS</a> GIS Workshop held at Florida A&amp;M University from May 20-25, 2024. This workshop is developed with support from the NSF-funded <a class="reference external" href="https://www.neonscience.org/">National Ecological Observation Network (NEON)</a> and <a class="reference external" href="https://www.lensrcn.org/home">Landscape Exchange Network for Socio-environmental Systems Research (LENS)</a>, as well as in collaboration with <a class="reference external" href="https://www.jonesctr.org/">The Jones Center at Ichauway</a>.</p>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Set Up</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/google_tools.html">Getting Started with Google Tools for GIS and Ecological Applications</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/google_tools.html#getting-started-with-colab">Getting started with Colab*</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/google_tools.html#exploring-colab-features">Exploring Colab Features</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/google_tools.html#additional-resources">Additional Resources</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/mount_drive.html"><strong>Mounting Google Drive</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/mount_drive.html#importance-of-file-handling">Importance of File Handling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/mount_drive.html#benefits-of-integrating-google-drive-with-colab">Benefits of Integrating Google Drive with Colab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/mount_drive.html#mounting-google-drive-in-google-colab">Mounting Google Drive in Google Colab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/url_download.html"><strong>Download Public Data from URL to Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/geemap_python_api.html"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/geemap_python_api.html#map-and-console">Map and console</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/geemap_python_api.html#vector-analysis">Vector analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/geemap_python_api.html#raster-analysis">Raster analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html#visualizing-neon-aop-hyperspectral-data">Visualizing NEON AOP hyperspectral data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html#masking-data">Masking data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html#explore-spectral-signatures-across-a-study-site">Explore spectral signatures across a study site</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html#calculate-vegetation-indices">Calculate vegetation indices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html#bringing-in-vector-data-fire-exploration">Bringing in vector data (fire exploration)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="google_drive/colab_notebooks/neon_aop.html#zonal-statistics-exploring-spectra-by-landcover">Zonal statistics (exploring spectra by landcover)</a></li>
-</ul>
-</div>
 <hr class="docutils" />
 <div class="section" id="workshop-overview">
 <h2>Workshop Overview<a class="headerlink" href="#workshop-overview" title="Permalink to this heading">#</a></h2>
@@ -639,6 +616,10 @@ Remote sensing data collected by NEON's airborne observation platform. Understan
 </ul>
 </details>
 </div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 

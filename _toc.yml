@@ -8,12 +8,33 @@ parts:
   - caption: Getting Set Up
     chapters: 
     - file: google_drive/colab_notebooks/google_tools.ipynb
-      title: 
+      title: Start with Google Tools
     - file: google_drive/colab_notebooks/mount_drive.ipynb
-      title: 
-    - file: google_drive/colab_notebooks/url_download.ipynb
-      title: 
+      title: Connect to your Google Drive
+    - file: google_drive/colab_notebooks/update_url_download.ipynb
+      title: Download data directly from URL
     - file: google_drive/colab_notebooks/geemap_python_api.ipynb
-      title: 
-    - file: google_drive/colab_notebooks/neon_aop.ipynb
+      title: Initializing Google Earth Engine
+  - caption: GIS & Remote Sensing
+    chapters:
+    - file: 
+      title: Getting back to basics
+    - file: google_drive/colab_notebooks/update_neon_aop.ipynb
+      title: Introduction to NEON AOP
+  - caption: Group Exercises
+    chapters:
+    - file: 
+      title: Group 1 - Disturbance
+    - file: 
+      title: Group 2 - Management
+    - file: 
+      title: Group 3 - Advanced Analysis
+    - file: 
+      title: Group 4 - 3D Structure
+    - file: 
+      title: Group 5 - 
+    - file: 
+      title: Group 6 -
+  - caption: Additional Resources
+    - file: 
       title: 

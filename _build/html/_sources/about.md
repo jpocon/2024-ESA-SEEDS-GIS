@@ -8,9 +8,6 @@ align: center
 # Welcome to the 2024 ESA SEEDS GIS Workshop!
 This workshop will provide every resource and collection of scripts needed for the 2024 [Ecological Society of America's SEEDS](https://www.esa.org/seeds/) GIS Workshop held at Florida A&M University from May 20-25, 2024. This workshop is developed with support from the NSF-funded [National Ecological Observation Network (NEON)](https://www.neonscience.org/) and [Landscape Exchange Network for Socio-environmental Systems Research (LENS)](https://www.lensrcn.org/home), as well as in collaboration with [The Jones Center at Ichauway](https://www.jonesctr.org/).
 
-```{tableofcontents}
-```
-
 ---
 
 ## Workshop Overview
