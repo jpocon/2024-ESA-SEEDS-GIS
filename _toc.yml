@@ -17,7 +17,7 @@ parts:
       title: Initializing Google Earth Engine
   - caption: GIS & Remote Sensing
     chapters:
-    - file: google_drive/colab_notebooks/background.ipynb
+    - file: google_drive/colab_notebooks/update_background.ipynb
       title: Getting back to basics
     - file: google_drive/colab_notebooks/update_neon_aop.ipynb
       title: Introduction to NEON AOP
