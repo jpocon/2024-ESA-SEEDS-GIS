@@ -414,248 +414,31 @@ document.write(`
 <p>Make sure you have the most current version of earthengine-api and geemap. (Colab has these installed by default and updates versions, but there can be lags and may not upgrade for patches). Import ee, colab, and geemap. Go through Earth Engine authentication and initialization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>earthengine-api
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: earthengine-api in /home/jp/anaconda3/lib/python3.7/site-packages (0.1.403)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: google-cloud-storage in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api) (2.9.0)
-Requirement already satisfied: google-api-python-client&gt;=1.12.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api) (2.88.0)
-Requirement already satisfied: google-auth&gt;=1.4.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api) (2.19.1)
-Requirement already satisfied: google-auth-httplib2&gt;=0.0.3 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api) (0.1.0)
-Requirement already satisfied: httplib2&lt;1dev,&gt;=0.9.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api) (0.22.0)
-Requirement already satisfied: requests in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api) (2.28.2)
-Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-python-client&gt;=1.12.1-&gt;earthengine-api) (2.11.0)
-Requirement already satisfied: uritemplate&lt;5,&gt;=3.0.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-python-client&gt;=1.12.1-&gt;earthengine-api) (4.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cachetools&lt;6.0,&gt;=2.0.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api) (4.2.2)
-Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api) (0.2.8)
-Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api) (4.7.2)
-Requirement already satisfied: six&gt;=1.9.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api) (1.14.0)
-Requirement already satisfied: urllib3&lt;2.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api) (1.26.18)
-Requirement already satisfied: pyparsing!=3.0.0,!=3.0.1,!=3.0.2,!=3.0.3,&lt;4,&gt;=2.4.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from httplib2&lt;1dev,&gt;=0.9.2-&gt;earthengine-api) (2.4.6)
-Requirement already satisfied: google-cloud-core&lt;3.0dev,&gt;=2.3.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-cloud-storage-&gt;earthengine-api) (2.3.2)
-Requirement already satisfied: google-resumable-media&gt;=2.3.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-cloud-storage-&gt;earthengine-api) (2.5.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests-&gt;earthengine-api) (3.0.1)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests-&gt;earthengine-api) (2.8)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests-&gt;earthengine-api) (2019.11.28)
-Requirement already satisfied: googleapis-common-protos&lt;2.0dev,&gt;=1.56.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5-&gt;google-api-python-client&gt;=1.12.1-&gt;earthengine-api) (1.59.0)
-Requirement already satisfied: protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,&lt;5.0.0dev,&gt;=3.19.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5-&gt;google-api-python-client&gt;=1.12.1-&gt;earthengine-api) (4.23.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: google-crc32c&lt;2.0dev,&gt;=1.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-resumable-media&gt;=2.3.2-&gt;google-cloud-storage-&gt;earthengine-api) (1.5.0)
-Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /home/jp/anaconda3/lib/python3.7/site-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&gt;=1.4.1-&gt;earthengine-api) (0.4.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">DEPRECATION: pyodbc 4.0.0-unsupported has a non-standard version number. pip 24.1 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of pyodbc or contact the author to suggest that they release a version with a conforming version number. Discussion can be found at https://github.com/pypa/pip/issues/12063</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade earthengine-api
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>geemap
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: geemap in /home/jp/anaconda3/lib/python3.7/site-packages (0.20.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: bqplot in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.12.36)
-Requirement already satisfied: colour in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.1.5)
-Requirement already satisfied: earthengine-api&gt;=0.1.304 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.1.403)
-Requirement already satisfied: ee-extra&gt;=0.0.10 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.0.15)
-Requirement already satisfied: eerepr&gt;=0.0.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.0.4)
-Requirement already satisfied: ffmpeg-python in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.2.0)
-Requirement already satisfied: folium&gt;=0.11.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.14.0)
-Requirement already satisfied: gdown in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (4.6.0)
-Requirement already satisfied: geeadd&gt;=0.5.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (1.1.0)
-Requirement already satisfied: geocoder in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (1.38.1)
-Requirement already satisfied: geojson in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (2.5.0)
-Requirement already satisfied: ipyevents in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (2.0.1)
-Requirement already satisfied: ipyfilechooser&gt;=0.6.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.6.0)
-Requirement already satisfied: ipyleaflet&gt;=0.17.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.17.2)
-Requirement already satisfied: ipytree in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.2.2)
-Requirement already satisfied: ipywidgets&lt;8.0.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (7.8.1)
-Requirement already satisfied: matplotlib in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (3.1.3)
-Requirement already satisfied: numpy in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (1.21.6)
-Requirement already satisfied: pandas in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (1.0.1)
-Requirement already satisfied: pillow in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (7.0.0)
-Requirement already satisfied: pycrs in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (1.0.2)
-Requirement already satisfied: pyperclip in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (1.8.2)
-Requirement already satisfied: pyshp&gt;=2.1.3 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (2.3.1)
-Requirement already satisfied: python-box in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (6.1.0)
-Requirement already satisfied: sankee&gt;=0.1.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.2.4)
-Requirement already satisfied: scooby in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (0.7.0)
-Requirement already satisfied: whiteboxgui&gt;=0.6.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (2.2.0)
-Requirement already satisfied: xyzservices in /home/jp/anaconda3/lib/python3.7/site-packages (from geemap) (2022.9.0)
-Requirement already satisfied: google-cloud-storage in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api&gt;=0.1.304-&gt;geemap) (2.9.0)
-Requirement already satisfied: google-api-python-client&gt;=1.12.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api&gt;=0.1.304-&gt;geemap) (2.88.0)
-Requirement already satisfied: google-auth&gt;=1.4.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api&gt;=0.1.304-&gt;geemap) (2.19.1)
-Requirement already satisfied: google-auth-httplib2&gt;=0.0.3 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api&gt;=0.1.304-&gt;geemap) (0.1.0)
-Requirement already satisfied: httplib2&lt;1dev,&gt;=0.9.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api&gt;=0.1.304-&gt;geemap) (0.22.0)
-Requirement already satisfied: requests in /home/jp/anaconda3/lib/python3.7/site-packages (from earthengine-api&gt;=0.1.304-&gt;geemap) (2.28.2)
-Requirement already satisfied: branca&gt;=0.6.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from folium&gt;=0.11.0-&gt;geemap) (0.6.0)
-Requirement already satisfied: jinja2&gt;=2.9 in /home/jp/anaconda3/lib/python3.7/site-packages (from folium&gt;=0.11.0-&gt;geemap) (3.1.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: logzero&gt;=1.5.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geeadd&gt;=0.5.1-&gt;geemap) (1.7.0)
-Requirement already satisfied: beautifulsoup4&gt;=4.9.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from geeadd&gt;=0.5.1-&gt;geemap) (4.12.3)
-Requirement already satisfied: traittypes&lt;3,&gt;=0.2.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipyleaflet&gt;=0.17.0-&gt;geemap) (0.2.1)
-Requirement already satisfied: comm&gt;=0.1.3 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipywidgets&lt;8.0.0-&gt;geemap) (0.1.4)
-Requirement already satisfied: ipython-genutils~=0.2.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipywidgets&lt;8.0.0-&gt;geemap) (0.2.0)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipywidgets&lt;8.0.0-&gt;geemap) (5.9.0)
-Requirement already satisfied: widgetsnbextension~=3.6.6 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipywidgets&lt;8.0.0-&gt;geemap) (3.6.6)
-Requirement already satisfied: ipython&gt;=4.0.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipywidgets&lt;8.0.0-&gt;geemap) (7.12.0)
-Requirement already satisfied: jupyterlab-widgets&lt;3,&gt;=1.0.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipywidgets&lt;8.0.0-&gt;geemap) (1.1.7)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: plotly&gt;=5.2.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from sankee&gt;=0.1.0-&gt;geemap) (5.18.0)
-Requirement already satisfied: whitebox in /home/jp/anaconda3/lib/python3.7/site-packages (from whiteboxgui&gt;=0.6.0-&gt;geemap) (2.2.0)
-Requirement already satisfied: python-dateutil&gt;=2.6.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from pandas-&gt;geemap) (2.8.2)
-Requirement already satisfied: pytz&gt;=2017.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from pandas-&gt;geemap) (2019.3)
-Requirement already satisfied: future in /home/jp/anaconda3/lib/python3.7/site-packages (from ffmpeg-python-&gt;geemap) (0.18.2)
-Requirement already satisfied: filelock in /home/jp/anaconda3/lib/python3.7/site-packages (from gdown-&gt;geemap) (3.12.2)
-Requirement already satisfied: six in /home/jp/anaconda3/lib/python3.7/site-packages (from gdown-&gt;geemap) (1.14.0)
-Requirement already satisfied: tqdm in /home/jp/anaconda3/lib/python3.7/site-packages (from gdown-&gt;geemap) (4.42.1)
-Requirement already satisfied: click in /home/jp/anaconda3/lib/python3.7/site-packages (from geocoder-&gt;geemap) (8.1.7)
-Requirement already satisfied: ratelim in /home/jp/anaconda3/lib/python3.7/site-packages (from geocoder-&gt;geemap) (0.1.6)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cycler&gt;=0.10 in /home/jp/anaconda3/lib/python3.7/site-packages (from matplotlib-&gt;geemap) (0.10.0)
-Requirement already satisfied: kiwisolver&gt;=1.0.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from matplotlib-&gt;geemap) (1.1.0)
-Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,&gt;=2.0.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from matplotlib-&gt;geemap) (2.4.6)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: soupsieve&gt;1.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from beautifulsoup4&gt;=4.9.0-&gt;geeadd&gt;=0.5.1-&gt;geemap) (1.9.5)
-Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-python-client&gt;=1.12.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (2.11.0)
-Requirement already satisfied: uritemplate&lt;5,&gt;=3.0.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-python-client&gt;=1.12.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (4.1.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cachetools&lt;6.0,&gt;=2.0.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (4.2.2)
-Requirement already satisfied: pyasn1-modules&gt;=0.2.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (0.2.8)
-Requirement already satisfied: rsa&lt;5,&gt;=3.1.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (4.7.2)
-Requirement already satisfied: urllib3&lt;2.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-auth&gt;=1.4.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (1.26.18)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: setuptools&gt;=18.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (66.0.0)
-Requirement already satisfied: jedi&gt;=0.10 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.14.1)
-Requirement already satisfied: decorator in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (4.4.1)
-Requirement already satisfied: pickleshare in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.7.5)
-Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (3.0.3)
-Requirement already satisfied: pygments in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (2.17.2)
-Requirement already satisfied: backcall in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.1.0)
-Requirement already satisfied: pexpect in /home/jp/anaconda3/lib/python3.7/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (4.8.0)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from jinja2&gt;=2.9-&gt;folium&gt;=0.11.0-&gt;geemap) (2.1.2)
-Requirement already satisfied: tenacity&gt;=6.2.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from plotly&gt;=5.2.2-&gt;sankee&gt;=0.1.0-&gt;geemap) (8.2.3)
-Requirement already satisfied: packaging in /home/jp/anaconda3/lib/python3.7/site-packages (from plotly&gt;=5.2.2-&gt;sankee&gt;=0.1.0-&gt;geemap) (23.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (3.0.1)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (2.8)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (2019.11.28)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: notebook&gt;=4.4.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (6.0.3)
-Requirement already satisfied: importlib-metadata in /home/jp/anaconda3/lib/python3.7/site-packages (from click-&gt;geocoder-&gt;geemap) (6.7.0)
-Requirement already satisfied: google-cloud-core&lt;3.0dev,&gt;=2.3.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-cloud-storage-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (2.3.2)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: google-resumable-media&gt;=2.3.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-cloud-storage-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (2.5.0)
-Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /home/jp/anaconda3/lib/python3.7/site-packages (from requests[socks]-&gt;gdown-&gt;geemap) (1.7.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: googleapis-common-protos&lt;2.0dev,&gt;=1.56.2 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5-&gt;google-api-python-client&gt;=1.12.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (1.59.0)
-Requirement already satisfied: protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,&lt;5.0.0dev,&gt;=3.19.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,&lt;3.0.0dev,&gt;=1.31.5-&gt;google-api-python-client&gt;=1.12.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (4.23.2)
-Requirement already satisfied: google-crc32c&lt;2.0dev,&gt;=1.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from google-resumable-media&gt;=2.3.2-&gt;google-cloud-storage-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (1.5.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: parso&gt;=0.5.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from jedi&gt;=0.10-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.5.2)
-Requirement already satisfied: tornado&gt;=5.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (6.2)
-Requirement already satisfied: pyzmq&gt;=17 in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (25.1.2)
-Requirement already satisfied: jupyter-core&gt;=4.6.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (4.12.0)
-Requirement already satisfied: jupyter-client&gt;=5.3.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (7.4.9)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbformat in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (5.0.4)
-Requirement already satisfied: nbconvert in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (5.6.1)
-Requirement already satisfied: ipykernel in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (5.1.4)
-Requirement already satisfied: Send2Trash in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (1.5.0)
-Requirement already satisfied: terminado&gt;=0.8.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.8.3)
-Requirement already satisfied: prometheus-client in /home/jp/anaconda3/lib/python3.7/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.7.1)
-Requirement already satisfied: wcwidth in /home/jp/anaconda3/lib/python3.7/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.2.5)
-Requirement already satisfied: pyasn1&lt;0.5.0,&gt;=0.4.6 in /home/jp/anaconda3/lib/python3.7/site-packages (from pyasn1-modules&gt;=0.2.1-&gt;google-auth&gt;=1.4.1-&gt;earthengine-api&gt;=0.1.304-&gt;geemap) (0.4.8)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: zipp&gt;=0.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from importlib-metadata-&gt;click-&gt;geocoder-&gt;geemap) (3.15.0)
-Requirement already satisfied: typing-extensions&gt;=3.6.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from importlib-metadata-&gt;click-&gt;geocoder-&gt;geemap) (4.7.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ptyprocess&gt;=0.5 in /home/jp/anaconda3/lib/python3.7/site-packages (from pexpect-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.6.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: entrypoints in /home/jp/anaconda3/lib/python3.7/site-packages (from jupyter-client&gt;=5.3.4-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.3)
-Requirement already satisfied: nest-asyncio&gt;=1.5.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from jupyter-client&gt;=5.3.4-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (1.6.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.8.4)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: bleach in /home/jp/anaconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (3.1.0)
-Requirement already satisfied: pandocfilters&gt;=1.4.1 in /home/jp/anaconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (1.4.2)
-Requirement already satisfied: testpath in /home/jp/anaconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.4.4)
-Requirement already satisfied: defusedxml in /home/jp/anaconda3/lib/python3.7/site-packages (from nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.6.0)
-Requirement already satisfied: jsonschema!=2.5.0,&gt;=2.4 in /home/jp/anaconda3/lib/python3.7/site-packages (from nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (4.17.3)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: attrs&gt;=17.4.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (19.3.0)
-Requirement already satisfied: importlib-resources&gt;=1.4.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (5.12.0)
-Requirement already satisfied: pkgutil-resolve-name&gt;=1.3.10 in /home/jp/anaconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (1.3.10)
-Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 in /home/jp/anaconda3/lib/python3.7/site-packages (from jsonschema!=2.5.0,&gt;=2.4-&gt;nbformat-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.15.7)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: webencodings in /home/jp/anaconda3/lib/python3.7/site-packages (from bleach-&gt;nbconvert-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.6-&gt;ipywidgets&lt;8.0.0-&gt;geemap) (0.5.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">DEPRECATION: pyodbc 4.0.0-unsupported has a non-standard version number. pip 24.1 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of pyodbc or contact the author to suggest that they release a version with a conforming version number. Discussion can be found at https://github.com/pypa/pip/issues/12063</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!pip install --upgrade geemap
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">ee</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="kn">import</span> <span class="nn">ee</span>
  <span class="kn">import</span> <span class="nn">geemap</span>
  <span class="kn">import</span> <span class="nn">geemap.colormaps</span> <span class="k">as</span> <span class="nn">cm</span>
  <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">_frontend</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="mi">95365983494</span><span class="n">c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">geemap</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">geemap.colormaps</span> <span class="k">as</span> <span class="nn">cm</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">_frontend</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;google.colab&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
 <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -667,7 +450,7 @@ Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 
 <p>Add a scratch cell for the Map and console. After you run the following cell, confirm that you want to add scratch cells, and <strong>then run the “Map” cell to display the <code class="docutils literal notranslate"><span class="pre">geemap.Map</span></code> object (find it in the side panel to the right)</strong>. We’ll add all layers to this map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_frontend</span><span class="o">.</span><span class="n">create_scratch_cell</span><span class="p">(</span><span class="s2">&quot;#@title Map</span><span class="se">\n</span><span class="s2">m = geemap.Map()</span><span class="se">\n</span><span class="s2">m&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_frontend</span><span class="o">.</span><span class="n">create_scratch_cell</span><span class="p">(</span><span class="s2">&quot;#@title Map</span><span class="se">\n</span><span class="s2">m = geemap.Map()</span><span class="se">\n</span><span class="s2">m&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 <span class="n">_frontend</span><span class="o">.</span><span class="n">create_scratch_cell</span><span class="p">(</span><span class="s2">&quot;#@title Console</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -708,7 +491,7 @@ Requirement already satisfied: pyrsistent!=0.17.0,!=0.17.1,!=0.17.2,&gt;=0.14.0 
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basins</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;WWF/HydroATLAS/v1/Basins/level06&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basins</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;WWF/HydroATLAS/v1/Basins/level06&#39;</span><span class="p">)</span>
 <span class="n">rivers</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;WWF/HydroSHEDS/v1/FreeFlowingRivers&#39;</span><span class="p">)</span>
 <span class="n">wawa</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Geometry</span><span class="o">.</span><span class="n">Point</span><span class="p">([</span><span class="o">-</span><span class="mf">118.3430</span><span class="p">,</span> <span class="mf">46.0646</span><span class="p">])</span>
 <span class="n">m</span><span class="o">.</span><span class="n">set_center</span><span class="p">(</span><span class="o">-</span><span class="mf">118.3430</span><span class="p">,</span> <span class="mf">46.0646</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
@@ -1071,7 +854,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Filter the basins feature collection to Walla Walla basin using the <code class="docutils literal notranslate"><span class="pre">HYBAS_ID</span></code> field. There are two options for filtering by attribute: string expressions and <code class="docutils literal notranslate"><span class="pre">ee.Filter</span></code> objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># String expression option.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># String expression option.</span>
 <span class="n">wawa_basin</span> <span class="o">=</span> <span class="n">basins</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;HYBAS_ID == &#39;</span><span class="p">)</span>
 <span class="mi">7060382460</span>
 <span class="c1"># ee.Filter object option.</span>
@@ -1112,7 +895,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Filter river segments to those that intersect Walla Walla Basin. We can use the <code class="docutils literal notranslate"><span class="pre">ee.Filter.intersects</span></code> method or the shorthand <code class="docutils literal notranslate"><span class="pre">filterBounds</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ee.Filter.intersects option.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ee.Filter.intersects option.</span>
 <span class="n">wawa_rivers</span> <span class="o">=</span> <span class="n">rivers</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">leftField</span><span class="o">=</span><span class="s1">&#39;.geo&#39;</span><span class="p">,</span> <span class="n">rightValue</span><span class="o">=</span><span class="n">wawa_basin</span><span class="o">.</span><span class="n">geometry</span><span class="p">(),</span> <span class="n">maxError</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
@@ -1154,7 +937,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Filter rivers in Walla Walla Basin to the segments that are within 10 km of central Walla Walla.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_rivers_close</span> <span class="o">=</span> <span class="n">rivers</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_rivers_close</span> <span class="o">=</span> <span class="n">rivers</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">withinDistance</span><span class="p">(</span>
         <span class="n">distance</span><span class="o">=</span><span class="mf">10e3</span><span class="p">,</span> <span class="n">leftField</span><span class="o">=</span><span class="s1">&#39;.geo&#39;</span><span class="p">,</span> <span class="n">rightValue</span><span class="o">=</span> <span class="n">wawa</span><span class="p">,</span> <span class="n">maxError</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
@@ -1194,7 +977,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Let’s color the river segments by river order. We need to know the minimum and maximum stream order values for the Walla Walla rivers. Use <code class="docutils literal notranslate"><span class="pre">reduceColumns</span></code> to get values and statistics. The <code class="docutils literal notranslate"><span class="pre">ee.Reducer.minMax()</span></code> reducer returns the field’s min and max values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">minMax</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;RIV_ORD&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">minMax</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;RIV_ORD&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1327,7 +1110,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Now that we know the range of river order values we can paint the vectors unto an image using a color assigned to each river order.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">river_order_vis</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">river_order_vis</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">()</span><span class="o">.</span><span class="n">toByte</span><span class="p">()</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">wawa_rivers</span><span class="p">,</span> <span class="s1">&#39;RIV_ORD&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
     <span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">])</span>
 <span class="p">)</span>
@@ -1466,7 +1249,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Let’s calculate the percentange of total Walla Walla Basin river length that is less than 7 river order (main rivers).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">main_rivers</span> <span class="o">=</span> <span class="n">wawa_rivers</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;RIV_ORD &lt;= 6&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">main_rivers</span> <span class="o">=</span> <span class="n">wawa_rivers</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="s1">&#39;RIV_ORD &lt;= 6&#39;</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">main_rivers</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">},</span> <span class="s1">&#39;Main rivers&#39;</span><span class="p">)</span>
 <span class="n">main_rivers</span>
 </pre></div>
@@ -1600,7 +1383,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_river_length</span> <span class="o">=</span> <span class="n">wawa_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_river_length</span> <span class="o">=</span> <span class="n">wawa_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;LENGTH_KM&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">getNumber</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
 
 <span class="n">wawa_main_river_length</span> <span class="o">=</span> <span class="n">main_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span>
@@ -1742,7 +1525,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Let’s make a geometry that crudely represents upland (not riparian). We’ll start by defining riparian areas as the 100 m buffer around main rivers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">riparian</span> <span class="o">=</span> <span class="n">main_rivers</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">riparian</span> <span class="o">=</span> <span class="n">main_rivers</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">riparian</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">},</span> <span class="s1">&#39;Main rivers buffer&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1778,7 +1561,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>“Clip” the Walla Walla basin using the buffered main river geometry using the <code class="docutils literal notranslate"><span class="pre">difference</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">upland</span> <span class="o">=</span> <span class="n">wawa_basin</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">riparian</span><span class="p">)</span> <span class="c1"># get it wrong with geometry</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">upland</span> <span class="o">=</span> <span class="n">wawa_basin</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">riparian</span><span class="p">)</span> <span class="c1"># get it wrong with geometry</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">upland</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">},</span> <span class="s1">&#39;Upland&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1814,7 +1597,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Let’s add a distance-to-central-Walla Walla attribute to each Walla Walla Basin river segment and then calculate the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">append_distance</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">append_distance</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
     <span class="n">distance_km</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="n">wawa</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feature</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;distance_km&#39;</span><span class="p">,</span> <span class="n">distance_km</span><span class="p">)</span>
 
@@ -1952,7 +1735,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span><span class="n">reducer</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;distance_km&#39;</span><span class="p">])</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wawa_rivers</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span><span class="n">reducer</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;distance_km&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2088,7 +1871,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Join census track info to river segments using an intersection filter with a <code class="docutils literal notranslate"><span class="pre">saveFirst</span></code> join.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">census_tracts</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;TIGER/2020/TRACT&#39;</span><span class="p">);</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">census_tracts</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;TIGER/2020/TRACT&#39;</span><span class="p">);</span>
 <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">census_tracts</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;purple&#39;</span><span class="p">},</span> <span class="s1">&#39;Census tracts&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2096,7 +1879,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">intersect_filter</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">leftField</span><span class="o">=</span><span class="s1">&#39;.geo&#39;</span><span class="p">,</span> <span class="n">rightField</span><span class="o">=</span><span class="s1">&#39;.geo&#39;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">intersect_filter</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">leftField</span><span class="o">=</span><span class="s1">&#39;.geo&#39;</span><span class="p">,</span> <span class="n">rightField</span><span class="o">=</span><span class="s1">&#39;.geo&#39;</span><span class="p">)</span>
 <span class="n">save_first_join</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Join</span><span class="o">.</span><span class="n">saveFirst</span><span class="p">(</span><span class="n">matchKey</span><span class="o">=</span><span class="s1">&#39;tract&#39;</span><span class="p">)</span>
 <span class="n">wawa_rivers</span> <span class="o">=</span> <span class="n">save_first_join</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">wawa_rivers</span><span class="p">,</span> <span class="n">census_tracts</span><span class="p">,</span> <span class="n">intersect_filter</span><span class="p">)</span>
 <span class="n">wawa_rivers</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -2107,7 +1890,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>The first intersecting census tract feature is added to river segment features. It can be more convenient to copy properties from the secondary feature into the primary feature. Do it with a mapped <code class="docutils literal notranslate"><span class="pre">copyProperties</span></code> function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">copy_properties</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">copy_properties</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
     <span class="n">joined_feature</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;tract&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">feature</span><span class="o">.</span><span class="n">copyProperties</span><span class="p">(</span><span class="n">joined_feature</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;TRACTCE&#39;</span><span class="p">,</span> <span class="s1">&#39;NAMELSAD&#39;</span><span class="p">])</span>
 
@@ -2127,7 +1910,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Often the first step in working with image collections is to filter them to a region and period of interest. Here, we filter the Landsat collection to April-November (2023), the Walla Walla Basin region, and low cloud cover.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toa_col</span> <span class="o">=</span> <span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toa_col</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC09/C02/T1_TOA&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2022-04-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2022-11-01&#39;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">wawa_basin</span><span class="p">)</span>
@@ -2144,7 +1927,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Visualize an image using parameters that select the bands for RGB and the min and max values for the color stretch.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">false_color_vis</span> <span class="o">=</span> <span class="p">{</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">false_color_vis</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B5&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">],</span>
     <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
     <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mf">0.4</span>
@@ -2160,7 +1943,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Let’s use band math to calculate NDVI and NBR. Define a function to perform the calculation so we can map the function over the image collection.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_indices</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">calc_indices</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
     <span class="c1"># Math method chain option for NDVI.</span>
     <span class="n">nir</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B5&#39;</span><span class="p">)</span>
     <span class="n">red</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B4&#39;</span><span class="p">)</span>
@@ -2189,7 +1972,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Map the spectral index calculation function over the image collection to apply it to all of the images.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toa_col</span> <span class="o">=</span> <span class="n">toa_col</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">calc_indices</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toa_col</span> <span class="o">=</span> <span class="n">toa_col</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">calc_indices</span><span class="p">)</span>
 <span class="n">band_names</span> <span class="o">=</span> <span class="n">toa_col</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
 <span class="n">band_names</span>
 </pre></div>
@@ -2202,7 +1985,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Calculate pixel-wise max NDVI value among images in the collection (include corresponding values of the additional bands).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toa_max</span> <span class="o">=</span> <span class="n">toa_col</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">band_names</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">band_names</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toa_max</span> <span class="o">=</span> <span class="n">toa_col</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">band_names</span><span class="o">.</span><span class="n">size</span><span class="p">()))</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">band_names</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">toa_max</span><span class="p">)</span>
 
 <span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">toa_max</span><span class="p">,</span> <span class="n">false_color_vis</span><span class="p">,</span> <span class="s1">&#39;TOA max&#39;</span><span class="p">)</span>
@@ -2216,7 +1999,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Clip the max NDVI composite to the Walla Walla Basin.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toa_max_basin</span> <span class="o">=</span> <span class="n">toa_max</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">wawa_basin</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toa_max_basin</span> <span class="o">=</span> <span class="n">toa_max</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">wawa_basin</span><span class="p">)</span>
 
 <span class="n">ndvi_vis</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;bands&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ndvi&#39;</span><span class="p">],</span>
@@ -2235,7 +2018,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Calculate median values for bands in the max NDVI composite for riparian and upland regions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toa_riparian</span> <span class="o">=</span> <span class="n">toa_max_basin</span><span class="o">.</span><span class="n">reduceRegion</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toa_riparian</span> <span class="o">=</span> <span class="n">toa_max_basin</span><span class="o">.</span><span class="n">reduceRegion</span><span class="p">(</span>
     <span class="n">reducer</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">median</span><span class="p">(),</span>
     <span class="n">geometry</span><span class="o">=</span><span class="n">riparian</span><span class="p">,</span>
     <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -2254,7 +2037,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="s1">&#39;Median riparian NDVI&#39;</span><span class="p">,</span> <span class="n">toa_riparian</span><span class="o">.</span><span class="n">getNumber</span><span class="p">(</span><span class="s1">&#39;ndvi&#39;</span><span class="p">))</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="s1">&#39;Median riparian NDVI&#39;</span><span class="p">,</span> <span class="n">toa_riparian</span><span class="o">.</span><span class="n">getNumber</span><span class="p">(</span><span class="s1">&#39;ndvi&#39;</span><span class="p">))</span>
 <span class="n">display</span><span class="p">(</span><span class="s1">&#39;Median upland NDVI&#39;</span><span class="p">,</span> <span class="n">toa_upland</span><span class="o">.</span><span class="n">getNumber</span><span class="p">(</span><span class="s1">&#39;ndvi&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2266,7 +2049,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 <p>Sample 1000 random pixels from the composite. Fetch the data as a Pandas dataframe and plot a histogram and scatterplot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">toa_max_sample</span> <span class="o">=</span> <span class="n">toa_max_basin</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">toa_max_sample</span> <span class="o">=</span> <span class="n">toa_max_basin</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span>
     <span class="n">region</span><span class="o">=</span><span class="n">wawa_basin</span><span class="p">,</span>
     <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
     <span class="n">numPixels</span><span class="o">=</span><span class="mi">1000</span>
@@ -2279,7 +2062,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">computeFeatures</span><span class="p">({</span>
     <span class="s1">&#39;expression&#39;</span><span class="p">:</span> <span class="n">toa_max_sample</span><span class="p">,</span>
@@ -2293,7 +2076,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">altair</span> <span class="k">as</span> <span class="nn">alt</span>
 
 <span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
     <span class="n">alt</span><span class="o">.</span><span class="n">X</span><span class="p">(</span><span class="s2">&quot;ndvi:Q&quot;</span><span class="p">,</span> <span class="nb">bin</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
@@ -2305,7 +2088,7 @@ for (let c of document.getElementsByClassName("ee-toggle")) {
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">mark_point</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
     <span class="n">x</span><span class="o">=</span><span class="s1">&#39;B4:Q&#39;</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="s1">&#39;B5:Q&#39;</span><span class="p">,</span>
 <span class="p">)</span>

@@ -64,6 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="author" title="About these documents" href="../../about.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Download Public Data from URL to Colab" href="url_download.html" />
     <link rel="prev" title="Getting Started with Google Tools for GIS and Ecological Applications" href="google_tools.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,6 +159,22 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Set Up</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="google_tools.html">Getting Started with Google Tools for GIS and Ecological Applications</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Mounting Google Drive</strong></a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="url_download.html"><strong>Download Public Data from URL to Colab</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap_python_api.html"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
+
+
+
 
 
 
@@ -413,47 +430,33 @@ document.write(`
 <p>Let’s see this in action with a code example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In a Python 3.x Kernel</span>
-<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># In a Python 3.x Kernel
+from google.colab import drive
 
-<span class="c1"># This will prompt for authorization.</span>
-<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">8</span><span class="n">a622f5b46e3</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># In a Python 3.x Kernel</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># This will prompt for authorization.</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/content/drive&#39;</span><span class="p">)</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;google.colab&#39;
+# This will prompt for authorization.
+drive.mount(&#39;/content/drive&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># In an R Kernel</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;googledrive&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;httpuv&quot;</span><span class="p">)</span>
-<span class="n">library</span><span class="p">(</span><span class="s2">&quot;googledrive&quot;</span><span class="p">)</span>
-<span class="n">library</span><span class="p">(</span><span class="s2">&quot;httpuv&quot;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># In an R Kernel
+install.packages(&quot;googledrive&quot;)
+install.packages(&quot;httpuv&quot;)
+library(&quot;googledrive&quot;)
+library(&quot;httpuv&quot;)
 
-<span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">&quot;/usr/local/lib/python3.10/dist-packages/google/colab_ipython.py&quot;</span><span class="p">)){</span>
-  <span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;R.utils&quot;</span><span class="p">)</span>
-  <span class="n">library</span><span class="p">(</span><span class="s2">&quot;R.utils&quot;</span><span class="p">)</span>
-  <span class="n">library</span><span class="p">(</span><span class="s2">&quot;httr&quot;</span><span class="p">)</span>
-  <span class="n">my_check</span> <span class="o">&lt;-</span> <span class="n">function</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span><span class="p">(</span><span class="n">TRUE</span><span class="p">)}</span>
-  <span class="n">reassignInPackage</span><span class="p">(</span><span class="s2">&quot;is_interactive&quot;</span><span class="p">,</span> <span class="n">pkgName</span> <span class="o">=</span> <span class="s2">&quot;httr&quot;</span><span class="p">,</span> <span class="n">my_check</span><span class="p">)</span>
-  <span class="n">options</span><span class="p">(</span><span class="n">rlang_interactive</span><span class="o">=</span><span class="n">TRUE</span><span class="p">)</span>
-<span class="p">}</span>
+if (file.exists(&quot;/usr/local/lib/python3.10/dist-packages/google/colab_ipython.py&quot;)){
+  install.packages(&quot;R.utils&quot;)
+  library(&quot;R.utils&quot;)
+  library(&quot;httr&quot;)
+  my_check &lt;- function() {return(TRUE)}
+  reassignInPackage(&quot;is_interactive&quot;, pkgName = &quot;httr&quot;, my_check)
+  options(rlang_interactive=TRUE)
+}
 
-<span class="n">drive_auth</span><span class="p">(</span><span class="n">use_oob</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">,</span> <span class="n">cache</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">)</span>
+drive_auth(use_oob = TRUE, cache = TRUE)
 </pre></div>
 </div>
 </div>
@@ -500,6 +503,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Getting Started with Google Tools for GIS and Ecological Applications</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="url_download.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>Download Public Data from URL to Colab</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
