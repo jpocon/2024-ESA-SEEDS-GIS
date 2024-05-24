@@ -25,7 +25,7 @@ parts:
     chapters:
     - file: google_drive/colab_notebooks/final-pca_kmeans.ipynb
       title: Group 1 - PCA & Kmeans
-    - file: google_drive/colab_notebooks/disturbance_raster.ipynb
+    - file: google_drive/colab_notebooks/final-disturbance_raster.ipynb
       title: Group 2 - Raster-based Fire Mapping
     - file: google_drive/colab_notebooks/final-disturbance_lidar.ipynb
       title: Group 3 - LiDAR-based Fire Mapping
