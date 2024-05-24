@@ -1,0 +1,1151 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zonal Stats: Exploring spectra by land cover &#8212; 2024 ESA SEEDS GIS Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'google_drive/colab_notebooks/final_landcover_zonalstats';</script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Mapping Fire Impacts - LiDAR-based" href="final_disturbance_lidar.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/update_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/update_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    Welcome to the 2024 ESA SEEDS GIS Workshop!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Set Up</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="google_tools.html">Getting Started with Google Tools for GIS and Ecological Applications</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="mount_drive.html"><strong>Mounting Google Drive</strong></a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="update_url_download.html">Download data directly from URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap_python_api.html"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS &amp; Remote Sensing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="update_background.html">Getting Started with GIS &amp; Remote Sensing</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="update_neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Group Exercises</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="final_pca_kmeans.html"><strong>Principal Component Analysis &amp; Kmeans Clustering</strong></a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="final_disturbance_raster.html"><strong>Mapping Fire Impacts - Raster-based</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="final_disturbance_lidar.html">Mapping Fire Impacts - LiDAR-based</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Zonal Stats: Exploring spectra by land cover</strong></a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jpocon/2024-ESA-SEEDS-GIS/blob/master/google_drive/colab_notebooks/final_landcover_zonalstats.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jpocon/2024-ESA-SEEDS-GIS" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/google_drive/colab_notebooks/final_landcover_zonalstats.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Zonal Stats: Exploring spectra by land cover</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Zonal Stats: Exploring spectra by land cover</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-pixels-by-land-cover-type">Grouping pixels by land cover type</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="section" id="zonal-stats-exploring-spectra-by-land-cover">
+<h1><strong>Zonal Stats: Exploring spectra by land cover</strong><a class="headerlink" href="#zonal-stats-exploring-spectra-by-land-cover" title="Permalink to this heading">#</a></h1>
+<p>Group participant’s: Darimar Davila, Queriah Simpson, Taylor Howard, Jamie Casseus, Thi Mai Anh Tran, Christinah Adegboyega, Tolulope Fiola, and F__.</p>
+<p><strong>Brief Summary:</strong></p>
+<p>In this project, we explore a dataset in detail, focusing on spectral data and land cover classification. We start by selecting and examining the dataset’s projection, metadata, data types, and resolution. Using Google Earth Engine (GEE), we import NEON dataset and filter the SOAP dataset for 2019, create a region of interest (ROI), and clip the data accordingly. We then bring in National Land Cover Database (NLCD) data for further analysis. The main task involves grouping pixels by land cover type and calculating the average spectral signature for each type using the reduceRegion function. This data is transformed into a pandas DataFrame for easier manipulation and plotting. Finally, we visualize the spectral signatures of different land cover types using AOP, allowing us to see the average reflectance values across different wavelengths.</p>
+<p>#Question 1. At the top of the Colab notebook that you share with everyone, please include your responses to the following questions:</p>
+<ul>
+<li><p><strong>Choose at least 1 dataset to explore in more detail.</strong></p>
+<p>NLCD (the National Land Cover Database) is a 30-m Landsat-based land cover database spanning 8 epochs (2001, 2004, 2006, 2008, 2011, 2013, 2016, and 2019).The images rely on the imperviousness data layer for the urban classes and on a decision-tree classification for the rest.</p>
+<p><a class="reference external" href="https://www.sciencebase.gov/catalog/item/5f21cef582cef313ed940043">NCLD Datasets</a></p>
+</li>
+<li><p><strong>What is the projection for this dataset?</strong></p>
+<p>Projection Information for B053: {‘type’: ‘Projection’, ‘crs’: ‘EPSG:32611’, ‘transform’: [1, 0, 292000, 0, -1, 4110000]}</p>
+<p>Codes (below)</p>
+</li>
+<li><p><strong>Where can you find more information on how the data were collected and how to interpret the metadata?</strong></p>
+<p><a class="reference external" href="https://developers.google.com/earth-engine/guides/ic_info">ImageCollection Information and Metadata</a></p>
+<p>from the code, we extracted the metadata, following the metadata link, we got to the neon website for the image that includes information on resolution, how data was collected.</p>
+</li>
+<li><p><strong>Think about what data type each variable is</strong>.</p>
+<p>In the metadata information for each band shows data type showing pixel type, min, max, precision</p>
+</li>
+<li><p><strong>Is it vector or raster data? What properties exist for each dataset?</strong></p>
+<p><a class="reference external" href="https://developers.google.com/earth-engine/guides/reducers_reduce_to_vectors">Raster to Vector Conversion</a></p>
+<p>It is a Raster data.
+To determine the geometry of the ‘region of interest’, ‘reducetovector’ function was used to convert the raster to vector data.</p>
+<p>For the raster data, the property was metadata.
+For the vector data, geometry.</p>
+</li>
+<li><p><strong>What resolution are your data?</strong></p>
+<p>Resolution: 30 meters The National Land Cover Database (NLCD) data generally has a spatial resolution of 30 meters, meaning each pixel represents a 30m x 30m area on the ground. SOAP Hyperspectral Data (aopSDR):</p>
+<p>Resolution: 1 meter NEON’s Airborne Observation Platform (AOP) collects hyperspectral imagery at a high resolution, typically around 1 meter, meaning each pixel represents a 1m x 1m area. SOAP RGB Data (aopRGB):</p>
+<p>Resolution: 10 cm (0.1 meter) NEON’s RGB imagery is collected at an even higher resolution, often around 10 centimeters, meaning each pixel represents a 10cm x 10cm area.</p>
+</li>
+</ul>
+<p>#Question 2: At the top of the Colab notebook, write a short summary detailing the processing steps in the notebook and your results.</p>
+<p>In the first code chunk, we set up the necessary package for our workspace and use our id for authentication.</p>
+<p>Next, we import our data: from NEON 2019- we import 2 data type and named them SOAP_2019_sdr and SOAP_2019_rgb</p>
+<p>Choose at least 1 dataset to explore in more detail.- We  looked at SOAP_2019_sdr. From the code, we can see the projection information.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1.1. What is the projection for this dataset?-  Projection of band B053 is crs (coordinate reference system) : EPSG:32611 (which means, WGS 84 UTM zone 11N).
+
+1.2. Where can you find more information on how the data were collected and how to interpret the metadata?- from the code, we extracted the metadata, following the metadata link, we got to the neon website for the image that includes information on resolution, how data was collected.
+
+1.3. Think about what data type each variable is.- in the metadata information for each band shows data type showing pixel type, min, max, precision
+
+1.4. Is it vector or raster data? What properties exist for each dataset?- Raster data. For properties, there are 18 elements for SOAP_2019_rgb which includes flight year, Neon domain, sensor name.
+
+1.5. What resolution is your data? spatial resolution is at least 0.1 m.
+</pre></div>
+</div>
+<p>After having understanding about our data, we create a mask based on the geometry of a satellite image to make boundary for the study area.</p>
+<p>Then, we imported and clips National Land Cover Database data to our study area.</p>
+<p>In order to save our data and to make the analysis more convenient, we mount it to the Google Drive</p>
+<p>Using geemap, we now can see the map of our study area with the land cover data now.</p>
+<p>From there, we import numpy, pandas, and seaborn to analyze data and plot the graph:</p>
+<p>We selected the wavelength full-width-half-max band properties from the SOAP_2019_sdr image, then extracts the wavelength values from the bands properties.</p>
+<p>After having a list of wavelength values, we turn them into a floating value type and create a color palette for land cover classification.</p>
+<p>Then, we calculated the average reflectance value for each wavelength categorized by vegetation type, within our study area
+The reflectance of each row will be the mean of all the bands in each cell stacking up</p>
+<p>Finally, we create dataframe for plotting the reflectance</p>
+<ul class="simple">
+<li><p><strong>Although these topics may be far removed from your own interests, how could these steps and analyses help in your own work?</strong></p></li>
+</ul>
+<p>We found the clipping area code is useful for us to make a map of our study areas, which includes all attributes that we want. For example, our group can now find data sources and build a map that contains information about climate change observations/landscape changes observations/phenology observations recorded from local communities or maps that show socio-economic and cultural factors.</p>
+<p>Adding from this exercise, we are thinking about adding data to analyze how land use changes over time, forest classification and forest change, and create habitat classification for our own interest species.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">####### Getting information about projection#################</span>
+<span class="c1"># First way to do it: Set up visualization params</span>
+<span class="n">RGB_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B053&#39;</span><span class="p">,</span> <span class="s1">&#39;B035&#39;</span><span class="p">,</span> <span class="s1">&#39;B019&#39;</span><span class="p">]</span> <span class="c1"># These are the band names for the red, green, blue bands in the SDR data</span>
+<span class="n">rgbVis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span> <span class="c1"># This sets a nice range of values for mapping the RGB data</span>
+
+
+<span class="n">collection</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30006-001&#39;</span><span class="p">)</span>
+<span class="n">mosaic</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mosaic</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mosaic</span><span class="o">.</span><span class="n">projection</span><span class="p">())</span>
+
+
+<span class="c1"># Second way to do it: Function to get projection and metadata info for a specific band</span>
+<span class="k">def</span> <span class="nf">print_band_info</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">band_name</span><span class="p">):</span>
+    <span class="n">band</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">band_name</span><span class="p">)</span>
+    <span class="n">projection_info</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+    <span class="n">metadata_info</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Projection Information for </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">projection_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metadata Information for </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">metadata_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print projection and metadata info for bands B053, B035, B019</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B053&#39;</span><span class="p">,</span> <span class="s1">&#39;B035&#39;</span><span class="p">,</span> <span class="s1">&#39;B019&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
+    <span class="n">print_band_info</span><span class="p">(</span><span class="n">SOAP_2019_sdr</span><span class="p">,</span> <span class="n">band</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">############Getting information about metadata and how the data were collected###########</span>
+<span class="c1"># Get a list of all metadata properties for SOAP_2019_rgb.</span>
+<span class="n">properties</span> <span class="o">=</span> <span class="n">SOAP_2019_rgb</span><span class="o">.</span><span class="n">propertyNames</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Metadata properties for SOAP_2019_rgb:&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>  <span class="c1"># ee.List of metadata properties</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Metadata properties for SOAP_2019_sdr:&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span>
+
+
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;All metadata:&#39;</span><span class="p">,</span> <span class="n">SOAP_2019_rgb</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;All metadata:&#39;</span><span class="p">,</span> <span class="n">SOAP_2019_sdr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>#Find resolution information by following link in properties section “NEON_DATA_PROD_URL: <a class="reference external" href="https://data.neonscience.org/data-products/DP3.30010.001">https://data.neonscience.org/data-products/DP3.30010.001</a>”</p>
+<p>#Question 3: Codes added</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#1.3 [Getting Metadata](https://developers.google.com/earth-engine/guides/image_info)</span>
+
+
+<span class="c1"># Load an image.</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1/LC08_044034_20140318&#39;</span><span class="p">)</span>
+
+<span class="c1"># All metadata.</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;All metadata:&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+
+<span class="c1"># Get information about the bands as a list.</span>
+<span class="n">band_names</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Band names:&#39;</span><span class="p">,</span> <span class="n">band_names</span><span class="p">)</span>  <span class="c1"># ee.List of band names</span>
+
+<span class="c1"># Get projection information from band 1.</span>
+<span class="n">b1_proj</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Band 1 projection:&#39;</span><span class="p">,</span> <span class="n">b1_proj</span><span class="p">)</span>  <span class="c1"># ee.Projection object</span>
+
+<span class="c1"># Get scale (in meters) information from band 1.</span>
+<span class="n">b1_scale</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span><span class="o">.</span><span class="n">nominalScale</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Band 1 scale:&#39;</span><span class="p">,</span> <span class="n">b1_scale</span><span class="p">)</span>  <span class="c1"># ee.Number</span>
+
+<span class="c1"># Note that different bands can have different projections and scale.</span>
+<span class="n">b8_scale</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span><span class="o">.</span><span class="n">nominalScale</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Band 8 scale:&#39;</span><span class="p">,</span> <span class="n">b8_scale</span><span class="p">)</span>  <span class="c1"># ee.Number</span>
+
+<span class="c1"># Get a list of all metadata properties.</span>
+<span class="n">properties</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">propertyNames</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Metadata properties:&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>  <span class="c1"># ee.List of metadata properties</span>
+
+<span class="c1"># Get a specific metadata property.</span>
+<span class="n">cloudiness</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER:&#39;</span><span class="p">,</span> <span class="n">cloudiness</span><span class="p">)</span>  <span class="c1"># ee.Number</span>
+
+<span class="c1"># Get version number (ingestion timestamp as microseconds since Unix epoch).</span>
+<span class="n">version</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;system:version&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Version:&#39;</span><span class="p">,</span> <span class="n">version</span><span class="p">)</span>  <span class="c1"># ee.Number</span>
+<span class="n">display</span><span class="p">(</span>
+    <span class="s1">&#39;Version (as ingestion date):&#39;</span><span class="p">,</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Number</span><span class="p">(</span><span class="n">version</span><span class="p">)</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span><span class="o">.</span><span class="n">format</span><span class="p">(),</span>
+<span class="p">)</span>  <span class="c1"># ee.Date</span>
+
+<span class="c1"># Get the timestamp.</span>
+<span class="n">ee_date</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Timestamp:&#39;</span><span class="p">,</span> <span class="n">ee_date</span><span class="p">)</span>  <span class="c1"># ee.Date</span>
+
+<span class="c1"># Date objects transferred to the client are milliseconds since UNIX epoch;</span>
+<span class="c1"># convert to human readable date with ee.Date.format().</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Datetime:&#39;</span><span class="p">,</span> <span class="n">ee_date</span><span class="o">.</span><span class="n">format</span><span class="p">())</span>  <span class="c1"># ISO standard date string</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://developers.google.com/earth-engine/guides/ic_info">ImageCollection Information and Metadata</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load a Landsat 8 ImageCollection for a single path-row.</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;LANDSAT/LC08/C02/T1_TOA&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_PATH&#39;</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;WRS_ROW&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2014-03-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2014-08-01&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Collection:&#39;</span><span class="p">,</span> <span class="n">collection</span><span class="p">)</span>
+
+<span class="c1"># Get the number of images.</span>
+<span class="n">count</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Count:&#39;</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>
+
+<span class="c1"># Get the date range of images in the collection.</span>
+<span class="nb">range</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">reduceColumns</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">minMax</span><span class="p">(),</span> <span class="p">[</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">])</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Date range:&#39;</span><span class="p">,</span> <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="nb">range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;min&#39;</span><span class="p">)),</span> <span class="n">ee</span><span class="o">.</span><span class="n">Date</span><span class="p">(</span><span class="nb">range</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;max&#39;</span><span class="p">)))</span>
+
+<span class="c1"># Get statistics for a property of the images in the collection.</span>
+<span class="n">sun_stats</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">aggregate_stats</span><span class="p">(</span><span class="s1">&#39;SUN_ELEVATION&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Sun elevation statistics:&#39;</span><span class="p">,</span> <span class="n">sun_stats</span><span class="p">)</span>
+
+<span class="c1"># Sort by a cloud cover property, get the least cloudy image.</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;CLOUD_COVER&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">())</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Least cloudy image:&#39;</span><span class="p">,</span> <span class="n">image</span><span class="p">)</span>
+
+<span class="c1"># Limit the collection to the 10 most recent images.</span>
+<span class="n">recent</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;Recent images:&#39;</span><span class="p">,</span> <span class="n">recent</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">1.2</span> <span class="n">Projection</span> <span class="n">Information</span> <span class="k">for</span> <span class="n">B053</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;Projection&#39;</span><span class="p">,</span> <span class="s1">&#39;crs&#39;</span><span class="p">:</span> <span class="s1">&#39;EPSG:32611&#39;</span><span class="p">,</span> <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">292000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4110000</span><span class="p">]}</span>
+
+<span class="n">Code</span> <span class="p">(</span><span class="n">below</span><span class="p">):</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Raster Vector Conversion</span>
+<span class="c1"># Load a Japan boundary from the Large Scale International Boundary dataset.</span>
+<span class="n">japan</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s1">&#39;USDOS/LSIB_SIMPLE/2017&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;country_na&#39;</span><span class="p">,</span> <span class="s1">&#39;Japan&#39;</span><span class="p">))</span>
+
+<span class="c1"># Load a 2012 nightlights image, clipped to the Japan border.</span>
+<span class="n">nl2012</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;NOAA/DMSP-OLS/NIGHTTIME_LIGHTS/F182012&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;stable_lights&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">clipToCollection</span><span class="p">(</span><span class="n">japan</span><span class="p">)</span>
+
+<span class="c1"># Define arbitrary thresholds on the 6-bit nightlights image.</span>
+<span class="n">zones</span> <span class="o">=</span> <span class="n">nl2012</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nl2012</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">55</span><span class="p">))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nl2012</span><span class="o">.</span><span class="n">gt</span><span class="p">(</span><span class="mi">62</span><span class="p">))</span>
+<span class="n">zones</span> <span class="o">=</span> <span class="n">zones</span><span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">zones</span><span class="o">.</span><span class="n">neq</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="c1"># Convert the zones of the thresholded nightlights to vectors.</span>
+<span class="n">vectors</span> <span class="o">=</span> <span class="n">zones</span><span class="o">.</span><span class="n">addBands</span><span class="p">(</span><span class="n">nl2012</span><span class="p">)</span><span class="o">.</span><span class="n">reduceToVectors</span><span class="p">(</span><span class="o">**</span><span class="p">{</span>
+  <span class="s1">&#39;geometry&#39;</span><span class="p">:</span> <span class="n">japan</span><span class="p">,</span>
+  <span class="s1">&#39;crs&#39;</span><span class="p">:</span> <span class="n">nl2012</span><span class="o">.</span><span class="n">projection</span><span class="p">(),</span>
+  <span class="s1">&#39;scale&#39;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="s1">&#39;geometryType&#39;</span><span class="p">:</span> <span class="s1">&#39;polygon&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;eightConnected&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="s1">&#39;labelProperty&#39;</span><span class="p">:</span> <span class="s1">&#39;zone&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;reducer&#39;</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="p">})</span>
+
+<span class="c1"># Display the thresholds.</span>
+<span class="n">m</span><span class="o">.</span><span class="n">setCenter</span><span class="p">(</span><span class="mf">139.6225</span><span class="p">,</span> <span class="mf">35.712</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">zones</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;0000FF&#39;</span><span class="p">,</span> <span class="s1">&#39;00FF00&#39;</span><span class="p">,</span> <span class="s1">&#39;FF0000&#39;</span><span class="p">]},</span> <span class="s1">&#39;raster&#39;</span><span class="p">)</span>
+
+<span class="c1"># Make a display image for the vectors, add it to the map.</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">paint</span><span class="p">(</span><span class="n">vectors</span><span class="p">,</span> <span class="s1">&#39;000000&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">display</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;palette&#39;</span><span class="p">:</span> <span class="s1">&#39;000000&#39;</span><span class="p">},</span> <span class="s1">&#39;vectors&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Start Running Code From Here</strong> ✅</p>
+<div class="section" id="grouping-pixels-by-land-cover-type">
+<h2>Grouping pixels by land cover type<a class="headerlink" href="#grouping-pixels-by-land-cover-type" title="Permalink to this heading">#</a></h2>
+<p>In this section, we’ll group pixels by landcover type, and then plot the average spectral signature for each landcover type. We’ll be using the GEE function reduceRegion to get the average value for each band by landcover type.</p>
+<p>This project was inpsired by the following NEON Tutorial: <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/calc-refl-ndvi-py">Spectral signatures by NDVI threshold in Python</a>. Check it out (or any of their other awesome tutorials!) to learn more!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<span class="kn">import</span> <span class="nn">geemap</span>
+<span class="kn">import</span> <span class="nn">geemap.colormaps</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
+<span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;238308207130&#39;</span><span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;238308207130&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import SOAP data</span>
+<span class="n">aopSDR</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30006-001&#39;</span><span class="p">)</span>
+<span class="n">SOAP_2019_sdr</span> <span class="o">=</span> <span class="n">aopSDR</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="c1"># Function to get projection and metadata info for a specific band</span>
+<span class="k">def</span> <span class="nf">print_band_info</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">band_name</span><span class="p">):</span>
+    <span class="n">band</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">band_name</span><span class="p">)</span>
+    <span class="n">projection_info</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+    <span class="n">metadata_info</span> <span class="o">=</span> <span class="n">band</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Projection Information for </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">projection_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Metadata Information for </span><span class="si">{</span><span class="n">band_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">metadata_info</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print projection and metadata info for bands B053, B035, B019</span>
+<span class="n">bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B053&#39;</span><span class="p">,</span> <span class="s1">&#39;B035&#39;</span><span class="p">,</span> <span class="s1">&#39;B019&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">:</span>
+    <span class="n">print_band_info</span><span class="p">(</span><span class="n">SOAP_2019_sdr</span><span class="p">,</span> <span class="n">band</span><span class="p">)</span>
+
+<span class="n">aopRGB</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30010-001&#39;</span><span class="p">)</span>
+<span class="n">SOAP_2019_rgb</span> <span class="o">=</span> <span class="n">aopRGB</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+
+<span class="c1"># Create our region of interest (ROI)</span>
+<span class="n">full_mask</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span> \
+                <span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B001&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mask</span><span class="p">())</span> \
+                <span class="o">.</span><span class="n">reduceToVectors</span><span class="p">(</span><span class="n">maxPixels</span><span class="o">=</span><span class="mf">1e13</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ROI</span> <span class="o">=</span> <span class="n">full_mask</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Import NLCD data, clip to SOAP</span>
+<span class="n">NLCD</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USGS/NLCD_RELEASES/2021_REL/NLCD&quot;</span><span class="p">)</span> \
+          <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">ROI</span><span class="p">)</span> \
+          <span class="o">.</span><span class="n">first</span><span class="p">()</span> \
+          <span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ROI</span><span class="p">)</span>
+<span class="c1"># Set up visualization params</span>
+<span class="n">RGB_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B053&#39;</span><span class="p">,</span> <span class="s1">&#39;B035&#39;</span><span class="p">,</span> <span class="s1">&#39;B019&#39;</span><span class="p">]</span> <span class="c1"># These are the band names for the red, green, blue bands in the SDR data</span>
+<span class="n">rgbVis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span> <span class="c1"># This sets a nice range of values for mapping the RGB data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># View NLCD data for SOAP</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">SOAP_2019_rgb</span><span class="p">,</span> <span class="n">rgbVis</span><span class="p">,</span> <span class="s1">&#39;SOAP 2019 RGB&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">NLCD</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">),</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;landcover&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">ROI</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    <span class="c1"># import additional packages for dataframe manipulation, plotting in python</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="c1"># Select the WL_FWHM_B*** band properties (using regex)</span>
+<span class="n">properties</span> <span class="o">=</span> <span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">toDictionary</span><span class="p">()</span>
+<span class="n">wl_fwhm_dict</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;WL_FWHM_B+\d</span><span class="si">{3}</span><span class="s1">&#39;</span><span class="p">])</span>
+
+<span class="c1"># Pull out the wavelength, fwhm values to a list</span>
+<span class="n">wl_fwhm_list</span> <span class="o">=</span> <span class="n">wl_fwhm_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+
+<span class="c1"># Function to pull out the wavelength values only and convert the string to float</span>
+<span class="k">def</span> <span class="nf">get_wavelengths</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="n">str_split</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+  <span class="n">first_elem</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Number</span><span class="o">.</span><span class="n">parse</span><span class="p">((</span><span class="n">str_split</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+  <span class="k">return</span> <span class="n">first_elem</span>
+
+<span class="c1"># apply the function to the wavelength full-width-half-max list</span>
+<span class="n">wavelengths</span> <span class="o">=</span> <span class="n">wl_fwhm_list</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">get_wavelengths</span><span class="p">)</span>
+
+<span class="c1"># Set up some additional lists and dictionaries that will allow us to nicely print the wavelength values in nanometers, and use the NLCD color palette</span>
+<span class="n">wavelengthsL</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">wavelengths</span><span class="o">.</span><span class="n">getInfo</span><span class="p">())</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>  <span class="c1"># get a list of wavelengths measured in the SDR data</span>
+
+<span class="n">palette</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">NLCD</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;landcover_class_palette&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>  <span class="c1"># Get the color palette, landcover code values, landcover names from NLCD</span>
+<span class="n">values</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">NLCD</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;landcover_class_values&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">names</span> <span class="o">=</span>  <span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">NLCD</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;landcover_class_names&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ee</span><span class="o">.</span><span class="n">String</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)))</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+
+
+<span class="n">nlcd_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)}</span>  <span class="c1"># create a dictionary linking the landcover names and lancover codes</span>
+<span class="n">palette</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#&#39;</span><span class="o">+</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">palette</span><span class="p">]</span>  <span class="c1"># convert palette values to hex format</span>
+<span class="n">colDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">palette</span><span class="p">))</span>         <span class="c1"># create dict of landcover_names to colors</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Get the average reflectance value for each wavelength, for each vegetation type</span>
+
+<span class="c1"># Set up for input to reduceRegion</span>
+<span class="n">SOAP_2019_toReduce</span> <span class="o">=</span> <span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B.*&#39;</span><span class="p">)</span> <span class="c1"># just select the wavelength bands</span>
+<span class="n">lcbandNum</span> <span class="o">=</span> <span class="n">SOAP_2019_toReduce</span><span class="o">.</span><span class="n">bandNames</span><span class="p">()</span><span class="o">.</span><span class="n">length</span><span class="p">()</span> <span class="c1"># calculate the number of bands to reduce</span>
+
+<span class="c1"># Apply reduceRegion to the SDR data with landcover</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">SOAP_2019_toReduce</span><span class="o">.</span><span class="n">addBands</span><span class="p">(</span><span class="n">NLCD</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;landcover&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">reduceRegion</span><span class="p">(</span>
+  <span class="n">reducer</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">lcbandNum</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">groupField</span><span class="o">=</span><span class="n">lcbandNum</span><span class="p">,</span> <span class="n">groupName</span><span class="o">=</span><span class="s1">&#39;landcover&#39;</span><span class="p">),</span>
+  <span class="n">geometry</span><span class="o">=</span><span class="n">ROI</span><span class="p">,</span>
+  <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+  <span class="n">maxPixels</span><span class="o">=</span><span class="mf">1e13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a pandas dataframe from a featureCollection created using the output of reduceRegions</span>
+<span class="n">reformatted_means</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">List</span><span class="p">(</span><span class="n">means</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;groups&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obj</span><span class="p">:</span> <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">obj</span><span class="p">)))</span>
+<span class="n">lc_wv_df</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">ee_to_df</span><span class="p">(</span><span class="n">reformatted_means</span><span class="p">)</span>
+<span class="n">lc_wv_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clean up the pandas dataframe for plotting</span>
+<span class="n">lc_wv_df</span><span class="p">[</span><span class="s1">&#39;landcover_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lc_wv_df</span><span class="p">[</span><span class="s1">&#39;landcover&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">nlcd_dict</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>  <span class="c1"># create a landcover name column</span>
+<span class="n">lc_wv_df</span><span class="p">[</span><span class="n">wavelengthsL</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lc_wv_df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span> <span class="c1"># expand the &quot;mean&quot; column into 400+ columns (1 column per wavelength)</span>
+
+<span class="c1"># Create a pandas dataframe with the columns landcover_name, wavelength, reflectance for plotting</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">lc_wv_df</span><span class="p">,</span>
+             <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;landcover_name&#39;</span><span class="p">],</span>
+             <span class="n">value_vars</span><span class="o">=</span><span class="n">wavelengthsL</span><span class="p">,</span>
+             <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;wavelength (nm)&#39;</span><span class="p">,</span>
+             <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;reflectance&#39;</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span> <span class="p">{</span><span class="s2">&quot;landcover_name&quot;</span><span class="p">:</span><span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;wavelength (nm)&quot;</span><span class="p">:</span><span class="s2">&quot;float64&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;reflectance&quot;</span><span class="p">:</span><span class="s2">&quot;float64&quot;</span><span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot spectra by landcover type</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;wavelength (nm)&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;reflectance&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;landcover_name&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">colDict</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">move_legend</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p>Joining species ID data with land cover type data. — Not finished</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#Mounting Drive
+from google.colab import drive
+
+# This will prompt for authorization.
+drive.mount(&#39;/content/drive&#39;)
+
+#Import Plant Foliar traits data:
+!unzip &quot;/content/drive/MyDrive/Colab Notebooks/NEON_traits-foliar.zip&quot;
+</pre></div>
+</div>
+<p>Possible steps after that:</p>
+<ul class="simple">
+<li><p>Read the CSV using pandas</p></li>
+<li><p>See attributes and see if there is a similar attribute between layers, if not, create a new attribute for land cover.</p></li>
+<li><p>To then be able to join the ID data with land cover types.</p></li>
+</ul>
+<p>Example of these can be found in this <a class="reference external" href="https://academic.oup.com/ee/advance-article-abstract/doi/10.1093/ee/nvac073/6731819">paper</a>.</p>
+</div>
+</div>
+<div class="section" id="additional-resources">
+<h1>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><strong>End-to-End Google Earth Engine</strong>: If you’d like to continue exploring the Earth Engine processes and applications, <a href="https://courses.spatialthoughts.com/end-to-end-gee.html#automatic-conversion-of-javascript-code-to-python" target="_blank"> SpatialThoughts Course - Ujaval Gandhi </a> has some nice examples you can follow.</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./google_drive/colab_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="final_disturbance_lidar.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Mapping Fire Impacts - LiDAR-based</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Zonal Stats: Exploring spectra by land cover</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-pixels-by-land-cover-type">Grouping pixels by land cover type</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carissa DeRanek & Jonathan Pando Ocón, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
