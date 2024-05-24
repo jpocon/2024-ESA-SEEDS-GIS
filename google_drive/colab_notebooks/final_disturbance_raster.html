@@ -1,0 +1,2930 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapping Fire Impacts - Raster-based &#8212; 2024 ESA SEEDS GIS Workshop</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'google_drive/colab_notebooks/final_disturbance_raster';</script>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mapping Fire Impacts - LiDAR-based" href="final_disturbance_lidar.html" />
+    <link rel="prev" title="Principal Component Analysis &amp; Kmeans Clustering" href="final_pca_kmeans.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../about.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/update_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/update_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../about.html">
+                    Welcome to the 2024 ESA SEEDS GIS Workshop!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Set Up</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="google_tools.html">Getting Started with Google Tools for GIS and Ecological Applications</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="mount_drive.html"><strong>Mounting Google Drive</strong></a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="update_url_download.html">Download data directly from URL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geemap_python_api.html"><strong><code class="docutils literal notranslate"><span class="pre">geemap</span></code> Setup in Colab</strong></a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">GIS &amp; Remote Sensing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="update_background.html">Getting Started with GIS &amp; Remote Sensing</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="update_neon_aop.html"><strong>Introduction to NEON AOP</strong></a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Group Exercises</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="final_pca_kmeans.html"><strong>Principal Component Analysis &amp; Kmeans Clustering</strong></a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Mapping Fire Impacts - Raster-based</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="final_disturbance_lidar.html">Mapping Fire Impacts - LiDAR-based</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="final_landcover_zonalstats.html"><strong>Zonal Stats: Exploring spectra by land cover</strong></a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jpocon/2024-ESA-SEEDS-GIS/blob/master/google_drive/colab_notebooks/final_disturbance_raster.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/jpocon/2024-ESA-SEEDS-GIS" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/google_drive/colab_notebooks/final_disturbance_raster.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mapping Fire Impacts - Raster-based</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Mapping Fire Impacts - Raster-based</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-exercises-for-each-group">Reflection exercises for each group:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgement">Acknowledgement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-in-vector-data-fire-exploration">Bringing in vector data (fire exploration)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-2019-and-2021-soap-data">Import the 2019 and 2021 SOAP data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-roi-that-talks-only-the-pixels-covered-by-both-years-adds-30m-buffer">Create an ROI that talks only the pixels covered by both years + adds -30m buffer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-nbr">calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b097-b365">B097: B365:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-dnbr">calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#add-rgb-base"># add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#add-nbr-layers"># add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#add-dnbr-layer">add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-earth-engine-library">Import the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-the-earth-engine-library">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-soap-data-for-2019-and-2021">Define the SOAP data for 2019 and 2021</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-roi-that-includes-only-the-pixels-covered-by-both-years-adds-30m-buffer">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-export-parameters">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-export-task">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-status-of-the-task">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user">User</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-image-collections-replace-with-the-actual-paths-if-different">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Import the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#these-are-example-dataset-ids-you-need-to-replace-them-with-the-actual-ids-you-find-in-the-data-catalog">These are example dataset IDs, you need to replace them with the actual IDs you find in the Data Catalog</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Import the 2019 and 2021 SOAP data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Create an ROI that talks only the pixels covered by both years + adds -30m buffer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">B097: B365:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"># add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"># add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id57">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id58">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id59">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id60">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id61">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id62">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id63">Add dNBR layer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m-centerobject-roi-m">m.centerObject(ROI)
+m</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id64">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id65">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id66">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id67">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id68">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id69">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id70">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id71">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id72">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id73">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id74">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id75">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id76">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id77">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id78">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id79">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id80">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id81">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id82">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id83">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id84">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id85">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id86">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id87">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id88">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-export-completed">print(‘Export completed.’)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id89">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id90">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id91">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id92">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id93">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id94">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id95">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id96">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id97">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id98">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id99">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id100">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id101">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id102">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id103">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id104">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id105">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id106">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id107">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id108">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id109">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id110">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id111">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id112">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id113">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id114">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-to-the-exported-geotiff-file-download-it-from-google-drive-first">Path to the exported GeoTIFF file (download it from Google Drive first)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-geotiff-file">Read the GeoTIFF file</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id115">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id116">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id117">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id118">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id119">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id120">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id121">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id122">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id123">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id124">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id125">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id126">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-export-completed-polling-for-task-id-5ukziwsijnpsc3n6ekpnwbqp">print(‘Export completed.’)
+Polling for task (id: 5UKZIWSIJNPSC3N6EKPNWBQP).</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id127">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id128">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id129">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id130">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id131">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id132">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id133">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id134">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id135">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id136">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id137">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id138">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id139">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id140">Import the 2019 and 2021 SOAP data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id141">Create an ROI that talks only the pixels covered by both years + adds -30m buffer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id142">calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id143">B097: B365:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id144">calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id145">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id146"># add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id147"># add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id148">add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id149">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id150">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id151">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id152">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id153">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id154">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id155">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id156">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-parameters">Visualization parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-visualization-parameters-to-create-an-rgb-image">Apply visualization parameters to create an RGB image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id157">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id158">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id159">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="section" id="mapping-fire-impacts-raster-based">
+<h1><strong>Mapping Fire Impacts - Raster-based</strong><a class="headerlink" href="#mapping-fire-impacts-raster-based" title="Permalink to this heading">#</a></h1>
+<p>The Creek Fire in California ocurred in 2020. We used pre-fire (2019) data and post-fire (2021) to identify burn extent and severity. To do this, we used Normalized burn ratio (NBR) which includes Near Infrared (NIR) and Shortwave Infrared (SWIR).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>             NBR = (NIR - SWIR) / NIR + SWIR
+
+              from here, we can calcuate dNBR:
+
+             dNBR = NBRprefire - NBRpostfire
+</pre></div>
+</div>
+<div class="section" id="reflection-exercises-for-each-group">
+<h2>Reflection exercises for each group:<a class="headerlink" href="#reflection-exercises-for-each-group" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>At the top of the Colab notebook that you share with everyone, please include your responses to the following questions:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Choose at least 1 dataset to explore in more detail. <strong>We are looking at NEON datasets for the SOAP site showing RGB and SDR data.</strong></p></li>
+<li><p>What is the projection for this dataset? <strong>EPSG:32611</strong> <strong>WGS 84 / UTM zone 11N</strong></p></li>
+<li><p>Where can you find more information on how the data were collected and how to interpret the metadata? <strong>SOAP_2019_sdr.getInfo(). Date of flight, time of day, location, weather</strong></p></li>
+<li><p>Think about what data type each variable is. <strong>Coordinates, dates, etc</strong></p></li>
+<li><p>Is it vector or raster data? What properties exist for each dataset? <strong>Raster data (because it is an image[pixels])- SOAP/MTBS, Vector data - MTBS burn boundary.</strong></p></li>
+<li><p>What resolution are your data? <strong>Spatial data are 1 km mosaics; location is California; temporal resolution is annual</strong></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>At the top of the Colab notebook, write a short summary detailing the processing steps in the notebook and your results.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Although these topics may be far removed from your own interests, how could these steps and analyses help in your own work?</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>OPTIONAL - Expand your script by adding additional processing, analysis, or other data. <strong>We added a raster file from MTBS showing the NBS to compare to our results to confirm accuracy.</strong></p></li>
+</ol>
+<p>As you’re working through your exercise, <strong>add code chunks to further document your scripts. Add additional comments to the code itself to clarify complicated processes.</strong></p>
+<hr class="docutils" />
+</div>
+<div class="section" id="acknowledgement">
+<h2>Acknowledgement<a class="headerlink" href="#acknowledgement" title="Permalink to this heading">#</a></h2>
+<p>The code and comments for this project were adpated from NEON in <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/intro-aop-data-google-earth-engine-tutorial-series#toggle-36">this tutorial</a>. Check it out (or any of their other awesome tutorials!) to learn more!</p>
+</div>
+<div class="section" id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
+<p>In this first section, we’ll explore the Soaproot Saddle NEON site in California before and after a 2020 burn. We’ll map the reflectance data, RGB data, and difference in normalized burn ratio (dNBR).</p>
+<div id="ds-objectives" markdown="1">
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<p>The <strong>Creek Fire</strong> was a large wildfire that started in September 2020 in the Sierra National Forest, California and became one of the largest fires of the <a class="reference external" href="https://en.wikipedia.org/wiki/2020_California_wildfires">2020 California wildfire season</a>. This fire had burned into NEON’s <a class="reference external" href="https://www.neonscience.org/field-sites/soap">Soaproot Saddle (SOAP)</a> site by mid-September, causing a <a class="reference external" href="https://www.neonscience.org/impact/observatory-blog/domain-digest-no-4-fire-field-sites-and-recovery">high intensity burn over much of the site</a> - standing trees became charcoal spires, shrubs and their root systems burned completely, the thick litter layer was incinerated, and the soil severely burned.</p>
+<p>The NEON Airborne Observation Platform (AOP) conducted aerial surveys over SOAP in 2019 and 2021, a year before and after the Creek Fire.</p>
+<p>In our introduction to AOP data, we learned how to calculate NDVI. Another common vegetation index is NBR, the normalized burn ratio. NBR is commonly used to asses burn severity. NBR is calculated as: <br></p>
+<blockquote>
+<div><p>NBR = (NIR – SWIR) / (NIR + SWIR)</p>
+</div></blockquote>
+<p><img src='https://drive.google.com/uc?export=view&id=1zUP9oDdeQdiyQGL-2Vh1aqz8QCy03XPR' width=400> Image credit: <a class="reference external" href="https://appliedsciences.nasa.gov/sites/default/files/ChangeDetection_S1.pdf">NASA ARSET Training Materials</a></p>
+<p>Then, dNBR is the difference in NBR, which is calcualted as <br></p>
+<blockquote>
+<div><p>dNBR = prefire NBR - postfire NBR</p>
+</div></blockquote>
+<p>The USGS proposes the following categories based on dNBR:<br>
+<img src='https://drive.google.com/uc?export=view&id=1firJsT-ON56_LYII9MErCw1UC6V8Y3QD' width=600>Image credit: <a class="reference external" href="https://www.earthdatascience.org/courses/earth-analytics/multispectral-remote-sensing-modis/normalized-burn-index-dNBR/">Earth Lab</a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://data.neonscience.org/data-products/DP3.30006.001">Surface Directional Reflectance</a></p></li>
+<li><p><a class="reference external" href="https://data.neonscience.org/data-products/DP3.30010.001">High resolution camera imagery, red-green-blue (RGB)</a></p></li>
+<li><p><a class="reference external" href="https://data.neonscience.org/data-products/DP3.30015.001">Canopy height model</a></p></li>
+<li><p><a class="reference external" href="https://data.neonscience.org/data-products/DP3.30024.001">Digital elevation model</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ee</span>
+<span class="kn">import</span> <span class="nn">geemap</span>
+<span class="kn">import</span> <span class="nn">geemap.colormaps</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
+<span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;820081621265&#39;</span><span class="p">)</span>
+<span class="n">geemap</span><span class="o">.</span><span class="n">ee_initialize</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the AOP surface directional reflectance (SDR)</span>
+<span class="n">aopSDR</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30006-001&#39;</span><span class="p">)</span> <span class="c1"># Raw data with 442 bands.</span>
+<span class="c1"># Import the AOP red-green-blue imagery (RGB)</span>
+<span class="n">aopRGB</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30010-001&#39;</span><span class="p">)</span>
+<span class="c1"># Import the AOP canopy height model data (CHM)</span>
+<span class="n">aopCHM</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30015-001&#39;</span><span class="p">)</span>
+<span class="c1"># Import the AOP digital elevation model data (DEM)</span>
+<span class="n">aopDEM</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;projects/neon-prod-earthengine/assets/DP3-30024-001&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set up visualization params</span>
+<span class="n">RGB_bands</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B053&#39;</span><span class="p">,</span> <span class="s1">&#39;B035&#39;</span><span class="p">,</span> <span class="s1">&#39;B019&#39;</span><span class="p">]</span> <span class="c1"># These are the band names for the red, green, blue bands in the SDR data</span>
+<span class="n">rgbVis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span> <span class="c1"># This sets a nice range of values for mapping the RGB data</span>
+<span class="n">sdrVis</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="mi">1260</span><span class="p">,</span> <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">}</span> <span class="c1"># This sets a nice range of values for mapping the RGB data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">### Code and comments adpated from NEON at https://www.neonscience.org/resources/learning-hub/tutorials/intro-aop-data-google-earth-engine-tutorial-series#toggle-36</span>
+<span class="sd">&#39;&#39;&#39;------------------------- Normalized Difference Burn Ratio ----------------------------</span>
+<span class="sd">The normalized burn ratio (NBR) is a normalized difference index using the shortwave-infrared (SWIR) and near-infrared (NIR) portions of the electromagnetic spectrum.</span>
+<span class="sd">dNBR can be used as a metric to map fire extent and burn severity when calculating the difference between pre and post fire conditions.</span>
+<span class="sd">&#39;&#39;&#39;</span>
+
+<span class="c1"># Import the 2019 and 2021 SOAP data</span>
+<span class="n">SOAP_2019_sdr</span> <span class="o">=</span> <span class="n">aopSDR</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="n">SOAP_2021_sdr</span> <span class="o">=</span> <span class="n">aopSDR</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="n">SOAP_2019_rgb</span> <span class="o">=</span> <span class="n">aopRGB</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+
+<span class="n">SOAP_2021_rgb</span> <span class="o">=</span> <span class="n">aopRGB</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+
+<span class="c1">## Create an ROI that talks only the pixels covered by both years + adds -30m buffer</span>
+<span class="n">full_mask</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span> \
+                <span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B001&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mask</span><span class="p">())</span> \
+                <span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">SOAP_2021_sdr</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B001&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mask</span><span class="p">())</span> \
+                <span class="o">.</span><span class="n">reduceToVectors</span><span class="p">(</span><span class="n">maxPixels</span><span class="o">=</span><span class="mf">1e13</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ROI</span> <span class="o">=</span> <span class="n">full_mask</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">buffer</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># calculate NBR</span>
+<span class="c1"># B097: B365:</span>
+<span class="n">pre_nbr</span> <span class="o">=</span> <span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B097&#39;</span><span class="p">,</span> <span class="s1">&#39;B365&#39;</span><span class="p">])</span>
+<span class="n">post_nbr</span> <span class="o">=</span> <span class="n">SOAP_2021_sdr</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B097&#39;</span><span class="p">,</span> <span class="s1">&#39;B365&#39;</span><span class="p">])</span>
+
+<span class="c1"># calculate dNBR</span>
+<span class="n">dNBR</span> <span class="o">=</span> <span class="n">pre_nbr</span> \
+        <span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">post_nbr</span><span class="p">)</span>
+
+<span class="c1"># Mapping</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span><span class="n">cm</span><span class="o">.</span><span class="n">get_palette</span><span class="p">(</span><span class="s1">&#39;RdYlGn_r&#39;</span><span class="p">,</span> <span class="n">n_class</span><span class="o">=</span><span class="mi">20</span><span class="p">)}</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+
+<span class="c1"># # add RGB base</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">SOAP_2019_rgb</span><span class="p">,</span> <span class="n">rgbVis</span><span class="p">,</span> <span class="s1">&#39;SOAP 2019 RGB&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">SOAP_2021_rgb</span><span class="p">,</span> <span class="n">rgbVis</span><span class="p">,</span> <span class="s1">&#39;SOAP 2021 RGB&#39;</span><span class="p">)</span>
+
+<span class="c1"># # add NBR layers</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">pre_nbr</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;2019 Normalized Burn Ratio&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">post_nbr</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;2021 Normalized Burn Ratio&#39;</span><span class="p">)</span>
+
+<span class="c1"># add dNBR layer</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dNBR</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;dNBR&#39;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">ROI</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">projection</span><span class="p">()</span> <span class="c1"># How to find the projection.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SOAP_2019_sdr</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span> <span class="c1"># This is how to find the metadata.</span>
+
+<span class="n">display</span><span class="p">(</span><span class="s1">&#39;All metadata:&#39;</span><span class="p">,</span> <span class="n">SOAP_2019_sdr</span><span class="p">)</span> <span class="c1"># A different way to display the metadata of a single image.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="bringing-in-vector-data-fire-exploration">
+<h1>Bringing in vector data (fire exploration)<a class="headerlink" href="#bringing-in-vector-data-fire-exploration" title="Permalink to this heading">#</a></h1>
+<p>Now, let’s compare our map of dNBR with existing fire data. The MTBS (Monitoring Trends in Burn Severity) data product is already publicly available on GEE.</p>
+<p>In the next code chunk, we’ll inspect 1 feature (representing a fire polygon) from MTBS. We extract the feature of interested by filtering the MTBS FeatureCollection to our area of interest and the year 2020.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">MTBS</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="s2">&quot;USFS/GTAC/MTBS/burned_area_boundaries/v1&quot;</span><span class="p">)</span> \
+              <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">SOAP_2021_sdr</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span> \
+              <span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">feat</span><span class="p">:</span> <span class="n">feat</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;system:time_start&#39;</span><span class="p">,</span> <span class="n">feat</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;Ig_Date&#39;</span><span class="p">)))</span> \
+              <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-01-01&#39;</span><span class="p">)</span>
+<span class="n">MTBS</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s overlay the MTBS data product on our dNBR map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mtbs_creek</span> <span class="o">=</span> <span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USFS/GTAC/MTBS/annual_burn_severity_mosaics/v1&quot;</span><span class="p">)</span> <span class="c1">#From gee, Monitoring Trends in Burn Severity (MTBS) Burn Severit</span>
+                    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s1">&#39;system:index&#39;</span><span class="p">,</span><span class="s1">&#39;mtbs_CONUS_2020&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+
+<span class="n">sev</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Image</span><span class="p">(</span><span class="n">mtbs_creek</span><span class="o">.</span><span class="n">first</span><span class="p">())</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">SOAP_2019_rgb</span><span class="o">.</span><span class="n">geometry</span><span class="p">())</span> <span class="c1">#You can take the mtbs_creek image and do a clip function so that it only shows within the SOAP site.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;USFS/GTAC/MTBS/annual_burn_severity_mosaics/v1&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mapping</span>
+<span class="n">vis_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;min&#39;</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;palette&#39;</span><span class="p">:</span><span class="n">cm</span><span class="o">.</span><span class="n">get_palette</span><span class="p">(</span><span class="s1">&#39;RdYlGn_r&#39;</span><span class="p">,</span> <span class="n">n_class</span><span class="o">=</span><span class="mi">20</span><span class="p">)}</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">geemap</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+
+<span class="c1"># # add RGB base</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">SOAP_2019_rgb</span><span class="p">,</span> <span class="n">rgbVis</span><span class="p">,</span> <span class="s1">&#39;SOAP 2019 RGB&#39;</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">SOAP_2021_rgb</span><span class="p">,</span> <span class="n">rgbVis</span><span class="p">,</span> <span class="s1">&#39;SOAP 2021 RGB&#39;</span><span class="p">)</span>
+
+<span class="c1"># add dNBR layer</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">dNBR</span><span class="p">,</span> <span class="n">vis_params</span><span class="p">,</span> <span class="s1">&#39;dNBR&#39;</span><span class="p">)</span>
+
+<span class="c1"># add MTBS layer</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">MTBS</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">addLayer</span><span class="p">(</span><span class="n">sev</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">centerObject</span><span class="p">(</span><span class="n">ROI</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we’ve seen the boundary of the 2020 Creek Fire, let’s use the canopy 2019 and 2021 height model (CHM) and the Creek Fire Boundary to see the change in canopy height post-fire at the SOAP site.</p>
+<p>First, we’ll show the distribution of changes in canopy height post-fire for the entire burn region.</p>
+<p>Then, we’ll use dNBR thresholds to estimate “high severity” vs “low severity” burn regions within the burned area, and plot the distribution of changes in canopy height by estimated severity. <br>
+<em>Note: If you’re interested in fire severity classifications, MTBS also has a burn severity raster product available on GEE!</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in the CHM for 2019 and 2021</span>
+<span class="n">SOAP_2019_chm</span> <span class="o">=</span> <span class="n">aopCHM</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+
+<span class="n">SOAP_2021_chm</span> <span class="o">=</span> <span class="n">aopCHM</span> \
+  <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2021-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2021-12-31&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">filterMetadata</span><span class="p">(</span><span class="s1">&#39;NEON_SITE&#39;</span><span class="p">,</span> <span class="s1">&#39;equals&#39;</span><span class="p">,</span> <span class="s1">&#39;SOAP&#39;</span><span class="p">)</span> \
+  <span class="o">.</span><span class="n">first</span><span class="p">()</span>
+
+<span class="c1"># Convert rasterize the MTBS polygon</span>
+<span class="n">creek_img</span> <span class="o">=</span> <span class="n">MTBS</span><span class="o">.</span><span class="n">reduceToImage</span><span class="p">(</span><span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;BurnBndAc&#39;</span><span class="p">],</span> <span class="n">reducer</span><span class="o">=</span><span class="n">ee</span><span class="o">.</span><span class="n">Reducer</span><span class="o">.</span><span class="n">anyNonZero</span><span class="p">())</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">ROI</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;burned&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Calculate the pixel-by-pixel difference in canopy height between 2019 and 2021 for only the area in the Creek fire burn region</span>
+<span class="n">chm_diff_burned</span> <span class="o">=</span> <span class="n">SOAP_2021_chm</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">SOAP_2019_chm</span><span class="p">)</span> \
+                    <span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">creek_img</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> \
+                    <span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">ROI</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Calculate the pixel-by-pixel difference in canopy height between 2019 and 2021 for only the area outside the Creek fire burn region</span>
+<span class="n">chm_diff_unburned</span> <span class="o">=</span> <span class="n">SOAP_2021_chm</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">SOAP_2019_chm</span><span class="p">)</span> \
+                    <span class="o">.</span><span class="n">updateMask</span><span class="p">(</span><span class="n">creek_img</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span> \
+                    <span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">ROI</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Plot difference in CHM</span>
+<span class="kn">import</span> <span class="nn">geemap.chart</span> <span class="k">as</span> <span class="nn">chart</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;xlabel&quot;</span><span class="p">:</span> <span class="s2">&quot;Change in canopy height (m)&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ylabel&quot;</span><span class="p">:</span> <span class="s2">&quot;Pixel count&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;colors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;#1d6b99&quot;</span><span class="p">],</span>
+<span class="p">}</span>
+<span class="n">chart</span><span class="o">.</span><span class="n">feature_histogram</span><span class="p">(</span><span class="n">chm_diff_burned</span><span class="p">,</span> <span class="s1">&#39;CHM&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Change in canopy height post-fire in the Creek Fire boundary&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">chart</span><span class="o">.</span><span class="n">feature_histogram</span><span class="p">(</span><span class="n">chm_diff_unburned</span><span class="p">,</span> <span class="s1">&#39;CHM&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Change in canopy height post-fire outside the Creek Fire boundary&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary><h2>MAP EXPORT TROUBLESHOOTING LOG USING CHAT GPT</h2></summary>
+<p>In short, I took the code for the map object we have just created in colab and pasted into chatgpt. Then I asked how can I export the map object into google drive. It provided a code to do this based on the information provided, but also a generic code with placeholders for the information it does not have. After some troubleshooting I was able to achieve the export. The colors came out incorrect, so it requires more troubleshooting.</p>
+<p>User</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="import-the-2019-and-2021-soap-data">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#import-the-2019-and-2021-soap-data" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR <br />
+.filterDate(‘2019-01-01’, ‘2019-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2021_sdr = aopSDR <br />
+.filterDate(‘2021-01-01’, ‘2021-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2019_rgb = aopRGB <br />
+.filterDate(‘2019-01-01’, ‘2019-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2021_rgb = aopRGB <br />
+.filterDate(‘2021-01-01’, ‘2021-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<div class="section" id="create-an-roi-that-talks-only-the-pixels-covered-by-both-years-adds-30m-buffer">
+<h2>Create an ROI that talks only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#create-an-roi-that-talks-only-the-pixels-covered-by-both-years-adds-30m-buffer" title="Permalink to this heading">#</a></h2>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="calculate-nbr">
+<h1>calculate NBR<a class="headerlink" href="#calculate-nbr" title="Permalink to this heading">#</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="b097-b365">
+<h1>B097: B365:<a class="headerlink" href="#b097-b365" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="calculate-dnbr">
+<h1>calculate dNBR<a class="headerlink" href="#calculate-dnbr" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr <br />
+.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="mapping">
+<h1>Mapping<a class="headerlink" href="#mapping" title="Permalink to this heading">#</a></h1>
+<p>vis_params = {‘min’:-1, ‘max’:1, ‘palette’:cm.get_palette(‘RdYlGn_r’, n_class=20)}
+m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="add-rgb-base">
+<h1># add RGB base<a class="headerlink" href="#add-rgb-base" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="add-nbr-layers">
+<h1># add NBR layers<a class="headerlink" href="#add-nbr-layers" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="add-dnbr-layer">
+<h1>add dNBR layer<a class="headerlink" href="#add-dnbr-layer" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m How can I export this ap to google drive from colab and using earth engine functions
+ChatGPT
+To export the dNBR image or other layers to Google Drive from Google Colab using Earth Engine functions, you’ll need to use the ee.batch.Export.image.toDrive function. Here are the steps to do so:</p>
+<p>Authenticate and Initialize Earth Engine: Ensure you have authenticated and initialized the Earth Engine library in your Colab notebook.
+Set up the Export Parameters: Define the parameters for exporting the image to Google Drive.
+Start the Export Task: Use ee.batch.Export.image.toDrive to start the export task.
+Here’s how you can do it step-by-step:</p>
+<p>Step 1: Authenticate and Initialize Earth Engine in Google Colab
+First, ensure you have authenticated and initialized Earth Engine in your Colab notebook.</p>
+<p>python
+Copy code
+import ee
+ee.Authenticate()
+ee.Initialize()
+Step 2: Define the Export Parameters
+Set up the parameters for exporting the dNBR image. You can specify the region of interest, scale, and other export options.</p>
+<p>Step 3: Start the Export Task
+Use ee.batch.Export.image.toDrive to export the image to Google Drive.</p>
+<p>Here is the complete code:</p>
+<p>python
+Copy code</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="import-the-earth-engine-library">
+<h1>Import the Earth Engine library<a class="headerlink" href="#import-the-earth-engine-library" title="Permalink to this heading">#</a></h1>
+<p>import ee</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="authenticate-and-initialize-the-earth-engine-library">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#authenticate-and-initialize-the-earth-engine-library" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="define-the-soap-data-for-2019-and-2021">
+<h1>Define the SOAP data for 2019 and 2021<a class="headerlink" href="#define-the-soap-data-for-2019-and-2021" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘path/to/aopSDR’)  # Replace with actual path
+aopRGB = ee.ImageCollection(‘path/to/aopRGB’)  # Replace with actual path</p>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="create-an-roi-that-includes-only-the-pixels-covered-by-both-years-adds-30m-buffer">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#create-an-roi-that-includes-only-the-pixels-covered-by-both-years-adds-30m-buffer" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>Calculate NBR<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id2">
+<h1>Calculate dNBR<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="define-export-parameters">
+<h1>Define export parameters<a class="headerlink" href="#define-export-parameters" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+‘folder’: ‘GEE_Exports’  # Folder in your Google Drive
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="start-the-export-task">
+<h1>Start the export task<a class="headerlink" href="#start-the-export-task" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="check-the-status-of-the-task">
+<h1>Check the status of the task<a class="headerlink" href="#check-the-status-of-the-task" title="Permalink to this heading">#</a></h1>
+<p>import time
+while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)
+Explanation:
+Import and Authenticate:</p>
+<p>import ee
+ee.Authenticate() and ee.Initialize() are used to authenticate and initialize the Earth Engine API.
+Define SOAP Data:</p>
+<p>Load the aopSDR and aopRGB image collections.
+Filter for the specific dates and site metadata to get the images for 2019 and 2021.
+Create ROI:</p>
+<p>Create a region of interest that covers only the pixels present in both years, and add a -30m buffer.
+Calculate NBR and dNBR:</p>
+<p>Compute the Normalized Burn Ratio (NBR) for both years.
+Compute the difference in NBR (dNBR).
+Export Parameters:</p>
+<p>Define the parameters for the export, including the image to export, description, scale, region, file format, and Google Drive folder.
+Start Export Task:</p>
+<p>Start the export task using ee.batch.Export.image.toDrive.
+Polling Task Status:</p>
+<p>Optionally, you can poll the status of the export task to know when it completes.
+By following these steps, you can export your Earth Engine results directly to Google Drive from Google Colab. Ensure that you replace placeholders like ‘path/to/aopSDR’ and ‘GEE_Exports’ with actual paths and folder names as per your data and structure.</p>
+<div class="section" id="user">
+<h2>User<a class="headerlink" href="#user" title="Permalink to this heading">#</a></h2>
+<p>HttpError                                 Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+401   try:
+–&gt; 402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:</p>
+<p>6 frames
+HttpError: &lt;HttpError 400 when requesting <a class="reference external" href="https://earthengine.googleapis.com/v1/projects/ee-seeds/image:export?alt=json">https://earthengine.googleapis.com/v1/projects/ee-seeds/image:export?alt=json</a> returned “ImageCollection.load: ImageCollection asset ‘path/to/aopSDR’ not found (does not exist or caller does not have access).”. Details: “ImageCollection.load: ImageCollection asset ‘path/to/aopSDR’ not found (does not exist or caller does not have access).”&gt;</p>
+<p>During handling of the above exception, another exception occurred:</p>
+<p>EEException                               Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:
+–&gt; 404     raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+405
+406</p>
+<p>EEException: ImageCollection.load: ImageCollection asset ‘path/to/aopSDR’ not found (does not exist or caller does not have access).
+/content/sample_data.
+ChatGPT
+The error you’re encountering indicates that the ImageCollection asset ‘path/to/aopSDR’ does not exist or you don’t have access to it. You need to specify the correct path to the ImageCollection you want to use. For example, if you’re using a specific NEON dataset, you need to use the correct Earth Engine asset ID.</p>
+<p>Here’s an updated example assuming you are using some specific public NEON datasets available in Earth Engine. Ensure you replace the placeholders with actual dataset IDs you have access to.</p>
+<p>Example with Correct Asset IDs:
+Authenticate and Initialize Earth Engine:
+python
+Copy code
+import ee
+ee.Authenticate()
+ee.Initialize()
+Define the Image Collections and the Script:
+python
+Copy code</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="define-the-image-collections-replace-with-the-actual-paths-if-different">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#define-the-image-collections-replace-with-the-actual-paths-if-different" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘NEON/D02/OSBS/2016_SDR’)
+aopRGB = ee.ImageCollection(‘NEON/D02/OSBS/2016_RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id3">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id4">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id5">
+<h1>Calculate NBR<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id6">
+<h1>Calculate dNBR<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id7">
+<h1>Define export parameters<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+‘folder’: ‘GEE_Exports’  # Folder in your Google Drive
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id8">
+<h1>Start the export task<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id9">
+<h1>Check the status of the task<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h1>
+<p>import time
+while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Notes:
+Correct Asset IDs: Replace ‘NEON/D02/OSBS/2016_SDR’ and ‘NEON/D02/OSBS/2016_RGB’ with the correct asset IDs for your NEON datasets. If you’re not sure what the correct asset IDs are, you can search for them in the Earth Engine Data Catalog.
+Region of Interest (ROI): Ensure the ROI geometry is correctly defined.
+Folder: Make sure the folder GEE_Exports exists in your Google Drive, or replace it with the correct folder name where you want to save the export.
+Checking Available Datasets
+If you’re not sure about the available datasets, you can explore the Earth Engine Data Catalog:</p>
+<p>Go to the Earth Engine Data Catalog
+Search for relevant datasets by keyword (e.g., “NEON”)
+Note the dataset IDs and use them in your script.
+User
+HttpError                                 Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+401   try:
+–&gt; 402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:</p>
+<p>6 frames
+HttpError: &lt;HttpError 400 when requesting <a class="reference external" href="https://earthengine.googleapis.com/v1/projects/ee-seeds/image:export?alt=json">https://earthengine.googleapis.com/v1/projects/ee-seeds/image:export?alt=json</a> returned “ImageCollection.load: ImageCollection asset ‘NEON/D02/OSBS/2016_SDR’ not found (does not exist or caller does not have access).”. Details: “ImageCollection.load: ImageCollection asset ‘NEON/D02/OSBS/2016_SDR’ not found (does not exist or caller does not have access).”&gt;</p>
+<p>During handling of the above exception, another exception occurred:</p>
+<p>EEException                               Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:
+–&gt; 404     raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+405
+406</p>
+<p>EEException: ImageCollection.load: ImageCollection asset ‘NEON/D02/OSBS/2016_SDR’ not found (does not exist or caller does not have access).
+ChatGPT
+The error you’re encountering indicates that the specified ImageCollection asset ‘NEON/D02/OSBS/2016_SDR’ does not exist or you don’t have access to it. This means you need to verify the correct asset IDs for the datasets you want to use.</p>
+<p>Here’s how to check and use the correct datasets:</p>
+<p>Check the Earth Engine Data Catalog:
+Go to the Earth Engine Data Catalog and search for relevant datasets.</p>
+<p>Find the Correct Dataset IDs:
+Look for the dataset IDs that match your requirements. For example, you can search for NEON datasets or any other datasets you need.</p>
+<p>Verify the Dataset Access:
+Ensure you have access to the datasets. Some datasets may require specific access permissions.</p>
+<p>Example with Correct Dataset IDs:
+Assuming you find the correct dataset IDs for SDR and RGB collections, you can replace the placeholders with these IDs. Here’s an example script with hypothetical correct IDs:</p>
+<p>Define the Image Collections and the Script:
+python
+Copy code</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id10">
+<h1>Import the Earth Engine library<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h1>
+<p>import ee</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id11">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id12">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="these-are-example-dataset-ids-you-need-to-replace-them-with-the-actual-ids-you-find-in-the-data-catalog">
+<h1>These are example dataset IDs, you need to replace them with the actual IDs you find in the Data Catalog<a class="headerlink" href="#these-are-example-dataset-ids-you-need-to-replace-them-with-the-actual-ids-you-find-in-the-data-catalog" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘NEON/D02/OSBS/2016_SDR’)  # Example ID, replace with actual
+aopRGB = ee.ImageCollection(‘NEON/D02/OSBS/2016_RGB’)  # Example ID, replace with actual</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id13">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id14">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id15">
+<h1>Calculate NBR<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id16">
+<h1>Calculate dNBR<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id17">
+<h1>Define export parameters<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+‘folder’: ‘GEE_Exports’  # Folder in your Google Drive
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id18">
+<h1>Start the export task<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id19">
+<h1>Check the status of the task<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h1>
+<p>import time
+while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Additional Notes:
+Searching for Datasets:
+Use the Earth Engine Data Catalog to search for datasets by keywords like “NEON” or any specific terms relevant to your data needs.</p>
+<p>Verifying Dataset IDs:
+Once you find the correct dataset in the Data Catalog, note its ID and replace the placeholders in the script.</p>
+<p>Ensuring Access:
+Make sure you have the necessary permissions to access the datasets. Some datasets may require specific access permissions.</p>
+<p>By following these steps, you should be able to find the correct datasets and successfully export your data from Google Earth Engine to Google Drive using Colab.</p>
+<p>User
+Export.image.toDrive(image, description, folder, fileNamePrefix, dimensions, region, scale, crs, crsTransform, maxPixels, shardSize, fileDimensions, skipEmptyTiles, fileFormat, formatOptions, priority) I want to us this code to do the export to drive. But then input the map that is created with this code ### Code and comments adpated from NEON at <a class="reference external" href="https://www.neonscience.org/resources/learning-hub/tutorials/intro-aop-data-google-earth-engine-tutorial-series#toggle-36">https://www.neonscience.org/resources/learning-hub/tutorials/intro-aop-data-google-earth-engine-tutorial-series#toggle-36</a>
+‘’’————————- Normalized Difference Burn Ratio —————————-
+The normalized burn ratio (NBR) is a normalized difference index using the shortwave-infrared (SWIR) and near-infrared (NIR) portions of the electromagnetic spectrum.
+dNBR can be used as a metric to map fire extent and burn severity when calculating the difference between pre and post fire conditions.
+‘’’</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id20">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR <br />
+.filterDate(‘2019-01-01’, ‘2019-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2021_sdr = aopSDR <br />
+.filterDate(‘2021-01-01’, ‘2021-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2019_rgb = aopRGB <br />
+.filterDate(‘2019-01-01’, ‘2019-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2021_rgb = aopRGB <br />
+.filterDate(‘2021-01-01’, ‘2021-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<div class="section" id="id21">
+<h2>Create an ROI that talks only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id22">
+<h1>calculate NBR<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id23">
+<h1>B097: B365:<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id24">
+<h1>calculate dNBR<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr <br />
+.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id25">
+<h1>Mapping<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h1>
+<p>vis_params = {‘min’:-1, ‘max’:1, ‘palette’:cm.get_palette(‘RdYlGn_r’, n_class=20)}
+m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id26">
+<h1># add RGB base<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id27">
+<h1># add NBR layers<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id28">
+<h1>add dNBR layer<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m
+ChatGPT
+To export the dNBR image created in your script to Google Drive using the Export.image.toDrive function, you need to set up the export parameters and initiate the export task. Below is the complete code to do this:</p>
+<p>Ensure all necessary libraries are imported and authenticated:
+python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id29">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()
+Define the main script to process and visualize the data:
+python
+Copy code</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id30">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘YOUR_AOP_SDR_COLLECTION_ID’)  # Replace with actual path
+aopRGB = ee.ImageCollection(‘YOUR_AOP_RGB_COLLECTION_ID’)  # Replace with actual path</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id31">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id32">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id33">
+<h1>Calculate NBR<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id34">
+<h1>Calculate dNBR<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id35">
+<h1>Mapping<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘B04’, ‘B03’, ‘B02’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id36">
+<h1>Add RGB base<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id37">
+<h1>Add NBR layers<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id38">
+<h1>Add dNBR layer<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m
+Set up the export to Google Drive:
+python
+Copy code</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id39">
+<h1>Define export parameters<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id40">
+<h1>Start the export task<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id41">
+<h1>Check the status of the task<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Complete Example:
+Combining everything together, here’s the full script:</p>
+<p>python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id42">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id43">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘NEON/D02/OSBS/2016_SDR’)  # Example ID, replace with actual
+aopRGB = ee.ImageCollection(‘NEON/D02/OSBS/2016_RGB’)  # Example ID, replace with actual</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id44">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id44" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id45">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id45" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id46">
+<h1>Calculate NBR<a class="headerlink" href="#id46" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id47">
+<h1>Calculate dNBR<a class="headerlink" href="#id47" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id48">
+<h1>Mapping<a class="headerlink" href="#id48" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘B04’, ‘B03’, ‘B02’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id49">
+<h1>Add RGB base<a class="headerlink" href="#id49" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id50">
+<h1>Add NBR layers<a class="headerlink" href="#id50" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id51">
+<h1>Add dNBR layer<a class="headerlink" href="#id51" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id52">
+<h1>Define export parameters<a class="headerlink" href="#id52" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id53">
+<h1>Start the export task<a class="headerlink" href="#id53" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id54">
+<h1>Check the status of the task<a class="headerlink" href="#id54" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Notes:
+Replace Dataset IDs: Ensure you replace the placeholder dataset IDs with the actual IDs you are using.
+Folder Name: Make sure the folder GEE_Exports exists in your Google Drive, or specify a different folder name that exists.
+Check the status of the task: The script will poll the status of the export task and print messages until the export is completed.
+User
+import ee
+import geemap
+import time</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id55">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id55" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘/content/sample_data’)  # Replace with actual path
+aopRGB = ee.ImageCollection(‘/content/sample_data’)  # Replace with actual path</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id56">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id56" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id57">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id57" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id58">
+<h1>Calculate NBR<a class="headerlink" href="#id58" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id59">
+<h1>Calculate dNBR<a class="headerlink" href="#id59" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id60">
+<h1>Mapping<a class="headerlink" href="#id60" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘B04’, ‘B03’, ‘B02’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id61">
+<h1>Add RGB base<a class="headerlink" href="#id61" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id62">
+<h1>Add NBR layers<a class="headerlink" href="#id62" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id63">
+<h1>Add dNBR layer<a class="headerlink" href="#id63" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<div class="section" id="m-centerobject-roi-m">
+<h2>m.centerObject(ROI)
+m<a class="headerlink" href="#m-centerobject-roi-m" title="Permalink to this heading">#</a></h2>
+<p>HttpError                                 Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+401   try:
+–&gt; 402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:</p>
+<p>9 frames
+HttpError: &lt;HttpError 400 when requesting <a class="reference external" href="https://earthengine.googleapis.com/v1/projects/ee-seeds/maps?fields=name&amp;amp;alt=json">https://earthengine.googleapis.com/v1/projects/ee-seeds/maps?fields=name&amp;alt=json</a> returned “ImageCollection.load: ImageCollection asset ‘/content/sample_data’ not found (does not exist or caller does not have access).”. Details: “ImageCollection.load: ImageCollection asset ‘/content/sample_data’ not found (does not exist or caller does not have access).”&gt;</p>
+<p>During handling of the above exception, another exception occurred:</p>
+<p>EEException                               Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:
+–&gt; 404     raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+405
+406</p>
+<p>EEException: ImageCollection.load: ImageCollection asset ‘/content/sample_data’ not found (does not exist or caller does not have access).
+ChatGPT
+The error you’re encountering is because you are trying to load an ImageCollection from a local path (‘/content/sample_data’), which is not valid in the context of Google Earth Engine. Earth Engine assets must be from the Earth Engine Data Catalog or your personal Earth Engine assets.</p>
+<p>To proceed, you need to use the actual Earth Engine dataset IDs. Here’s how you can modify the script with a proper Earth Engine dataset:</p>
+<p>Step-by-Step Solution
+Authenticate and Initialize Earth Engine:
+python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id64">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id64" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()
+Use Correct Dataset IDs:
+Replace /content/sample_data with the actual Earth Engine ImageCollection IDs.
+Example Script
+python
+Copy code</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id65">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id65" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘NEON/D02/OSBS/DP1.30006.001’)  # Example NEON SDR dataset ID, replace with actual
+aopRGB = ee.ImageCollection(‘NEON/D02/OSBS/DP3.30010.001’)  # Example NEON RGB dataset ID, replace with actual</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id66">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id66" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id67">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id67" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id68">
+<h1>Calculate NBR<a class="headerlink" href="#id68" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id69">
+<h1>Calculate dNBR<a class="headerlink" href="#id69" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id70">
+<h1>Mapping<a class="headerlink" href="#id70" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘B04’, ‘B03’, ‘B02’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id71">
+<h1>Add RGB base<a class="headerlink" href="#id71" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id72">
+<h1>Add NBR layers<a class="headerlink" href="#id72" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id73">
+<h1>Add dNBR layer<a class="headerlink" href="#id73" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id74">
+<h1>Define export parameters<a class="headerlink" href="#id74" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id75">
+<h1>Start the export task<a class="headerlink" href="#id75" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id76">
+<h1>Check the status of the task<a class="headerlink" href="#id76" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Important Notes:
+Replace Dataset IDs: The dataset IDs used in this example (‘NEON/D02/OSBS/DP1.30006.001’ and ‘NEON/D02/OSBS/DP3.30010.001’) are placeholders. You need to replace them with the actual dataset IDs you want to use. You can find these IDs in the Earth Engine Data Catalog.
+Folder in Google Drive: Ensure that the folder GEE_Exports exists in your Google Drive or replace it with the correct folder name where you want to save the export.
+This script will load the correct datasets, create the dNBR image, visualize it on the map, and export it to Google Drive.</p>
+<p>User</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id77">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id77" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30006-001’)  # Example NEON SDR dataset ID, replace with actual
+aopRGB = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30010-001’)  # Example NEON RGB dataset ID, replace with actual</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id78">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id78" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id79">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id79" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id80">
+<h1>Calculate NBR<a class="headerlink" href="#id80" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id81">
+<h1>Calculate dNBR<a class="headerlink" href="#id81" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id82">
+<h1>Mapping<a class="headerlink" href="#id82" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘B04’, ‘B03’, ‘B02’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id83">
+<h1>Add RGB base<a class="headerlink" href="#id83" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id84">
+<h1>Add NBR layers<a class="headerlink" href="#id84" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id85">
+<h1>Add dNBR layer<a class="headerlink" href="#id85" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id86">
+<h1>Define export parameters<a class="headerlink" href="#id86" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id87">
+<h1>Start the export task<a class="headerlink" href="#id87" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id88">
+<h1>Check the status of the task<a class="headerlink" href="#id88" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<div class="section" id="print-export-completed">
+<h2>print(‘Export completed.’)<a class="headerlink" href="#print-export-completed" title="Permalink to this heading">#</a></h2>
+<p>HttpError                                 Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+401   try:
+–&gt; 402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:</p>
+<p>9 frames
+HttpError: &lt;HttpError 400 when requesting <a class="reference external" href="https://earthengine.googleapis.com/v1/projects/ee-seeds/maps?fields=name&amp;amp;alt=json">https://earthengine.googleapis.com/v1/projects/ee-seeds/maps?fields=name&amp;alt=json</a> returned “Image.visualize: No band named ‘B04’. Available band names: [R, G, B].”. Details: “Image.visualize: No band named ‘B04’. Available band names: [R, G, B].”&gt;</p>
+<p>During handling of the above exception, another exception occurred:</p>
+<p>EEException                               Traceback (most recent call last)
+/usr/local/lib/python3.10/dist-packages/ee/data.py in _execute_cloud_call(call, num_retries)
+402     return call.execute(num_retries=num_retries)
+403   except googleapiclient.errors.HttpError as e:
+–&gt; 404     raise _translate_cloud_exception(e)  # pylint: disable=raise-missing-from
+405
+406</p>
+<p>EEException: Image.visualize: No band named ‘B04’. Available band names: [R, G, B].
+ChatGPT
+The error you’re encountering indicates that the RGB image does not have bands named B04, B03, and B02. Instead, it has bands named R, G, and B.</p>
+<p>Here’s how you can modify your script to use the correct band names:</p>
+<p>Update the Visualization Parameters:
+Use the correct band names for the RGB images (R, G, and B).</p>
+<p>Adjust the Script:</p>
+<p>python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id89">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id89" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id90">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id90" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30006-001’)  # NEON SDR dataset ID
+aopRGB = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30010-001’)  # NEON RGB dataset ID</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id91">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id91" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id92">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id92" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id93">
+<h1>Calculate NBR<a class="headerlink" href="#id93" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id94">
+<h1>Calculate dNBR<a class="headerlink" href="#id94" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id95">
+<h1>Mapping<a class="headerlink" href="#id95" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘R’, ‘G’, ‘B’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id96">
+<h1>Add RGB base<a class="headerlink" href="#id96" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id97">
+<h1>Add NBR layers<a class="headerlink" href="#id97" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id98">
+<h1>Add dNBR layer<a class="headerlink" href="#id98" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id99">
+<h1>Define export parameters<a class="headerlink" href="#id99" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id100">
+<h1>Start the export task<a class="headerlink" href="#id100" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id101">
+<h1>Check the status of the task<a class="headerlink" href="#id101" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Explanation:
+Dataset Initialization:</p>
+<p>The aopSDR and aopRGB variables are initialized with the correct NEON dataset IDs.
+Visualization Parameters:</p>
+<p>The rgbVis dictionary is updated to use the bands R, G, and B for visualization.
+Mapping:</p>
+<p>The script visualizes the RGB images and the NBR layers correctly.
+Export to Google Drive:</p>
+<p>The dNBR image is exported to Google Drive with the specified parameters.
+This script should now work without errors, provided that the dataset IDs and the band names are correctly specified. Ensure that you have access to the specified datasets and that they contain the required bands.</p>
+<p>User
+Is there a way to export it as a pdf
+ChatGPT
+Exporting an image directly as a PDF from Google Earth Engine (GEE) is not supported. However, you can export the image as a GeoTIFF and then convert it to a PDF using Python libraries such as Matplotlib and Rasterio.</p>
+<p>Here’s how you can do it step-by-step:</p>
+<p>Export the image from GEE as a GeoTIFF.
+Convert the GeoTIFF to a PDF using Python.
+Step 1: Export the image as a GeoTIFF
+Here’s the script to export the dNBR image from GEE:</p>
+<p>python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id102">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id102" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id103">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id103" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30006-001’)  # NEON SDR dataset ID
+aopRGB = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30010-001’)  # NEON RGB dataset ID</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id104">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id104" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id105">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id105" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id106">
+<h1>Calculate NBR<a class="headerlink" href="#id106" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id107">
+<h1>Calculate dNBR<a class="headerlink" href="#id107" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id108">
+<h1>Mapping<a class="headerlink" href="#id108" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘R’, ‘G’, ‘B’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id109">
+<h1>Add RGB base<a class="headerlink" href="#id109" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id110">
+<h1>Add NBR layers<a class="headerlink" href="#id110" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id111">
+<h1>Add dNBR layer<a class="headerlink" href="#id111" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id112">
+<h1>Define export parameters<a class="headerlink" href="#id112" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id113">
+<h1>Start the export task<a class="headerlink" href="#id113" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id114">
+<h1>Check the status of the task<a class="headerlink" href="#id114" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Step 2: Convert the GeoTIFF to a PDF using Python
+Once the GeoTIFF is exported to Google Drive, you can download it and convert it to a PDF using Python. You need libraries such as rasterio and matplotlib.</p>
+<p>First, install the necessary libraries if you haven’t already:</p>
+<p>bash
+Copy code
+pip install rasterio matplotlib
+Then, use the following script to convert the GeoTIFF to a PDF:</p>
+<p>python
+Copy code
+import rasterio
+import matplotlib.pyplot as plt</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="path-to-the-exported-geotiff-file-download-it-from-google-drive-first">
+<h1>Path to the exported GeoTIFF file (download it from Google Drive first)<a class="headerlink" href="#path-to-the-exported-geotiff-file-download-it-from-google-drive-first" title="Permalink to this heading">#</a></h1>
+<p>geotiff_path = ‘path/to/downloaded/dNBR_Export.tif’
+pdf_path = ‘dNBR_Export.pdf’</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="read-the-geotiff-file">
+<h1>Read the GeoTIFF file<a class="headerlink" href="#read-the-geotiff-file" title="Permalink to this heading">#</a></h1>
+<p>with rasterio.open(geotiff_path) as src:
+image = src.read(1)
+fig, ax = plt.subplots(figsize=(10, 10))
+cax = ax.imshow(image, cmap=’RdYlGn’, vmin=-1, vmax=1)
+ax.set_title(‘dNBR’)
+fig.colorbar(cax, orientation=’vertical’, label=’dNBR’)
+plt.savefig(pdf_path, format=’pdf’)
+plt.close()</p>
+<p>print(f’PDF saved as {pdf_path}’)
+Steps:
+Export the GeoTIFF from GEE: Use the script provided to export the dNBR image to Google Drive as a GeoTIFF.
+Download the GeoTIFF: Download the GeoTIFF file from Google Drive to your local machine or Colab environment.
+Convert to PDF: Run the provided Python script to read the GeoTIFF and save it as a PDF.
+This approach leverages the powerful visualization capabilities of matplotlib and rasterio to convert the exported GeoTIFF into a well-formatted PDF.</p>
+<p>User</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id115">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id115" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30006-001’)  # Example NEON SDR dataset ID, replace with actual
+aopRGB = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30010-001’)  # Example NEON RGB dataset ID, replace with actual</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id116">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id116" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id117">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id117" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id118">
+<h1>Calculate NBR<a class="headerlink" href="#id118" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id119">
+<h1>Calculate dNBR<a class="headerlink" href="#id119" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id120">
+<h1>Mapping<a class="headerlink" href="#id120" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘R’, ‘G’, ‘B’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id121">
+<h1>Add RGB base<a class="headerlink" href="#id121" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id122">
+<h1>Add NBR layers<a class="headerlink" href="#id122" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id123">
+<h1>Add dNBR layer<a class="headerlink" href="#id123" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id124">
+<h1>Define export parameters<a class="headerlink" href="#id124" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id125">
+<h1>Start the export task<a class="headerlink" href="#id125" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id126">
+<h1>Check the status of the task<a class="headerlink" href="#id126" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<div class="section" id="print-export-completed-polling-for-task-id-5ukziwsijnpsc3n6ekpnwbqp">
+<h2>print(‘Export completed.’)
+Polling for task (id: 5UKZIWSIJNPSC3N6EKPNWBQP).<a class="headerlink" href="#print-export-completed-polling-for-task-id-5ukziwsijnpsc3n6ekpnwbqp" title="Permalink to this heading">#</a></h2>
+<p>NameError                                 Traceback (most recent call last)
+<ipython-input-16-2f720e502284> in &lt;cell line: 67&gt;()
+67 while export_task.active():
+68     print(‘Polling for task (id: {}).’.format(export_task.id))
+—&gt; 69     time.sleep(30)
+70
+71 print(‘Export completed.’)</p>
+<p>NameError: name ‘time’ is not defined
+ChatGPT
+The error you’re encountering is because the time module is not imported. You need to import the time module to use the time.sleep function.</p>
+<p>Here is the corrected code with the necessary import:</p>
+<p>python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id127">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id127" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id128">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id128" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30006-001’)  # NEON SDR dataset ID
+aopRGB = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30010-001’)  # NEON RGB dataset ID</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id129">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id129" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id130">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id130" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id131">
+<h1>Calculate NBR<a class="headerlink" href="#id131" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id132">
+<h1>Calculate dNBR<a class="headerlink" href="#id132" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id133">
+<h1>Mapping<a class="headerlink" href="#id133" title="Permalink to this heading">#</a></h1>
+<p>rgbVis = {
+‘min’: 0.0,
+‘max’: 255.0,
+‘bands’: [‘R’, ‘G’, ‘B’],
+}
+vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+<p>m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id134">
+<h1>Add RGB base<a class="headerlink" href="#id134" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id135">
+<h1>Add NBR layers<a class="headerlink" href="#id135" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id136">
+<h1>Add dNBR layer<a class="headerlink" href="#id136" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id137">
+<h1>Define export parameters<a class="headerlink" href="#id137" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id138">
+<h1>Start the export task<a class="headerlink" href="#id138" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id139">
+<h1>Check the status of the task<a class="headerlink" href="#id139" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+In this script:</p>
+<p>Importing the time module: This allows you to use time.sleep(30) to pause execution for 30 seconds between status checks.
+Running the export task: The script exports the dNBR image to Google Drive and checks the status of the export task in a loop.
+With these changes, the script should now run correctly and handle the export task status polling without encountering the NameError.</p>
+<p>User</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id140">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id140" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR <br />
+.filterDate(‘2019-01-01’, ‘2019-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2021_sdr = aopSDR <br />
+.filterDate(‘2021-01-01’, ‘2021-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2019_rgb = aopRGB <br />
+.filterDate(‘2019-01-01’, ‘2019-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<p>SOAP_2021_rgb = aopRGB <br />
+.filterDate(‘2021-01-01’, ‘2021-12-31’) <br />
+.filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’) <br />
+.first()</p>
+<div class="section" id="id141">
+<h2>Create an ROI that talks only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id141" title="Permalink to this heading">#</a></h2>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id142">
+<h1>calculate NBR<a class="headerlink" href="#id142" title="Permalink to this heading">#</a></h1>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id143">
+<h1>B097: B365:<a class="headerlink" href="#id143" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id144">
+<h1>calculate dNBR<a class="headerlink" href="#id144" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr <br />
+.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id145">
+<h1>Mapping<a class="headerlink" href="#id145" title="Permalink to this heading">#</a></h1>
+<p>vis_params = {‘min’:-1, ‘max’:1, ‘palette’:cm.get_palette(‘RdYlGn_r’, n_class=20)}
+m = geemap.Map()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id146">
+<h1># add RGB base<a class="headerlink" href="#id146" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(SOAP_2019_rgb, rgbVis, ‘SOAP 2019 RGB’)
+m.addLayer(SOAP_2021_rgb, rgbVis, ‘SOAP 2021 RGB’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id147">
+<h1># add NBR layers<a class="headerlink" href="#id147" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(pre_nbr, vis_params, ‘2019 Normalized Burn Ratio’)
+m.addLayer(post_nbr, vis_params, ‘2021 Normalized Burn Ratio’)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id148">
+<h1>add dNBR layer<a class="headerlink" href="#id148" title="Permalink to this heading">#</a></h1>
+<p>m.addLayer(dNBR, vis_params, ‘dNBR’)</p>
+<p>m.centerObject(ROI)
+m # Define export parameters
+export_params = {
+‘image’: dNBR,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id149">
+<h1>Start the export task<a class="headerlink" href="#id149" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id150">
+<h1>Check the status of the task<a class="headerlink" href="#id150" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Here I was able to export The exported file came out black and white. Is there a way to export it showing all of the layers and colors used in the google earth engine map
+ChatGPT
+To export an image from Google Earth Engine (GEE) with specific visualization parameters (such as colors and layers), you need to first apply the visualization parameters to the image before exporting it. This can be done using the visualize() method, which creates an RGB image based on the specified visualization parameters.</p>
+<p>Here’s how you can modify your code to export the dNBR image with the applied visualization parameters:</p>
+<p>Apply the Visualization Parameters to the Image:
+Export the Visualized Image to Google Drive.
+Step-by-Step Solution
+Step 1: Apply the Visualization Parameters
+Use the visualize() method to create an RGB image based on the specified visualization parameters.</p>
+<p>python
+Copy code
+import ee
+import geemap
+import time</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id151">
+<h1>Authenticate and initialize the Earth Engine library<a class="headerlink" href="#id151" title="Permalink to this heading">#</a></h1>
+<p>ee.Authenticate()
+ee.Initialize()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id152">
+<h1>Define the image collections (replace with the actual paths if different)<a class="headerlink" href="#id152" title="Permalink to this heading">#</a></h1>
+<p>aopSDR = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30006-001’)  # NEON SDR dataset ID
+aopRGB = ee.ImageCollection(‘projects/neon-prod-earthengine/assets/DP3-30010-001’)  # NEON RGB dataset ID</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id153">
+<h1>Import the 2019 and 2021 SOAP data<a class="headerlink" href="#id153" title="Permalink to this heading">#</a></h1>
+<p>SOAP_2019_sdr = aopSDR.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_sdr = aopSDR.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+<p>SOAP_2019_rgb = aopRGB.filterDate(‘2019-01-01’, ‘2019-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()
+SOAP_2021_rgb = aopRGB.filterDate(‘2021-01-01’, ‘2021-12-31’).filterMetadata(‘NEON_SITE’, ‘equals’, ‘SOAP’).first()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id154">
+<h1>Create an ROI that includes only the pixels covered by both years + adds -30m buffer<a class="headerlink" href="#id154" title="Permalink to this heading">#</a></h1>
+<p>full_mask = ee.Image.constant(1).clip(SOAP_2019_sdr.geometry()) <br />
+.updateMask(SOAP_2019_sdr.select([‘B001’]).mask()) <br />
+.updateMask(SOAP_2021_sdr.select([‘B001’]).mask()) <br />
+.reduceToVectors(maxPixels=1e13, scale=100)
+ROI = full_mask.geometry().buffer(-30)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id155">
+<h1>Calculate NBR<a class="headerlink" href="#id155" title="Permalink to this heading">#</a></h1>
+<p>pre_nbr = SOAP_2019_sdr.normalizedDifference([‘B097’, ‘B365’])
+post_nbr = SOAP_2021_sdr.normalizedDifference([‘B097’, ‘B365’])</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id156">
+<h1>Calculate dNBR<a class="headerlink" href="#id156" title="Permalink to this heading">#</a></h1>
+<p>dNBR = pre_nbr.subtract(post_nbr)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="visualization-parameters">
+<h1>Visualization parameters<a class="headerlink" href="#visualization-parameters" title="Permalink to this heading">#</a></h1>
+<p>vis_params = {‘min’: -1, ‘max’: 1, ‘palette’: [‘red’, ‘yellow’, ‘green’]}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="apply-visualization-parameters-to-create-an-rgb-image">
+<h1>Apply visualization parameters to create an RGB image<a class="headerlink" href="#apply-visualization-parameters-to-create-an-rgb-image" title="Permalink to this heading">#</a></h1>
+<p>dNBR_visualized = dNBR.visualize(**vis_params)</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id157">
+<h1>Define export parameters<a class="headerlink" href="#id157" title="Permalink to this heading">#</a></h1>
+<p>export_params = {
+‘image’: dNBR_visualized,
+‘description’: ‘dNBR_Export’,
+‘folder’: ‘GEE_Exports’,
+‘fileNamePrefix’: ‘dNBR_Export’,
+‘scale’: 30,
+‘region’: ROI,
+‘fileFormat’: ‘GeoTIFF’,
+‘maxPixels’: 1e13,
+}</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id158">
+<h1>Start the export task<a class="headerlink" href="#id158" title="Permalink to this heading">#</a></h1>
+<p>export_task = ee.batch.Export.image.toDrive(**export_params)
+export_task.start()</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="id159">
+<h1>Check the status of the task<a class="headerlink" href="#id159" title="Permalink to this heading">#</a></h1>
+<p>while export_task.active():
+print(‘Polling for task (id: {}).’.format(export_task.id))
+time.sleep(30)</p>
+<p>print(‘Export completed.’)
+Explanation:
+Apply Visualization Parameters:</p>
+<p>The dNBR.visualize(**vis_params) method is used to create an RGB image based on the specified visualization parameters (vis_params).
+Export the Visualized Image:</p>
+<p>The export_params dictionary now references the dNBR_visualized image instead of the raw dNBR image.
+This ensures that the exported image retains the color mapping and other visualization settings applied in GEE.
+This approach ensures that the exported GeoTIFF file will include the colors and visualization parameters specified, making it easier to interpret the results directly from the exported file.</p>
+</details><div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>End-to-End Google Earth Engine</strong>: If you’d like to continue exploring the Earth Engine processes and applications, <a href="https://courses.spatialthoughts.com/end-to-end-gee.html#automatic-conversion-of-javascript-code-to-python" target="_blank"> SpatialThoughts Course - Ujaval Gandhi </a> has some nice examples you can follow.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./google_drive/colab_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="final_pca_kmeans.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Principal Component Analysis &amp; Kmeans Clustering</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="final_disturbance_lidar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mapping Fire Impacts - LiDAR-based</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Mapping Fire Impacts - Raster-based</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflection-exercises-for-each-group">Reflection exercises for each group:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgement">Acknowledgement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bringing-in-vector-data-fire-exploration">Bringing in vector data (fire exploration)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-2019-and-2021-soap-data">Import the 2019 and 2021 SOAP data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-roi-that-talks-only-the-pixels-covered-by-both-years-adds-30m-buffer">Create an ROI that talks only the pixels covered by both years + adds -30m buffer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-nbr">calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#b097-b365">B097: B365:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-dnbr">calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#add-rgb-base"># add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#add-nbr-layers"># add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#add-dnbr-layer">add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#import-the-earth-engine-library">Import the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#authenticate-and-initialize-the-earth-engine-library">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-soap-data-for-2019-and-2021">Define the SOAP data for 2019 and 2021</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#create-an-roi-that-includes-only-the-pixels-covered-by-both-years-adds-30m-buffer">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-export-parameters">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#start-the-export-task">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-status-of-the-task">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#user">User</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-image-collections-replace-with-the-actual-paths-if-different">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Import the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#these-are-example-dataset-ids-you-need-to-replace-them-with-the-actual-ids-you-find-in-the-data-catalog">These are example dataset IDs, you need to replace them with the actual IDs you find in the Data Catalog</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">Import the 2019 and 2021 SOAP data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">Create an ROI that talks only the pixels covered by both years + adds -30m buffer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22">calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id23">B097: B365:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id24">calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id25">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"># add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"># add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id28">add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id29">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id30">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id31">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id32">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id33">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id34">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id35">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id36">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id37">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id38">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id39">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id40">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id41">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id42">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id43">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id44">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id45">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id46">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id47">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id48">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id49">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id50">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id51">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id52">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id53">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id54">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id55">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id56">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id57">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id58">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id59">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id60">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id61">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id62">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id63">Add dNBR layer</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#m-centerobject-roi-m">m.centerObject(ROI)
+m</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id64">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id65">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id66">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id67">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id68">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id69">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id70">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id71">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id72">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id73">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id74">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id75">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id76">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id77">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id78">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id79">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id80">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id81">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id82">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id83">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id84">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id85">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id86">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id87">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id88">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-export-completed">print(‘Export completed.’)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id89">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id90">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id91">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id92">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id93">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id94">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id95">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id96">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id97">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id98">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id99">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id100">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id101">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id102">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id103">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id104">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id105">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id106">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id107">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id108">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id109">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id110">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id111">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id112">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id113">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id114">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#path-to-the-exported-geotiff-file-download-it-from-google-drive-first">Path to the exported GeoTIFF file (download it from Google Drive first)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-geotiff-file">Read the GeoTIFF file</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id115">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id116">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id117">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id118">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id119">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id120">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id121">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id122">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id123">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id124">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id125">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id126">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-export-completed-polling-for-task-id-5ukziwsijnpsc3n6ekpnwbqp">print(‘Export completed.’)
+Polling for task (id: 5UKZIWSIJNPSC3N6EKPNWBQP).</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id127">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id128">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id129">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id130">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id131">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id132">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id133">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id134">Add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id135">Add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id136">Add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id137">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id138">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id139">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id140">Import the 2019 and 2021 SOAP data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id141">Create an ROI that talks only the pixels covered by both years + adds -30m buffer</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id142">calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id143">B097: B365:</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id144">calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id145">Mapping</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id146"># add RGB base</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id147"># add NBR layers</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id148">add dNBR layer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id149">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id150">Check the status of the task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id151">Authenticate and initialize the Earth Engine library</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id152">Define the image collections (replace with the actual paths if different)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id153">Import the 2019 and 2021 SOAP data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id154">Create an ROI that includes only the pixels covered by both years + adds -30m buffer</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id155">Calculate NBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id156">Calculate dNBR</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-parameters">Visualization parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-visualization-parameters-to-create-an-rgb-image">Apply visualization parameters to create an RGB image</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id157">Define export parameters</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id158">Start the export task</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id159">Check the status of the task</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Carissa DeRanek & Jonathan Pando Ocón, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
